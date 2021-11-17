@@ -1,12 +1,12 @@
 export enum City {
-    Taiwan,
-    Taipei,
-    NewTaipei,
-    Taoyuan,
-    Taichung,
-    Tainan,
-    Kaohsiung,
-    Keelung,
+    // Taiwan,
+    // Taipei,
+    // NewTaipei,
+    // Taoyuan,
+    // Taichung,
+    // Tainan,
+    // Kaohsiung,
+    // Keelung,
     Hsinchu,
     HsinchuCounty,
     MiaoliCounty,
@@ -19,14 +19,7 @@ export enum City {
     YilanCounty,
     HualienCounty,
     TaitungCounty,
-    KinmenCounty,
+    // KinmenCounty,
     PenghuCounty,
-    LienchiangCounty,
-}
-
-export enum CardCategory{
-    Hotel,
-    Activity,
-    Scene,
-    Food,
+    // LienchiangCounty,
 }

@@ -20,12 +20,23 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-
+import { useStore } from 'vuex';
+import {getReallTimeBusByCity,getReallTimeNearStopByCity,getReallTimeBusByCityAndRoute,getEstimatedTimeOfArrivalByCity,getReallTimeNearStopByCityAndRoute,getEstimatedTimeOfArrivalByCityAndRouteName} from '../api'
+import {City} from '../types/enum'
 export default defineComponent({
   name: 'HelloWorld',
   props: {
     msg: String,
   },
+  setup(){
+    const store = useStore()
+    getReallTimeBusByCity(City[City.Chiayi])?.then(res=>{
+      console.log(res.data)
+    })
+    return{
+
+    }
+  }
 });
 </script>
 
