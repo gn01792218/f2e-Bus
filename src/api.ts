@@ -11,29 +11,29 @@ const activityProperty = "$select=ID%2CName%2CDescription%2CParticpation%2CLocat
 //公車動態API
 //取得指定[縣市]的公車動態定時資料(A1)[逐筆更新]
 export const getReallTimeBusByCity = (City:string) => {
-    return req('get',`/v2/Bus/RealTimeByFrequency/Streaming/City/${City}?$format=JSON`)
+    return req('get',`/v2/Bus/RealTimeByFrequency/City/${City}?$format=JSON`)
 }
 //取得指定[縣市],[路線名稱]的公車動態定時資料(A1)[逐筆更新]
 export const getReallTimeBusByCityAndRoute = (City:string,RouteName:number) => {
-    return req('get',`/v2/Bus/RealTimeByFrequency/Streaming/City/${City}/${RouteName}$format=JSON`)
+    return req('get',`/v2/Bus/RealTimeByFrequency/City/${City}/${RouteName}$format=JSON`)
 }
 //取得指定[縣市]的公車動態定點資料(A2)[逐筆更新]
 export const getReallTimeNearStopByCity = (City:string) => {
-    return req('get',`/v2/Bus/RealTimeNearStop/Streaming/City/${City}?$format=JSON`)
+    return req('get',`/v2/Bus/RealTimeNearStop/City/${City}?$format=JSON`)
 }
 //取得指定[縣市],[路線名稱]的公車動態定點資料(A2)[逐筆更新]
 export const getReallTimeNearStopByCityAndRoute = (City:string,RouteName:number) => {
-    return req('get',`/v2/Bus/RealTimeNearStop/Streaming/City/${City}/${RouteName}$format=JSON`)
+    return req('get',`/v2/Bus/RealTimeNearStop/City/${City}/${RouteName}$format=JSON`)
 }
 //預估到站API
 //取得指定縣市的公車預估到站資料
 export const getEstimatedTimeOfArrivalByCity = (City:string) => {
-    return req('get',`/v2/Bus/EstimatedTimeOfArrival/Streaming/City/${City}?$format=JSON`)
+    return req('get',`/v2/Bus/EstimatedTimeOfArrival/City/${City}?$format=JSON`)
 //   return req('get',`/v2/Tourism/ScenicSpot?${sceneProperty}$top=${top}&$format=JSON`)
 }
 //取得指定[縣市],[路線名稱]的公車預估到站資料(N1)[逐筆更新]
 export const getEstimatedTimeOfArrivalByCityAndRouteName = (City:string,RouteName:number) => {
-    return req('get',`/v2/Bus/EstimatedTimeOfArrival/Streaming/City/${City}/${RouteName}$format=JSON`)
+    return req('get',`/v2/Bus/EstimatedTimeOfArrival/City/${City}/${RouteName}$format=JSON`)
 //   return req('get',`/v2/Tourism/ScenicSpot?${sceneProperty}$top=${top}&$format=JSON`)
 }
 

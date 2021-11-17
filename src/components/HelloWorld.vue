@@ -30,7 +30,7 @@ export default defineComponent({
   },
   setup(){
     const store = useStore()
-    getReallTimeBusByCity(City[City.Chiayi])?.then(res=>{
+    getReallTimeBusByCity(City[City.Taichung])?.then(res=>{
       console.log(res.data)
     })
     return{
