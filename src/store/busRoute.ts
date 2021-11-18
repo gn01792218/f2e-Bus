@@ -10,8 +10,9 @@ export const state = {
         if(!state.cityBusRoute[cityName]){
             console.log(`請求${cityName}資料`)
             getRouteByCity(cityName)?.then(res=>{
-                state.cityBusRoute[cityName] = res.data
-                
+                state.cityBusRoute[cityName] = res.data.sort((a:any,b:any)=>{
+                  return Number(a.RouteID) > Number(b.RouteID) ? 1:-1
+                })
                 console.log(state.cityBusRoute)
             })
         }
