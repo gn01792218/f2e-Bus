@@ -1,25 +1,15 @@
 <template>
   <ol-map :loadTilesWhileAnimating="true" :loadTilesWhileInteracting="true" style="height:400px">
-
     <ol-view ref="view" :center="center" :rotation="rotation" :zoom="zoom" 
     :projection="projection" />
-
     <ol-tile-layer>
         <ol-source-osm />
     </ol-tile-layer>
-     <button class="btn btn-primary" 
-            data-bs-target="#collapseTarget" 
-            data-bs-toggle="collapse">
-            Bootstrap collapse
-        </button>
-        <div class="collapse py-2" id="collapseTarget">
-            This is the toggle-able content!
-        </div>
 </ol-map>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
 import {getRouteByCityAndRouteName,getReallTimeBusByCity,getRouteByCity,getReallTimeNearStopByCity,getReallTimeBusByCityAndRoute,getEstimatedTimeOfArrivalByCity,getReallTimeNearStopByCityAndRoute,getEstimatedTimeOfArrivalByCityAndRouteName} from '../api'
 import {City} from '../types/enum'
@@ -30,6 +20,7 @@ export default defineComponent({
   },
   setup(){
     const store = useStore()
+    const cityList = store.state.cityList
     getRouteByCityAndRouteName(City[City.Taichung],53)?.then(res=>{
       console.log(res.data)
     })

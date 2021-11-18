@@ -1,0 +1,11 @@
+body {
+  background-color: #F2F1ED;
+}
+
+.filterInput {
+  background: #F2F1ED;
+  -webkit-box-shadow: inset -4px -4px 9px #FFFFFF, inset 4px 4px 14px #CEAE75;
+          box-shadow: inset -4px -4px 9px #FFFFFF, inset 4px 4px 14px #CEAE75;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=all.css.map */
