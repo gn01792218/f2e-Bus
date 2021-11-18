@@ -21,7 +21,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useStore } from 'vuex';
-import {getReallTimeBusByCity,getReallTimeNearStopByCity,getReallTimeBusByCityAndRoute,getEstimatedTimeOfArrivalByCity,getReallTimeNearStopByCityAndRoute,getEstimatedTimeOfArrivalByCityAndRouteName} from '../api'
+import {getRouteByCityAndRouteName,getReallTimeBusByCity,getRouteByCity,getReallTimeNearStopByCity,getReallTimeBusByCityAndRoute,getEstimatedTimeOfArrivalByCity,getReallTimeNearStopByCityAndRoute,getEstimatedTimeOfArrivalByCityAndRouteName} from '../api'
 import {City} from '../types/enum'
 export default defineComponent({
   name: 'HelloWorld',
@@ -30,7 +30,7 @@ export default defineComponent({
   },
   setup(){
     const store = useStore()
-    getReallTimeBusByCity(City[City.Taichung])?.then(res=>{
+    getRouteByCityAndRouteName(City[City.Taichung],53)?.then(res=>{
       console.log(res.data)
     })
     return{

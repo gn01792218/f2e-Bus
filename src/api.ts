@@ -29,11 +29,16 @@ export const getReallTimeNearStopByCityAndRoute = (City:string,RouteName:number)
 //取得指定縣市的公車預估到站資料
 export const getEstimatedTimeOfArrivalByCity = (City:string) => {
     return req('get',`/v2/Bus/EstimatedTimeOfArrival/City/${City}?$format=JSON`)
-//   return req('get',`/v2/Tourism/ScenicSpot?${sceneProperty}$top=${top}&$format=JSON`)
 }
 //取得指定[縣市],[路線名稱]的公車預估到站資料(N1)[逐筆更新]
 export const getEstimatedTimeOfArrivalByCityAndRouteName = (City:string,RouteName:number) => {
     return req('get',`/v2/Bus/EstimatedTimeOfArrival/City/${City}/${RouteName}$format=JSON`)
-//   return req('get',`/v2/Tourism/ScenicSpot?${sceneProperty}$top=${top}&$format=JSON`)
 }
 
+//取得縣市公車路線資料
+export const getRouteByCity = (City:string) => {
+    return req('get',`v2/Bus/Route/City/${City}?$format=JSON`)
+}
+export const getRouteByCityAndRouteName = (City:string,RouteName:number) => {
+    return req('get',`/v2/Bus/Route/City/${City}/${RouteName}?$format=JSON`)
+}
