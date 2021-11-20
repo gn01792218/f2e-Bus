@@ -1,11 +1,129 @@
 body {
-  background-color: #F2F1ED;
+  background-color: #e3edf7;
+  background-color: transparent;
+}
+
+.kin:hover {
+  cursor: pointer;
+  background-image: url("../images/island.png");
+  width: 159.5px;
+  height: 94.5px;
+  background-position: 0px 0px;
+  background-size: 957px auto;
+}
+
+.kin {
+  cursor: pointer;
+  background-image: url("../images/island.png");
+  width: 159.5px;
+  height: 94.5px;
+  background-position: -797.5px 0px;
+  background-size: 957px auto;
+}
+
+.ponho:hover {
+  cursor: pointer;
+  background-image: url("../images/island.png");
+  width: 159.5px;
+  height: 94.5px;
+  background-position: -159.5px 0px;
+  background-size: 957px auto;
+}
+
+.ponho {
+  cursor: pointer;
+  background-image: url("../images/island.png");
+  width: 159.5px;
+  height: 94.5px;
+  background-position: -478.5px 0px;
+  background-size: 957px auto;
+}
+
+.langjon {
+  cursor: pointer;
+  background-image: url("../images/island.png");
+  width: 159.5px;
+  height: 94.5px;
+  background-position: -638px 0px;
+  background-size: 957px auto;
+}
+
+.langjon:hover {
+  cursor: pointer;
+  background-image: url("../images/island.png");
+  width: 159.5px;
+  height: 94.5px;
+  background-position: -319px 0px;
+  background-size: 957px auto;
+}
+
+.sv {
+  height: 350px;
+  fill: #A8CDD7;
+  stroke: white;
+}
+
+.island {
+  top: -5%;
+  left: 20%;
+}
+
+.active {
+  fill: red;
+}
+
+.hover {
+  fill: #C57B7A;
+  cursor: pointer;
+}
+
+.ponho {
+  margin-left: 20%;
+}
+
+.kin {
+  margin-left: -20%;
 }
 
 .filterInput {
-  background: #F2F1ED;
-  -webkit-box-shadow: inset -4px -4px 9px #FFFFFF, inset 4px 4px 14px #CEAE75;
-          box-shadow: inset -4px -4px 9px #FFFFFF, inset 4px 4px 14px #CEAE75;
+  width: 300px;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
+  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
+  -webkit-box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+          box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+  border-radius: 5px;
+  border: none;
+}
+
+.filterInput:hover {
+  background: #dde8f1;
+  -webkit-box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.6), inset 2px 2px 10px #c5d7ee;
+          box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.6), inset 2px 2px 10px #c5d7ee;
+  border-radius: 5px;
+}
+
+.filterInput:focus-visible, .filterInput:focus {
+  -webkit-box-shadow: 0px 0px beige;
+          box-shadow: 0px 0px beige;
+}
+
+.filter-dropdown {
+  width: 300px;
+  margin: 10px;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
+  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
+  -webkit-box-shadow: -1px -1px 5px #ffffff, 3px 3px 10px rgba(24, 24, 24, 0.4);
+          box-shadow: -1px -1px 5px #ffffff, 3px 3px 10px rgba(24, 24, 24, 0.4);
+  border-radius: 5px;
+  border: none;
+}
+
+.dropdown-item:hover {
+  padding: 10px;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
+  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
+  -webkit-box-shadow: -1px -1px 3px #ffffff, 3px 3px 10px rgba(24, 24, 24, 0.4);
+          box-shadow: -1px -1px 3px #ffffff, 3px 3px 10px rgba(24, 24, 24, 0.4);
   border-radius: 5px;
 }
 /*# sourceMappingURL=all.css.map */

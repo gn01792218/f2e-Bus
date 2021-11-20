@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <OpenStreeMap/>
+    <!-- <OpenStreeMap/> -->
     <Filter />
   </div>
 </template>

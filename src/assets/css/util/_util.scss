@@ -1,0 +1,25 @@
+//離島icon
+.kin:hover{
+    @include island;
+    @include islandScale(0,0,0.5);
+  }
+  .kin{
+    @include island;
+    @include islandScale(-1595,0,0.5);
+  }
+  .ponho:hover{
+    @include island;
+    @include islandScale(-319,0,0.5);
+  }
+  .ponho{
+    @include island;
+    @include islandScale(-957,0,0.5);
+  }
+  .langjon{
+    @include island;
+    @include islandScale(-1276,0,0.5);
+  }
+  .langjon:hover{
+    @include island;
+    @include islandScale(-638,0,0.5);
+  }

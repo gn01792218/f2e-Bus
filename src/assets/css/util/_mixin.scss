@@ -1,0 +1,15 @@
+@mixin island {
+    cursor: pointer;
+    background-image: $island-sprite;
+}
+@mixin islandScale($x,$y,$scale){
+    $WIDTH:(319*$scale);
+    $HEIGHT:(189*$scale);
+    $POSITIONX:($x*$scale);
+    $POSITIONY:($y*$scale);
+    $BGSIZEX:(1914*$WIDTH/319);
+    width:$WIDTH+px;
+    height:$HEIGHT+px;
+	background-position: $POSITIONX+px $POSITIONY+px;
+    background-size: $BGSIZEX+px auto;
+}
