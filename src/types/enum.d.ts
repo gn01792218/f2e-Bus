@@ -1,3 +1,3 @@
 declare enum City {}
-declare enum CardCategory{}
+declare enum Category{}
 

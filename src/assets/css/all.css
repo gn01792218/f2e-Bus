@@ -109,6 +109,8 @@ body {
 
 .filter-dropdown {
   width: 300px;
+  height: 500px;
+  overflow-y: auto;
   margin: 10px;
   background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);

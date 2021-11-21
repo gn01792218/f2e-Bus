@@ -23,3 +23,10 @@ export enum City {
     PenghuCounty,
     LienchiangCounty,
 }
+
+export enum Category{
+    BusRoute,
+    StopName,
+    Ticket,
+    BusPlanning,
+}

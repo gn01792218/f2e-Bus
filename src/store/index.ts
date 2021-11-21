@@ -1,9 +1,12 @@
+import { Category } from '@/types/enum'
 import { createStore } from 'vuex'
 import busRoute from './busRoute'
+import busStop from './busStop'
 export default createStore({
   state: {
     currentCity:"", //當前選擇的縣市
     currentCityChineseName:"",
+    currentCategory:Category.BusRoute,  //預設為搜尋公車路線
     cityList:[
       {
         "CityID": "A",
@@ -190,11 +193,14 @@ export default createStore({
         return i.City == city
       })
       state.currentCityChineseName = chineseName.CityName
+    },
+    setCurrentCategory(state:any,category:Category){
+      state.currentCategory = category
     }
   },
   actions: {
   },
   modules: {
-    busRoute,
+    busRoute,busStop,
   }
 })

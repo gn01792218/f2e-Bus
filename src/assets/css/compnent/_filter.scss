@@ -17,6 +17,8 @@
 
 .filter-dropdown {
   width: 300px;
+  height:500px;
+  overflow-y: auto;
   margin: 10px;
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
   box-shadow: -1px -1px 5px #ffffff, 3px 3px 10px rgba(24, 24, 24, 0.4);
