@@ -14,6 +14,8 @@ export const state = {
                   return Number(a.RouteID) > Number(b.RouteID) ? 1:-1
                 })
                 console.log(state.cityBusRoute)
+            }).catch((e:any)=>{
+              console.log(e)
             })
         }
        }

@@ -1,68 +1,95 @@
 <template>
-  <div class="filter d-flex">
-    {{ currentCategory }}
-    <div class="categoryBar d-flex" v-if="currentCity">
+  <div class="filter">
+    <section class="filter-title d-flex">
       <div>
-        <button class="d-block" @click="setFilterCategory(0)">
-          公車動態查詢
+        <p>篩選方式</p>
+        <p>{{ currentCategory }}</p>
+      </div>
+      <div>
+        <h3>Step1:選擇城市</h3>
+         <div class="dropdown d-flex m-3">
+        <button
+          class="btn btn-secondary dropdown-toggle me-3"
+          type="button"
+          id="dropdownMenu2"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span v-if="currentCity">{{ currentCityChineseName }}</span>
+          <span v-else>選擇縣市</span>
         </button>
-        <button class="d-block" @click="setFilterCategory(1)">站點查詢</button>
+        <ul
+          class="dropdown-menu filter-dropdown"
+          aria-labelledby="dropdownMenu2"
+        >
+          <li v-for="(city, index) in cityList" :key="index">
+            <button
+              class="dropdown-item"
+              type="button"
+              @click="selectCity(city.City)"
+            >
+              {{ city.CityName }}
+            </button>
+          </li>
+        </ul>
+        <input
+          type="text"
+          class="filterInput form-control"
+          id="dropdownMenuButton1"
+          data-bs-toggle="dropdown"
+          v-model="keyWord"
+          :placeholder="placeholder"
+        />
+        <ul
+          class="dropdown-menu filter-dropdown"
+          aria-labelledby="dropdownMenuButton1"
+        >
+          <li v-for="(data, index) in filterData" :key="index">
+            <a
+              class="dropdown-item"
+              href="#"
+              v-if="currentCategory == 'BusRoute'"
+              @click="disPlayData(data)"
+              >[{{ data.RouteID }}]{{ data.DepartureStopNameZh }}-{{
+                data.DestinationStopNameZh
+              }}</a
+            >
+            <a
+              class="dropdown-item"
+              href="#"
+              v-if="currentCategory == 'StopName'"
+              >{{ data.StopName.Zh_tw }}
+            </a>
+          </li>
+        </ul>
       </div>
-      <div>
-        <button class="d-block" @click="setFilterCategory(2)">票價查詢</button>
-        <button class="d-block" @click="setFilterCategory(3)">乘車規劃</button>
       </div>
-    </div>
-    <div class="dropdown d-flex m-3 h-100">
-      <button
-        class="btn btn-secondary dropdown-toggle me-3"
-        type="button"
-        id="dropdownMenu2"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        <span v-if="currentCity">{{ currentCityChineseName }}</span>
-        <span v-else>選擇縣市</span>
-      </button>
-      <ul class="dropdown-menu filter-dropdown" aria-labelledby="dropdownMenu2">
-        <li v-for="(city, index) in cityList" :key="index">
-          <button
-            class="dropdown-item"
-            type="button"
-            @click="selectCity(city.City)"
-          >
-            {{ city.CityName }}
+    </section>
+    <section class="categoryBar d-flex">
+        <TaiwanMap class="d-none d-md-block" />
+        <div>
+          <h3>Step2:選擇查詢服務</h3>
+          <div class="d-flex">
+            <div>
+          <button class="d-block" @click="setFilterCategory(0)">
+            公車動態查詢
           </button>
-        </li>
-      </ul>
-      <input
-        type="text"
-        class="filterInput form-control"
-        id="dropdownMenuButton1"
-        data-bs-toggle="dropdown"
-        v-model="keyWord"
-        :placeholder="placeholder"
-      />
-      <ul
-        class="dropdown-menu filter-dropdown"
-        aria-labelledby="dropdownMenuButton1"
-      >
-        <li v-for="(data, index) in filterData" :key="index">
-          <a class="dropdown-item" href="#" v-if="currentCategory == 'BusRoute'"
-            >[{{ data.RouteID }}]{{ data.DepartureStopNameZh }}-{{
-              data.DestinationStopNameZh
-            }}</a
-          >
-          <a class="dropdown-item" href="#" v-if="currentCategory == 'StopName'"
-            >{{ data.StopName.Zh_tw }}
-          </a>
-        </li>
-        <!-- <li><a class="dropdown-item" href="#"></a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-      </ul>
-    </div>
-    <TaiwanMap class="d-none d-md-block" />
+          <button class="d-block" @click="setFilterCategory(1)">
+            站點查詢
+          </button>
+        </div>
+        <div>
+          <button class="d-block" @click="setFilterCategory(2)">
+            票價查詢
+          </button>
+          <button class="d-block" @click="setFilterCategory(3)">
+            乘車規劃
+          </button>
+        </div>
+          </div>
+        </div>
+        
+    </section>
   </div>
 </template>
 
@@ -111,43 +138,34 @@ export default defineComponent({
             });
           case Category[Category.StopName]:
             let filterData = vuexData.value.filter((i: any) => {
-                return  i.StopName.Zh_tw.includes(keyWord.value)
-            })
-            const set = new Set();
-            const result = filterData.filter((item:any) =>
-              !set.has(item.StopName.Zh_tw) ? set.add(item.StopName.Zh_tw) : false
-            );
-            return result;
+              return i.StopName.Zh_tw.includes(keyWord.value);
+            });
+            return filterData;
         }
-      } else {
-        return vuexData.value;
       }
-    });
-    watch(currentCity, () => {
-      console.log(currentCity.value);
     });
     watch(filterData, () => {
       console.log(filterData.value);
     });
     function selectCity(cityName: string) {
       store.commit("setCurrentCity", cityName);
-      store.commit("busRoute/getCityBusRoute", cityName); //預設是搜尋公車路線所以先請求
-      // switch(currentCategory.value){
-      //   case Category[Category.BusRoute]:
-      //     console.log("執行公車路線搜尋")
-      //     store.commit("busRoute/getCityBusRoute", cityName)
-      //     break
-      //   case Category[Category.StopName]:
-      //     console.log("執行公車站牌搜尋")
-      //     store.commit("busStop/getCityBusStop",cityName)
-      //     break
-      // }
+      switch (currentCategory.value) {
+        case Category[Category.BusRoute]:
+          console.log("執行公車路線搜尋");
+          store.commit("busRoute/getCityBusRoute", cityName);
+          break;
+        case Category[Category.StopName]:
+          console.log("執行公車站牌搜尋");
+          store.commit("busStop/getCityBusStop", cityName);
+          break;
+      }
     }
     function setFilterCategory(category: Category) {
       store.commit("setCurrentCategory", category);
       switch (category) {
         case Category.BusRoute:
           placeholder.value = "請輸入公車路線號碼或起訖站名稱";
+          store.commit("busRoute/getCityBusRoute", currentCity.value);
           break;
         case Category.StopName:
           store.commit("busStop/getCityBusStop", currentCity.value);
@@ -161,6 +179,9 @@ export default defineComponent({
           break;
       }
     }
+    function disPlayData(itemData:any){
+      store.commit('setSelectItem',itemData)
+    }
     return {
       //data
       keyWord,
@@ -173,6 +194,7 @@ export default defineComponent({
       //methods
       selectCity,
       setFilterCategory,
+      disPlayData,
     };
   },
 });

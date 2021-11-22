@@ -184,7 +184,8 @@ export default createStore({
         "CountyID": "Z",
         "Version": "21.08.1"
       }
-    ]
+    ],
+    selectItem:{},  //選擇的資料
   },
   mutations: {
     setCurrentCity(state:any,city:string){
@@ -196,6 +197,9 @@ export default createStore({
     },
     setCurrentCategory(state:any,category:Category){
       state.currentCategory = category
+    },
+    setSelectItem(state:any,payload:any){
+      state.selectItem = payload
     }
   },
   actions: {

@@ -3,6 +3,19 @@ body {
   background-color: transparent;
 }
 
+.main {
+  margin-bottom: 5%;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.nav-item {
+  cursor: pointer;
+}
+
 .kin:hover {
   cursor: pointer;
   background-image: url("../images/island.png");
@@ -57,6 +70,32 @@ body {
   background-size: 957px auto;
 }
 
+.header {
+  text-align: center;
+}
+
+.busInfo {
+  width: 50%;
+  background-color: burlywood;
+}
+
+.openStreeMap {
+  width: 50%;
+}
+
+.busInfo-li {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+  background-color: #888167;
+}
+
 .sv {
   height: 350px;
   fill: #A8CDD7;
@@ -65,7 +104,7 @@ body {
 
 .island {
   top: -5%;
-  left: 20%;
+  left: -50%;
 }
 
 .active {
@@ -83,6 +122,17 @@ body {
 
 .kin {
   margin-left: -20%;
+}
+
+.filter {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.categoryBar {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .filterInput {

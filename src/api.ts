@@ -22,7 +22,7 @@ export const getReallTimeNearStopByCity = (City:string) => {
 }
 //取得指定[縣市],[路線名稱]的公車動態定點資料(A2)[逐筆更新]
 export const getReallTimeNearStopByCityAndRoute = (City:string,RouteName:number) => {
-    return req('get',`/v2/Bus/RealTimeNearStop/City/${City}/${RouteName}$format=JSON`)
+    return req('get',`/v2/Bus/RealTimeNearStop/City/${City}/${RouteName}?$format=JSON`)
 }
 //預估到站API
 //取得指定縣市的公車預估到站資料
@@ -31,7 +31,7 @@ export const getEstimatedTimeOfArrivalByCity = (City:string) => {
 }
 //取得指定[縣市],[路線名稱]的公車預估到站資料(N1)[逐筆更新]
 export const getEstimatedTimeOfArrivalByCityAndRouteName = (City:string,RouteName:number) => {
-    return req('get',`/v2/Bus/EstimatedTimeOfArrival/City/${City}/${RouteName}$format=JSON`)
+    return req('get',`/v2/Bus/EstimatedTimeOfArrival/City/${City}/${RouteName}?$format=JSON`)
 }
 
 //取得縣市公車路線資料
@@ -40,4 +40,14 @@ export const getRouteByCity = (City:string) => {
 }
 export const getRouteByCityAndRouteName = (City:string,RouteName:number) => {
     return req('get',`/v2/Bus/Route/City/${City}/${RouteName}?$format=JSON`)
+}
+
+
+//取得某縣市所有公車站牌
+export const getStopByCity = (City:string) => {
+    return req('get',`/v2/Bus/Stop/City/${City}?$format=JSON`)
+}
+//取得縣市某公車路線之公車站牌
+export const getStopByCityAndRouteName = (City:string,RouteName:number) => {
+    return req('get',`/v2/Bus/StopOfRoute/City/${City}/${RouteName}?$format=JSON`)
 }

@@ -6,7 +6,10 @@
 @import './util/mixin';
 @import './util/util';
 
-
+//view
+@import './view/header';
+@import './view/InfoDisPlay';
+@import './view/footer';
 //compoment
 @import './compnent/taiwanMap';
 @import './compnent/filter';
