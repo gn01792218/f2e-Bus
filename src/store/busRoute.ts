@@ -1,4 +1,5 @@
 import {getRouteByCity} from '../api'
+import router from '@/router';
 export const state = {
     cityBusRoute:{}
   };
@@ -16,6 +17,7 @@ export const state = {
                 console.log(state.cityBusRoute)
             }).catch((e:any)=>{
               console.log(e)
+              router.go(0)
             })
         }
        }

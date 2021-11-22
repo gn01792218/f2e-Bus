@@ -1,4 +1,5 @@
 import { getReallTimeNearStopByCity ,getStopByCityAndRouteName , getStopByCity} from '../api'
+import router from '@/router';
 export const state = {
   cityBusStop: {}, //縣市的所有公車的所有站牌資料
   cityBusStopByRouteName: {}  //某公車路線的所有站牌資料
@@ -21,12 +22,11 @@ export const mutations = {
         console.log(state.cityBusStop)
       }).catch((e:any)=>{
         console.log(e)
+        router.go(0)
       })
     }
   },
   getCityBusStopByRoute(state:any,payLoad:any){
-    console.log("讀取公車路牌資料")
-      console.log("取得",payLoad.RouteName.Zh_tw,"號公車路牌資訊")
       getStopByCityAndRouteName(payLoad.City,payLoad.RouteName.Zh_tw)?.then((res:any)=>{
         state.cityBusStopByRouteName.go = res.data.filter((i:any)=>{
           return i.Direction==0
@@ -34,9 +34,9 @@ export const mutations = {
         state.cityBusStopByRouteName.back = res.data.filter((i:any)=>{
           return i.Direction==1
         })
-        console.log(state.cityBusStopByRouteName)
       }).catch((e:any)=>{
         console.log(e)
+        router.go(0)
       })
   }
 };

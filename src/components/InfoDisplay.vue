@@ -21,9 +21,9 @@
       >
     </li>
   </ul>
-  <!-- <div class="d-flex">
+  <div class="d-flex">
     <div class="busInfo">
-      <ul v-if="direction == 0">
+      <ul v-if="direction == 0 && itemDisplayData.go">
         <li>去</li>
         <li class="busInfo-li d-flex"
           v-for="(i, index) in itemDisplayData.go[0].Stops"
@@ -37,7 +37,7 @@
             </p>
         </li>
       </ul>
-      <ul v-if="direction == 1">
+      <ul v-if="direction == 1 && itemDisplayData.back">
         <li>返</li>
         <li class="busInfo-li d-flex"
           v-for="(i, index) in itemDisplayData.back[0].Stops"
@@ -55,7 +55,7 @@
     <div class="openStreeMap">
       <OpenStreeMap />
     </div>
-  </div> -->
+  </div>
 </template>
 
 <script lang="ts">
@@ -75,6 +75,7 @@ export default defineComponent({
       return store.state.selectItem;
     });
     const itemDisplayData = computed(() => {
+      console.log(store.state.busStop.cityBusStopByRouteName)
       return store.state.busStop.cityBusStopByRouteName;
     });
     const currentCategory = computed(() => {
@@ -89,7 +90,7 @@ export default defineComponent({
     watch(selectItemData, () => {
       store.commit("busStop/getCityBusStopByRoute", selectItemData.value);
     });
-    watch(itemDisplayData, () => {
+    watch(itemDisplayData.value, () => {
       console.log(itemDisplayData.value);
     });
     function updateData() {

@@ -50,7 +50,7 @@
               href="#"
               v-if="currentCategory == 'BusRoute'"
               @click="disPlayData(data)"
-              >[{{ data.RouteID }}]{{ data.DepartureStopNameZh }}-{{
+              >[{{ data.RouteName.Zh_tw }}]{{ data.DepartureStopNameZh }}-{{
                 data.DestinationStopNameZh
               }}</a
             >
@@ -131,7 +131,7 @@ export default defineComponent({
           case Category[Category.BusRoute]:
             return vuexData.value.filter((i: any) => {
               return (
-                i.RouteID.includes(keyWord.value) ||
+                i.RouteName.Zh_tw.includes(keyWord.value) ||
                 i.DepartureStopNameZh.includes(keyWord.value) ||
                 i.DestinationStopNameZh.includes(keyWord.value)
               );
