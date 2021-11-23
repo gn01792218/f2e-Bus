@@ -3,4 +3,8 @@
     bottom: 0;
     text-align: center;
     background-color: #888167;
+    background-image: $footerBg;
+    height:100px;
+    background-position-y: bottom;
+    background-size:contain;
 }

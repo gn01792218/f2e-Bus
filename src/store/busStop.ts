@@ -1,8 +1,10 @@
 import { getReallTimeNearStopByCity ,getStopByCityAndRouteName , getStopByCity} from '../api'
 import router from '@/router';
+import {Direction} from '../types/enum'
 export const state = {
   cityBusStop: {}, //縣市的所有公車的所有站牌資料
-  cityBusStopByRouteName: {}  //某公車路線的所有站牌資料
+  cityBusStopByRouteName: {} , //某公車路線的所有站牌資料
+  currentDirection:Direction.go, //選擇的方向
 };
 export const actions = {
 
@@ -38,6 +40,9 @@ export const mutations = {
         console.log(e)
         router.go(0)
       })
+  },
+  setCurrentDirection(state:any,dirNum:Direction){
+    state.currentDirection = dirNum
   }
 };
 export const getters = {

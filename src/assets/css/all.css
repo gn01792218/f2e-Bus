@@ -94,6 +94,10 @@ ul {
   bottom: 0;
   text-align: center;
   background-color: #888167;
+  background-image: url("../images/footer.png");
+  height: 100px;
+  background-position-y: bottom;
+  background-size: contain;
 }
 
 .sv {

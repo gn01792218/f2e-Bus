@@ -14,7 +14,7 @@
       >
     </li>
     <li class="nav-item" @click="selectDirection(1)">
-      <a class="nav-link" :class="{ active: direction == 0 }"
+      <a class="nav-link" :class="{ active: direction == 1 }"
         >{{ selectItemData.DestinationStopNameZh }}-{{
           selectItemData.DepartureStopNameZh
         }}</a
@@ -62,7 +62,7 @@
 import { computed, defineComponent, onMounted, ref, watch } from "vue";
 import OpenStreeMap from "@/components/OpenStreeMap.vue";
 import { useStore } from "vuex";
-import { Category } from "@/types/enum";
+import { Category , Direction} from "@/types/enum";
 export default defineComponent({
   components: {
     OpenStreeMap,
@@ -81,7 +81,9 @@ export default defineComponent({
     const currentCategory = computed(() => {
       return Category[store.state.currentCategory];
     });
-    const direction = ref(0);
+    const direction = computed(()=>{
+      return store.state.busStop.currentDirection
+    });
     const updateCount = ref(30);
     const countDisplay = computed(() => {
       return updateCount.value;
@@ -96,8 +98,8 @@ export default defineComponent({
     function updateData() {
       store.commit("busStop/getCityBusStopByRoute", selectItemData.value);
     }
-    function selectDirection(directionNum: number) {
-      direction.value = directionNum;
+    function selectDirection(directionNum:Direction) {
+      store.commit('busStop/setCurrentDirection',directionNum)
     }
     return {
       //dtat

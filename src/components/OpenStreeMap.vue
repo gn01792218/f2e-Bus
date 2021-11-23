@@ -5,7 +5,7 @@
     <ol-tile-layer>
         <ol-source-osm />
     </ol-tile-layer>
-    <div v-if="itemDisplayData.go">
+    <div v-if="itemDisplayData.go && direction==0">
       <ol-vector-layer v-for="(i,index) in itemDisplayData.go[0].Stops" :key="index">
         <ol-source-vector>
           <ol-animation-slide :duration="2000" :repeat="1">
@@ -15,7 +15,7 @@
                     <ol-style-circle :radius='radius'>
                         <ol-style-fill :color="fillColor"></ol-style-fill>
                         <ol-style-stroke :color="strokeColor" :width='strokeWidth'></ol-style-stroke>
-                        <ol-style-text :text="index" ></ol-style-text>
+                        <ol-style-text :text='String(index+1)' ></ol-style-text>
                     </ol-style-circle>
                 </ol-style>
             </ol-feature>
@@ -23,7 +23,24 @@
         </ol-source-vector>
     </ol-vector-layer>
     </div>
-      
+      <div v-if="itemDisplayData.back && direction==1">
+      <ol-vector-layer v-for="(i,index) in itemDisplayData.back[0].Stops" :key="index">
+        <ol-source-vector>
+          <ol-animation-slide :duration="2000" :repeat="1">
+            <ol-feature >
+                <ol-geom-point :coordinates="[i.StopPosition.PositionLon,i.StopPosition.PositionLat]"></ol-geom-point>
+                <ol-style>
+                    <ol-style-circle :radius='radius'>
+                        <ol-style-fill :color="fillColor"></ol-style-fill>
+                        <ol-style-stroke :color="strokeColor" :width='strokeWidth'></ol-style-stroke>
+                        <ol-style-text :text='String(index+1)' ></ol-style-text>
+                    </ol-style-circle>
+                </ol-style>
+            </ol-feature>
+           </ol-animation-slide>
+        </ol-source-vector>
+    </ol-vector-layer>
+    </div>
     
 </ol-map>
 </template>
@@ -31,6 +48,7 @@
 <script lang="ts">
 import { computed, defineComponent ,ref, watch} from 'vue';
 import { useStore } from 'vuex';
+import { Category } from "@/types/enum";
 export default defineComponent({
   setup(){
         const center = ref([120.9738819, 23.97565]) //預設:台灣地理中心
@@ -47,23 +65,31 @@ export default defineComponent({
     const itemDisplayData = computed(() => {
       return store.state.busStop.cityBusStopByRouteName;
     });
+    const currentCategory = computed(() => {
+      return Category[store.state.currentCategory];
+    });
+    const direction = computed(()=>{
+      return store.state.busStop.currentDirection
+    });
     watch(itemDisplayData.value,()=>{
-      console.log("改變")
-      center.value = [itemDisplayData.value.go[0].Stops[0].StopPosition.PositionLat,itemDisplayData.value.go[0].Stops[0].StopPosition.PositionLon]
-      console.log(itemDisplayData.value)
+      // console.log("改變")
+      // center.value = [itemDisplayData.value.go[0].Stops[0].StopPosition.PositionLat,itemDisplayData.value.go[0].Stops[0].StopPosition.PositionLon]
+      // console.log(itemDisplayData.value)
     })
     return{
       //data
       itemDisplayData,
+      currentCategory,
       center,
-            projection,
-            zoom,
-            rotation,
-            radius,
-            strokeWidth,
-            strokeColor,
-            fillColor,
-            center2,
+      projection,
+      zoom,
+      rotation,
+      radius,
+      strokeWidth,
+      strokeColor,
+      fillColor,
+      center2,
+      direction,
     }
   }
 });

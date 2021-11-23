@@ -30,3 +30,7 @@ export enum Category{
     Ticket,
     BusPlanning,
 }
+export enum Direction{
+    go,
+    back,
+}
