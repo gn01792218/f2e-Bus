@@ -23,3 +23,9 @@
     @include island;
     @include islandScale(-638,0,0.5);
   }
+
+//icon
+.bus1{
+  @include icon;
+  @include iconScale(0,0,1);
+}

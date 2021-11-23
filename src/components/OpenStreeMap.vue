@@ -48,13 +48,19 @@
 <script lang="ts">
 import { computed, defineComponent ,ref, watch} from 'vue';
 import { useStore } from 'vuex';
-import { Category } from "@/types/enum";
+import { Category, Direction } from "@/types/enum";
 export default defineComponent({
   setup(){
-        const center = ref([120.9738819, 23.97565]) //預設:台灣地理中心
-        const center2= ref([121.9738819, 23.97565]) //預設:台灣地理中心
+        const center = computed(()=>{
+          if(itemDisplayData.value.go && direction.value == Direction.go){
+            return [itemDisplayData.value.go[0].Stops[0].StopPosition.PositionLon,itemDisplayData.value.go[0].Stops[0].StopPosition.PositionLat]
+          }else if(itemDisplayData.value.back && direction.value == Direction.back){
+            return [itemDisplayData.value.back[0].Stops[0].StopPosition.PositionLon,itemDisplayData.value.back[0].Stops[0].StopPosition.PositionLat]
+          }
+          
+        })
         const projection = ref('EPSG:4326')
-        const zoom = ref(16)
+        const zoom = ref(14)
         const rotation = ref(0)
         const radius = ref(20)
         const strokeWidth = ref(5)
@@ -88,7 +94,6 @@ export default defineComponent({
       strokeWidth,
       strokeColor,
       fillColor,
-      center2,
       direction,
     }
   }

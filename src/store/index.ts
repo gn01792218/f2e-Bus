@@ -2,6 +2,7 @@ import { Category } from '@/types/enum'
 import { createStore } from 'vuex'
 import busRoute from './busRoute'
 import busStop from './busStop'
+import busEstimatedTime from './busEstimatedTime'
 export default createStore({
   state: {
     currentCity:"", //當前選擇的縣市
@@ -205,6 +206,8 @@ export default createStore({
   actions: {
   },
   modules: {
-    busRoute,busStop,
+    busRoute,
+    busStop,
+    busEstimatedTime,
   }
 })

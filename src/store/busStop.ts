@@ -1,4 +1,4 @@
-import { getReallTimeNearStopByCity ,getStopByCityAndRouteName , getStopByCity} from '../api'
+import { getStopByCityAndRouteName , getStopByCity} from '../api'
 import router from '@/router';
 import {Direction} from '../types/enum'
 export const state = {

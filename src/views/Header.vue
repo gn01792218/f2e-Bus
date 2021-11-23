@@ -1,5 +1,6 @@
 <template>
  <header class="header">
+     <div class="bus1"></div>
      <h1>公車任意門</h1>
      <h3>想去哪就去哪，全台公車動態即時查</h3>
  </header>

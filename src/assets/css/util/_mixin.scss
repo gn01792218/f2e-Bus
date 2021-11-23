@@ -13,3 +13,19 @@
 	background-position: $POSITIONX+px $POSITIONY+px;
     background-size: $BGSIZEX+px auto;
 }
+
+@mixin icon {
+    cursor: pointer;
+    background-image:$icon-sprite;
+}
+@mixin iconScale($x,$y,$scale){
+    $WIDTH:(70*$scale);
+    $HEIGHT:(70*$scale);
+    $POSITIONX:($x*$scale);
+    $POSITIONY:($y*$scale);
+    $BGSIZEX:(1050*$WIDTH/70);
+    width:$WIDTH+px;
+    height:$HEIGHT+px;
+	background-position: $POSITIONX+px $POSITIONY+px;
+    background-size: $BGSIZEX+px auto;
+}

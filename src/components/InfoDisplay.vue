@@ -1,9 +1,8 @@
 <template>
   <h2>查詢:{{ currentCategory }}</h2>
   <h2>{{ countDisplay }}秒後刷新</h2>
-  <button @click="updateData">資料刷新</button>
-  <h2>
-    {{ selectItemData.DepartureStopNameZh }}-{{selectItemData.DestinationStopNameZh}}
+  <h2 v-if="selectItemData.RouteName">
+    [{{selectItemData.RouteName.Zh_tw}}]{{ selectItemData.DepartureStopNameZh }}-{{selectItemData.DestinationStopNameZh}}
   </h2>
   <ul class="nav nav-tabs">
     <li class="nav-item" @click="selectDirection(0)">
@@ -75,9 +74,11 @@ export default defineComponent({
       return store.state.selectItem;
     });
     const itemDisplayData = computed(() => {
-      console.log(store.state.busStop.cityBusStopByRouteName)
       return store.state.busStop.cityBusStopByRouteName;
     });
+    const busEstimatedTime = computed(()=>{
+      return store.state.busEstimatedTime.busEstimatedTime
+    })
     const currentCategory = computed(() => {
       return Category[store.state.currentCategory];
     });
@@ -88,16 +89,15 @@ export default defineComponent({
     const countDisplay = computed(() => {
       return updateCount.value;
     });
-    const updateTimer = ref({});
     watch(selectItemData, () => {
       store.commit("busStop/getCityBusStopByRoute", selectItemData.value);
+      store.commit('busEstimatedTime/getBusEstimatedTime',selectItemData.value);
     });
     watch(itemDisplayData.value, () => {
-      console.log(itemDisplayData.value);
     });
-    function updateData() {
-      store.commit("busStop/getCityBusStopByRoute", selectItemData.value);
-    }
+    watch(busEstimatedTime.value,()=>{
+      console.log("預估時間資料",busEstimatedTime.value)
+    })
     function selectDirection(directionNum:Direction) {
       store.commit('busStop/setCurrentDirection',directionNum)
     }
@@ -108,9 +108,9 @@ export default defineComponent({
       direction,
       currentCategory,
       countDisplay,
+      busEstimatedTime,
       //methods
       selectDirection,
-      updateData,
     };
   },
 });

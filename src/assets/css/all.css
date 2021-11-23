@@ -70,6 +70,15 @@ ul {
   background-size: 957px auto;
 }
 
+.bus1 {
+  cursor: pointer;
+  background-image: url("../images/icon.png");
+  width: 70px;
+  height: 70px;
+  background-position: 0px 0px;
+  background-size: 1050px auto;
+}
+
 .header {
   text-align: center;
 }
