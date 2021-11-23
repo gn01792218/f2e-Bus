@@ -5,34 +5,25 @@
     <ol-tile-layer>
         <ol-source-osm />
     </ol-tile-layer>
-      <ol-vector-layer>
+    <div v-if="itemDisplayData.go">
+      <ol-vector-layer v-for="(i,index) in itemDisplayData.go[0].Stops" :key="index">
         <ol-source-vector>
+          <ol-animation-slide :duration="2000" :repeat="1">
             <ol-feature >
-                <ol-geom-point :coordinates="center"></ol-geom-point>
+                <ol-geom-point :coordinates="[i.StopPosition.PositionLon,i.StopPosition.PositionLat]"></ol-geom-point>
                 <ol-style>
-                    <ol-style-circle radius=40>
-                        <ol-style-fill color="blue"></ol-style-fill>
-                        <ol-style-stroke color="red" width=10></ol-style-stroke>
+                    <ol-style-circle :radius='radius'>
+                        <ol-style-fill :color="fillColor"></ol-style-fill>
+                        <ol-style-stroke :color="strokeColor" :width='strokeWidth'></ol-style-stroke>
+                        <ol-style-text :text="index" ></ol-style-text>
                     </ol-style-circle>
                 </ol-style>
             </ol-feature>
-
+           </ol-animation-slide>
         </ol-source-vector>
     </ol-vector-layer>
-    <ol-vector-layer>
-        <ol-source-vector>
-            <ol-feature >
-                <ol-geom-point :coordinates="center2"></ol-geom-point>
-                <ol-style>
-                    <ol-style-circle radius=40>
-                        <ol-style-fill color="blue"></ol-style-fill>
-                        <ol-style-stroke color="red" width=10></ol-style-stroke>
-                    </ol-style-circle>
-                </ol-style>
-            </ol-feature>
-
-        </ol-source-vector>
-    </ol-vector-layer>
+    </div>
+      
     
 </ol-map>
 </template>
@@ -48,7 +39,7 @@ export default defineComponent({
         const zoom = ref(16)
         const rotation = ref(0)
         const radius = ref(20)
-        const strokeWidth = ref(10)
+        const strokeWidth = ref(5)
         const strokeColor = ref('red')
         const fillColor = ref('white')
     //vuex
