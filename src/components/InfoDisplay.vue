@@ -70,13 +70,13 @@ export default defineComponent({
     onMounted(() => {
     });
     const store = useStore();
-    const selectItemData = computed(() => {
+    const selectItemData = computed(() => {  //1.選擇的公車路線或2.不重複的縣市所有站牌名稱
       return store.state.selectItem;
     });
-    const itemDisplayData = computed(() => {
+    const itemDisplayData = computed(() => {  //取得該路線所有公車站牌資料
       return store.state.busStop.cityBusStopByRouteName;
     });
-    const busEstimatedTime = computed(()=>{
+    const busEstimatedTime = computed(()=>{ //取得該路線的公車預估到站資料
       return store.state.busEstimatedTime.busEstimatedTime
     })
     const currentCategory = computed(() => {
@@ -94,6 +94,7 @@ export default defineComponent({
       store.commit('busEstimatedTime/getBusEstimatedTime',selectItemData.value);
     });
     watch(itemDisplayData.value, () => {
+      console.log("此路線的所有站牌資料",itemDisplayData.value)
     });
     watch(busEstimatedTime.value,()=>{
       console.log("預估時間資料",busEstimatedTime.value)

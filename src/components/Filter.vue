@@ -168,8 +168,8 @@ export default defineComponent({
           store.commit("busRoute/getCityBusRoute", currentCity.value);
           break;
         case Category.StopName:
-          store.commit("busStop/getCityBusStop", currentCity.value);
           placeholder.value = "請輸入要查詢的公車站牌";
+          store.commit("busStop/getCityBusStop", currentCity.value);
           break;
         case Category.Ticket:
           placeholder.value = "請輸入要查詢的起訖站名";

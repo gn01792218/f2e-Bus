@@ -198,6 +198,7 @@ export default createStore({
     },
     setCurrentCategory(state:any,category:Category){
       state.currentCategory = category
+      console.log("設置分類為",state.currentCategory)
     },
     setSelectItem(state:any,payload:any){
       state.selectItem = payload

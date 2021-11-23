@@ -10,7 +10,7 @@ export const actions = {
 
 }
 export const mutations = {
-  getCityBusStop(state: any, cityName: string) {
+  getCityBusStop(state: any, cityName: string) {   //資料減肥:只需要站牌名稱就好!!
     if (!state.cityBusStop[cityName]) {  //請求過的資料不會再次請求
       console.log(`請求${cityName}所有公車站牌資料`)
       getStopByCity(cityName)?.then(res => {
@@ -24,7 +24,7 @@ export const mutations = {
         console.log(state.cityBusStop)
       }).catch((e:any)=>{
         console.log(e)
-        router.go(0)
+        // router.go(0)
       })
     }
   },
@@ -38,7 +38,7 @@ export const mutations = {
         })
       }).catch((e:any)=>{
         console.log(e)
-        router.go(0)
+        // router.go(0)
       })
   },
   setCurrentDirection(state:any,dirNum:Direction){

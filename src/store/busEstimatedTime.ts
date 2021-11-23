@@ -18,7 +18,7 @@ export const state = {
                 console.log(state.busEstimatedTime)
             }).catch((e:any)=>{
               console.log(e)
-              router.go(0)
+              // router.go(0)
             })
         
        }
