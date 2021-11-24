@@ -70,21 +70,21 @@
         <div class="select">
            <h3>Step2:選擇查詢服務</h3>
            <div class="row">
-               <button class="col-5 SquareBtn m-2" @click="setFilterCategory(0)">
+               <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
                  <div class="bus1"></div>
                 公車動態
             </button>
-            <button class="col-5 SquareBtn m-2" @click="setFilterCategory(1)">
+            <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
               <div class="busStop"></div>
               站點查詢
             </button>
            </div>
            <div class="row">
-              <button class="col-5 SquareBtn m-2" @click="setFilterCategory(2)">
+              <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
                 <div class="ticket"></div>
               票價查詢
             </button>
-            <button class="col-5 SquareBtn m-2" @click="setFilterCategory(3)">
+            <button class="col-5 SquareBtn m-2"  :class="{btnActive:currentCategory=='BusPlanning'}" @click="setFilterCategory(3)">
               <div class="roadPlan"></div>
               乘車規劃
             </button> 
