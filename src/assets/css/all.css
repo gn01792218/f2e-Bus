@@ -12,6 +12,10 @@ ul {
   padding-left: 0;
 }
 
+ul li {
+  margin: 10px;
+}
+
 .nav-item {
   cursor: pointer;
 }
@@ -19,55 +23,55 @@ ul {
 .kin:hover {
   cursor: pointer;
   background-image: url("../images/island.png");
-  width: 159.5px;
-  height: 94.5px;
+  width: 63.8px;
+  height: 37.8px;
   background-position: 0px 0px;
-  background-size: 957px auto;
+  background-size: 382.8px auto;
 }
 
 .kin {
   cursor: pointer;
   background-image: url("../images/island.png");
-  width: 159.5px;
-  height: 94.5px;
-  background-position: -797.5px 0px;
-  background-size: 957px auto;
+  width: 63.8px;
+  height: 37.8px;
+  background-position: -319px 0px;
+  background-size: 382.8px auto;
 }
 
 .ponho:hover {
   cursor: pointer;
   background-image: url("../images/island.png");
-  width: 159.5px;
-  height: 94.5px;
-  background-position: -159.5px 0px;
-  background-size: 957px auto;
+  width: 63.8px;
+  height: 37.8px;
+  background-position: -63.8px 0px;
+  background-size: 382.8px auto;
 }
 
 .ponho {
   cursor: pointer;
   background-image: url("../images/island.png");
-  width: 159.5px;
-  height: 94.5px;
-  background-position: -478.5px 0px;
-  background-size: 957px auto;
+  width: 63.8px;
+  height: 37.8px;
+  background-position: -191.4px 0px;
+  background-size: 382.8px auto;
 }
 
 .langjon {
   cursor: pointer;
   background-image: url("../images/island.png");
-  width: 159.5px;
-  height: 94.5px;
-  background-position: -638px 0px;
-  background-size: 957px auto;
+  width: 63.8px;
+  height: 37.8px;
+  background-position: -255.2px 0px;
+  background-size: 382.8px auto;
 }
 
 .langjon:hover {
   cursor: pointer;
   background-image: url("../images/island.png");
-  width: 159.5px;
-  height: 94.5px;
-  background-position: -319px 0px;
-  background-size: 957px auto;
+  width: 63.8px;
+  height: 37.8px;
+  background-position: -127.6px 0px;
+  background-size: 382.8px auto;
 }
 
 .bus1 {
@@ -77,6 +81,132 @@ ul {
   height: 70px;
   background-position: 0px 0px;
   background-size: 1050px auto;
+}
+
+.step1 {
+  cursor: pointer;
+  background-image: url("../images/icon.png");
+  width: 70px;
+  height: 70px;
+  background-position: -70px 0px;
+  background-size: 1050px auto;
+}
+
+.redBus {
+  cursor: pointer;
+  background-image: url("../images/icon.png");
+  width: 70px;
+  height: 70px;
+  background-position: -140px 0px;
+  background-size: 1050px auto;
+}
+
+.roadPlan {
+  cursor: pointer;
+  background-image: url("../images/icon.png");
+  width: 56px;
+  height: 56px;
+  background-position: -168px 0px;
+  background-size: 840px auto;
+}
+
+.busStop {
+  cursor: pointer;
+  background-image: url("../images/icon.png");
+  width: 70px;
+  height: 70px;
+  background-position: -350px 0px;
+  background-size: 1050px auto;
+}
+
+.help {
+  cursor: pointer;
+  background-image: url("../images/icon.png");
+  width: 70px;
+  height: 70px;
+  background-position: -420px 0px;
+  background-size: 1050px auto;
+}
+
+.backSpace {
+  cursor: pointer;
+  background-image: url("../images/icon.png");
+  width: 70px;
+  height: 70px;
+  background-position: -560px 0px;
+  background-size: 1050px auto;
+}
+
+.enter {
+  cursor: pointer;
+  background-image: url("../images/icon.png");
+  width: 70px;
+  height: 70px;
+  background-position: -140px 0px;
+  background-size: 1050px auto;
+}
+
+.ticket {
+  cursor: pointer;
+  background-image: url("../images/icon.png");
+  width: 70px;
+  height: 70px;
+  background-position: -770px 0px;
+  background-size: 1050px auto;
+}
+
+.step2 {
+  cursor: pointer;
+  background-image: url("../images/icon.png");
+  width: 70px;
+  height: 70px;
+  background-position: -840px 0px;
+  background-size: 1050px auto;
+}
+
+.figma {
+  cursor: pointer;
+  background-image: url("../images/1234567.png");
+  width: 51px;
+  height: 51px;
+  background-position: 0px 0px;
+  background-size: 255px auto;
+}
+
+.boostrap {
+  cursor: pointer;
+  background-image: url("../images/1234567.png");
+  width: 59.5px;
+  height: 59.5px;
+  background-position: -59.5px 0px;
+  background-size: 297.5px auto;
+}
+
+.icons8 {
+  cursor: pointer;
+  background-image: url("../images/1234567.png");
+  width: 51px;
+  height: 51px;
+  background-position: -102px 0px;
+  background-size: 255px auto;
+}
+
+.vue {
+  cursor: pointer;
+  background-image: url("../images/1234567.png");
+  width: 51px;
+  height: 51px;
+  background-position: -153px 0px;
+  background-size: 255px auto;
+}
+
+.ts {
+  cursor: pointer;
+  background-image: url("../images/1234567.png");
+  width: 51px;
+  height: 51px;
+  background-position: -204px 0px;
+  background-size: 255px auto;
 }
 
 .header {
@@ -99,19 +229,19 @@ ul {
 }
 
 .footer {
-  position: fixed;
-  bottom: 0;
   text-align: center;
-  background-color: #888167;
-  background-image: url("../images/footer.png");
-  height: 100px;
-  background-position-y: bottom;
-  background-size: contain;
+  background-color: #0a0a0a;
+  margin: 0;
+  padding: 0;
+}
+
+.footer img {
+  margin-top: -8%;
 }
 
 .sv {
   height: 350px;
-  fill: #A8CDD7;
+  fill: #a8cdd7;
   stroke: white;
 }
 
@@ -125,16 +255,23 @@ ul {
 }
 
 .hover {
-  fill: #C57B7A;
+  fill: #c57b7a;
   cursor: pointer;
 }
 
 .ponho {
-  margin-left: 20%;
+  margin-left: 90%;
+  margin-top: 70%;
 }
 
 .kin {
-  margin-left: -20%;
+  margin-left: 50%;
+  margin-top: 30%;
+}
+
+.langjon {
+  margin-left: 50%;
+  margin-top: 30%;
 }
 
 .filter {
@@ -149,7 +286,7 @@ ul {
 }
 
 .filterInput {
-  width: 300px;
+  width: 30vw;
   background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
   -webkit-box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
@@ -165,13 +302,14 @@ ul {
   border-radius: 5px;
 }
 
-.filterInput:focus-visible, .filterInput:focus {
+.filterInput:focus-visible,
+.filterInput:focus {
   -webkit-box-shadow: 0px 0px beige;
           box-shadow: 0px 0px beige;
 }
 
 .filter-dropdown {
-  width: 300px;
+  width: 30vw;
   height: 500px;
   overflow-y: auto;
   margin: 10px;
@@ -190,5 +328,76 @@ ul {
   -webkit-box-shadow: -1px -1px 3px #ffffff, 3px 3px 10px rgba(24, 24, 24, 0.4);
           box-shadow: -1px -1px 3px #ffffff, 3px 3px 10px rgba(24, 24, 24, 0.4);
   border-radius: 5px;
+}
+
+.tab {
+  width: 50px;
+  height: 50px;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
+  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
+  -webkit-box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+          box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+  border-radius: 10px;
+}
+
+.miniSelectBtn {
+  height: 70px;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
+  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
+  -webkit-box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+          box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+  border-radius: 10px;
+}
+
+.miniSelectBtn p {
+  margin: 1rem;
+}
+
+.tab:hover {
+  background: #dde8f1;
+  -webkit-box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.6), inset 2px 2px 10px #c5d7ee;
+          box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.6), inset 2px 2px 10px #c5d7ee;
+  border-radius: 10px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.point {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
+  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
+  position: relative;
+  border-radius: 0.3rem;
+  -webkit-box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+          box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+}
+
+.point:after {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 40px;
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-top: 5px solid #edf3f8;
+}
+
+.SquareBtn {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
+  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
+  -webkit-box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+          box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+  border-radius: 10px;
+  border: none;
+}
+
+.SquareBtn:hover {
+  -webkit-box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+          box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+  border-radius: 10px;
+  -webkit-box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.6), inset 2px 2px 10px #c5d7ee;
+          box-shadow: -2px -2px 5px rgba(255, 255, 255, 0.6), inset 2px 2px 10px #c5d7ee;
 }
 /*# sourceMappingURL=all.css.map */

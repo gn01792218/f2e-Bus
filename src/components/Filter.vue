@@ -67,28 +67,29 @@
     </section>
     <section class="categoryBar d-flex">
         <TaiwanMap class="d-none d-md-block" />
-        <div>
-          <h3>Step2:選擇查詢服務</h3>
-          <div class="d-flex">
-            <div>
-          <button class="d-block" @click="setFilterCategory(0)">
-            公車動態查詢
-          </button>
-          <button class="d-block" @click="setFilterCategory(1)">
-            站點查詢
-          </button>
-        </div>
-        <div>
-          <button class="d-block" @click="setFilterCategory(2)">
-            票價查詢
-          </button>
-          <button class="d-block" @click="setFilterCategory(3)">
-            乘車規劃
-          </button>
-        </div>
-          </div>
-        </div>
-        
+        <div class="select">
+           <h3>Step2:選擇查詢服務</h3>
+           <div class="row">
+               <button class="col-5 SquareBtn m-2" @click="setFilterCategory(0)">
+                 <div class="bus1"></div>
+                公車動態
+            </button>
+            <button class="col-5 SquareBtn m-2" @click="setFilterCategory(1)">
+              <div class="busStop"></div>
+              站點查詢
+            </button>
+           </div>
+           <div class="row">
+              <button class="col-5 SquareBtn m-2" @click="setFilterCategory(2)">
+                <div class="ticket"></div>
+              票價查詢
+            </button>
+            <button class="col-5 SquareBtn m-2" @click="setFilterCategory(3)">
+              <div class="roadPlan"></div>
+              乘車規劃
+            </button> 
+           </div>      
+          </div>          
     </section>
   </div>
 </template>

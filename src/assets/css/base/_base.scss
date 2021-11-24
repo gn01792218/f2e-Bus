@@ -1,14 +1,17 @@
 body {
-    background-color: $main_color2;
-    background-color: transparent;
+  background-color: $main_color2;
+  background-color: transparent;
 }
-.main{
-    margin-bottom: 5%;
+.main {
+  margin-bottom: 5%;
 }
-ul{
-    list-style: none;
-    padding-left: 0;
+ul {
+  list-style: none;
+  padding-left: 0;
+  li {
+    margin: 10px;
+  }
 }
-.nav-item{
-    cursor: pointer;
+.nav-item {
+  cursor: pointer;
 }

@@ -1,31 +1,46 @@
 @mixin island {
-    cursor: pointer;
-    background-image: $island-sprite;
+  cursor: pointer;
+  background-image: $island-sprite;
 }
-@mixin islandScale($x,$y,$scale){
-    $WIDTH:(319*$scale);
-    $HEIGHT:(189*$scale);
-    $POSITIONX:($x*$scale);
-    $POSITIONY:($y*$scale);
-    $BGSIZEX:(1914*$WIDTH/319);
-    width:$WIDTH+px;
-    height:$HEIGHT+px;
-	background-position: $POSITIONX+px $POSITIONY+px;
-    background-size: $BGSIZEX+px auto;
+@mixin islandScale($x, $y, $scale) {
+  $WIDTH: (319 * $scale);
+  $HEIGHT: (189 * $scale);
+  $POSITIONX: ($x * $scale);
+  $POSITIONY: ($y * $scale);
+  $BGSIZEX: (1914 * $WIDTH/319);
+  width: $WIDTH + px;
+  height: $HEIGHT + px;
+  background-position: $POSITIONX + px $POSITIONY + px;
+  background-size: $BGSIZEX + px auto;
 }
 
 @mixin icon {
-    cursor: pointer;
-    background-image:$icon-sprite;
+  cursor: pointer;
+  background-image: $icon-sprite;
 }
-@mixin iconScale($x,$y,$scale){
-    $WIDTH:(70*$scale);
-    $HEIGHT:(70*$scale);
-    $POSITIONX:($x*$scale);
-    $POSITIONY:($y*$scale);
-    $BGSIZEX:(1050*$WIDTH/70);
-    width:$WIDTH+px;
-    height:$HEIGHT+px;
-	background-position: $POSITIONX+px $POSITIONY+px;
-    background-size: $BGSIZEX+px auto;
+@mixin iconScale($x, $y, $scale) {
+  $WIDTH: (70 * $scale);
+  $HEIGHT: (70 * $scale);
+  $POSITIONX: ($x * $scale);
+  $POSITIONY: ($y * $scale);
+  $BGSIZEX: (1050 * $WIDTH/70);
+  width: $WIDTH + px;
+  height: $HEIGHT + px;
+  background-position: $POSITIONX + px $POSITIONY + px;
+  background-size: $BGSIZEX + px auto;
+}
+@mixin footerIcon {
+  cursor: pointer;
+  background-image: $footerIcon-sprite;
+}
+@mixin footerIconScale($x, $y, $scale) {
+  $WIDTH: (85 * $scale);
+  $HEIGHT: (85 * $scale);
+  $POSITIONX: ($x * $scale);
+  $POSITIONY: ($y * $scale);
+  $BGSIZEX: (425 * $WIDTH/85);
+  width: $WIDTH + px;
+  height: $HEIGHT + px;
+  background-position: $POSITIONX + px $POSITIONY + px;
+  background-size: $BGSIZEX + px auto;
 }

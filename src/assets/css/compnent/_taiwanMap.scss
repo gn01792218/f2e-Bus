@@ -1,23 +1,29 @@
-.sv{
-    height:350px;  
-    // background-color: yellow;
-    fill:#A8CDD7;
-    stroke: white;
+.sv {
+  height: 350px;
+  // background-color: yellow;
+  fill: #a8cdd7;
+  stroke: white;
 }
-.island{
-    top:-5%;
-    left:-50%;
+.island {
+  top: -5%;
+  left: -50%;
 }
-.active{
+.active {
   fill: red;
 }
-.hover{
-    fill: #C57B7A;
-    cursor: pointer;
+.hover {
+  fill: #c57b7a;
+  cursor: pointer;
 }
-.ponho{
-   margin-left:20%;
+.ponho {
+  margin-left: 90%;
+  margin-top: 70%;
 }
-.kin{
-   margin-left: -20%;
+.kin {
+  margin-left: 50%;
+  margin-top: 30%;
+}
+.langjon {
+  margin-left: 50%;
+  margin-top: 30%;
 }

@@ -1,31 +1,88 @@
 //離島icon
-.kin:hover{
-    @include island;
-    @include islandScale(0,0,0.5);
-  }
-  .kin{
-    @include island;
-    @include islandScale(-1595,0,0.5);
-  }
-  .ponho:hover{
-    @include island;
-    @include islandScale(-319,0,0.5);
-  }
-  .ponho{
-    @include island;
-    @include islandScale(-957,0,0.5);
-  }
-  .langjon{
-    @include island;
-    @include islandScale(-1276,0,0.5);
-  }
-  .langjon:hover{
-    @include island;
-    @include islandScale(-638,0,0.5);
-  }
+.kin:hover {
+  @include island;
+  @include islandScale(0, 0, 0.2);
+}
+.kin {
+  @include island;
+  @include islandScale(-1595, 0, 0.2);
+}
+.ponho:hover {
+  @include island;
+  @include islandScale(-319, 0, 0.2);
+}
+.ponho {
+  @include island;
+  @include islandScale(-957, 0, 0.2);
+}
+.langjon {
+  @include island;
+  @include islandScale(-1276, 0, 0.2);
+}
+.langjon:hover {
+  @include island;
+  @include islandScale(-638, 0, 0.2);
+}
 
 //icon
-.bus1{
+.bus1 {
   @include icon;
-  @include iconScale(0,0,1);
+  @include iconScale(0, 0, 1);
+}
+.step1 {
+  @include icon;
+  @include iconScale(-70, 0, 1);
+}
+.redBus {
+  @include icon;
+  @include iconScale(-140, 0, 1);
+}
+.roadPlan {
+  @include icon;
+  @include iconScale(-210, 0, 0.8);
+}
+.busStop {
+  @include icon;
+  @include iconScale(-350, 0, 1);
+}
+.help {
+  @include icon;
+  @include iconScale(-420, 0, 1);
+}
+.backSpace {
+  @include icon;
+  @include iconScale(-560, 0, 1);
+}
+.enter {
+  @include icon;
+  @include iconScale(-140, 0, 1);
+}
+.ticket {
+  @include icon;
+  @include iconScale(-770, 0, 1);
+}
+.step2 {
+  @include icon;
+  @include iconScale(-840, 0, 1);
+}
+//footerIcon
+.figma {
+  @include footerIcon;
+  @include footerIconScale(0, 0, 0.6);
+}
+.boostrap {
+  @include footerIcon;
+  @include footerIconScale(-85, 0, 0.7);
+}
+.icons8 {
+  @include footerIcon;
+  @include footerIconScale(-170, 0, 0.6);
+}
+.vue {
+  @include footerIcon;
+  @include footerIconScale(-255, 0, 0.6);
+}
+.ts {
+  @include footerIcon;
+  @include footerIconScale(-340, 0, 0.6);
 }

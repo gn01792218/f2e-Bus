@@ -1,10 +1,15 @@
-.footer{
-    position: fixed;
-    bottom: 0;
-    text-align: center;
-    background-color: #888167;
-    background-image: $footerBg;
-    height:100px;
-    background-position-y: bottom;
-    background-size:contain;
+.footer {
+  //   position: fixed;
+  //   bottom: 0;
+  text-align: center;
+  background-color: #0a0a0a;
+  margin: 0;
+  padding: 0;
+  // background-image: $footerBg;
+  //   height: 100px;
+  //   background-position-y: bottom;
+  //   background-size: contain;
+  img {
+    margin-top: -8%;
+  }
 }
