@@ -1,12 +1,24 @@
 <template>
   <div class="filter">
+    <div class="hintBar row">
+      <div class="col-5 ">
+        <div class="point">
+          <div class="step1"></div>
+        </div>
+      </div>
+      <div class="col-5">
+        <div class="point mt-5">
+          <div class="step2"></div>
+        </div>
+      </div>
+    </div>
     <section class="filter-title d-flex">
       <div>
         <p>篩選方式</p>
         <p>{{ currentCategory }}</p>
       </div>
       <div>
-        <h3>Step1:選擇城市</h3>
+        <h3 class="orderTab m-3 p-2">Step1:選擇城市</h3>
          <div class="dropdown d-flex m-3">
         <button
           class="btn btn-secondary dropdown-toggle me-3"
@@ -68,28 +80,28 @@
     <section class="categoryBar d-flex">
         <TaiwanMap class="d-none d-md-block" />
         <div class="select">
-           <h3>Step2:選擇查詢服務</h3>
-           <div class="row">
-               <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
-                 <div class="bus1"></div>
-                公車動態
+          <h3 class="orderTab p-2">Step2:選擇查詢服務</h3>
+          <div class="row">
+            <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
+              <div class="bus1 m-3"></div>
+              <p class="">公車動態</p>
             </button>
             <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
-              <div class="busStop"></div>
-              站點查詢
+              <div class="busStop m-3"></div>
+              <p class="">站點查詢</p>
             </button>
-           </div>
-           <div class="row">
-              <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
-                <div class="ticket"></div>
-              票價查詢
+          </div>
+          <div class="row">
+            <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
+              <div class="ticket m-3"></div>
+              <p class="">票價查詢</p>             
             </button>
-            <button class="col-5 SquareBtn m-2"  :class="{btnActive:currentCategory=='BusPlanning'}" @click="setFilterCategory(3)">
-              <div class="roadPlan"></div>
-              乘車規劃
+            <button class="col-5 SquareBtn m-2 "  :class="{btnActive:currentCategory=='BusPlanning'}" @click="setFilterCategory(3)">
+              <div class="roadPlan m-3"></div>
+              <p class="">乘車規劃</p>             
             </button> 
-           </div>      
-          </div>          
+          </div>      
+        </div>          
     </section>
   </div>
 </template>

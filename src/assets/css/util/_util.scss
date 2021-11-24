@@ -31,7 +31,7 @@
 }
 .step1 {
   @include icon;
-  @include iconScale(-70, 0, 1);
+  @include iconScale(-70, 0, 0.52);
 }
 .redBus {
   @include icon;
@@ -39,7 +39,7 @@
 }
 .roadPlan {
   @include icon;
-  @include iconScale(-210, 0, 0.8);
+  @include iconScale(-210, 0, 1);
 }
 .busStop {
   @include icon;
@@ -63,7 +63,7 @@
 }
 .step2 {
   @include icon;
-  @include iconScale(-840, 0, 1);
+  @include iconScale(-910, 0, 0.52);
 }
 //footerIcon
 .figma {
