@@ -86,3 +86,19 @@
   @include footerIcon;
   @include footerIconScale(-340, 0, 0.6);
 }
+//fade動畫
+//fade動畫
+.fade-left-enter-active, .fade-left-leave-active ,.fade-right-enter , .fade-right-leave-to { //進入和出去的過程是0.5s，漸進完成動畫
+  transition: all .5s ease-out;
+}
+.fade-left-enter, .fade-left-leave-to ,.fade-right-enter , .fade-right-leave-to { //進入和出去的最後都是opacity0
+  transform: translateX(-100%);
+  opacity: 0;
+}
+// .fade-left-leave-to  {
+//   transform: translateX(-100%);
+// }
+
+// .fade-right-leave-to  {
+//   transform: translateX(100%);
+// }

@@ -57,19 +57,22 @@
           aria-labelledby="dropdownMenuButton1"
         >
           <li v-for="(data, index) in filterData" :key="index">
+            <!-- 查詢公車路線時，列出縣市所有路線 -->
             <a
               class="dropdown-item"
               href="#"
               v-if="currentCategory == 'BusRoute'"
-              @click="disPlayData(data)"
+              @click="sendCityRouteData(data)"
               >[{{ data.RouteName.Zh_tw }}]{{ data.DepartureStopNameZh }}-{{
                 data.DestinationStopNameZh
               }}</a
             >
+            <!-- 站點查詢時，列出縣市所有公車站牌 -->
             <a
               class="dropdown-item"
               href="#"
               v-if="currentCategory == 'StopName'"
+              @click="sendCityStopData(data)"
               >{{ data.StopName.Zh_tw }}
             </a>
           </li>
@@ -77,20 +80,21 @@
       </div>
       </div>
     </section>
-    <section class="categoryBar d-flex">
+    <section class="categoryBar d-flex" >
         <TaiwanMap class="d-none d-md-block" />
-        <div class="select">
+        <transition-group name="fade-left">
+        <div class="select" v-if="currentCity">
           <h3 class="orderTab p-2">Step2:選擇查詢服務</h3>
-          <div class="row">
-            <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
-              <div class="bus1 m-3"></div>
-              <p class="">公車動態</p>
-            </button>
-            <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
-              <div class="busStop m-3"></div>
-              <p class="">站點查詢</p>
-            </button>
-          </div>
+            <div class="row">
+              <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
+                <div class="bus1 m-3"></div>
+                <p class="">公車動態</p>
+              </button>
+              <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
+               <div class="busStop m-3"></div>
+                <p class="">站點查詢</p>
+              </button>
+            </div>
           <div class="row">
             <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
               <div class="ticket m-3"></div>
@@ -100,8 +104,10 @@
               <div class="roadPlan m-3"></div>
               <p class="">乘車規劃</p>             
             </button> 
-          </div>      
-        </div>          
+          </div>  
+            </div>
+          </transition-group>
+               
     </section>
   </div>
 </template>
@@ -183,6 +189,8 @@ export default defineComponent({
         case Category.StopName:
           placeholder.value = "請輸入要查詢的公車站牌";
           store.commit("busStop/getCityBusStop", currentCity.value);
+          store.commit('busStop/getCityAllRoutesStops',currentCity.value); //也需要所有公車路線下的所有站牌資料
+          // store.commit("busRoute/getCityBusRoute",currentCity.value); //也需要此縣市所有路線資料
           break;
         case Category.Ticket:
           placeholder.value = "請輸入要查詢的起訖站名";
@@ -192,8 +200,11 @@ export default defineComponent({
           break;
       }
     }
-    function disPlayData(itemData:any){
-      store.commit('setSelectItem',itemData)
+    function sendCityRouteData(routeItemData:any){
+      store.commit('setSelectRouteItem',routeItemData)
+    }
+    function sendCityStopData(stopItemData:any){
+      store.commit('setSelectStopItem',stopItemData)
     }
     return {
       //data
@@ -207,7 +218,8 @@ export default defineComponent({
       //methods
       selectCity,
       setFilterCategory,
-      disPlayData,
+      sendCityRouteData,
+      sendCityStopData,
     };
   },
 });

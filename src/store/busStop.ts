@@ -1,10 +1,12 @@
-import { getStopByCityAndRouteName , getStopByCity} from '../api'
+import { getStopByCityAndRouteName , getStopByCity , getCityAllRouteStop} from '../api'
 import router from '@/router';
 import {Direction} from '../types/enum'
 export const state = {
   cityBusStop: {}, //縣市的所有公車的所有站牌資料
   cityBusStopByRouteName: {} , //某公車路線的所有站牌資料
   currentDirection:Direction.go, //選擇的方向
+  cityAllRoutesStops:{},//所有公車路線，的站牌資料
+  
 };
 export const actions = {
 
@@ -40,6 +42,17 @@ export const mutations = {
         console.log(e)
         // router.go(0)
       })
+  },
+  getCityAllRoutesStops(state:any,cityName:string){
+    console.log('請求縣市所有路線所有站牌')
+    if(!state.cityAllRoutesStops[cityName]){
+      console.log(cityName,'還沒裝資料')
+      getCityAllRouteStop(cityName)?.then(res=>{
+        state.cityAllRoutesStops[cityName] = res.data
+        console.log(state.cityAllRoutesStops)
+      })
+    }
+    
   },
   setCurrentDirection(state:any,dirNum:Direction){
     state.currentDirection = dirNum

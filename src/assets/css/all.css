@@ -208,6 +208,17 @@ ul li {
   background-size: 255px auto;
 }
 
+.fade-left-enter-active, .fade-left-leave-active, .fade-right-enter, .fade-right-leave-to {
+  -webkit-transition: all .5s ease-out;
+  transition: all .5s ease-out;
+}
+
+.fade-left-enter, .fade-left-leave-to, .fade-right-enter, .fade-right-leave-to {
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  opacity: 0;
+}
+
 .header {
   text-align: center;
 }

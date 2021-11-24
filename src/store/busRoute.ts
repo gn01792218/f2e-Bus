@@ -1,7 +1,7 @@
 import {getRouteByCity} from '../api'
 import router from '@/router';
 export const state = {
-    cityBusRoute:{}
+    cityBusRoute:{}, //此縣市的所有公車路線資料
   };
   export const actions = {
   
@@ -20,7 +20,8 @@ export const state = {
               // router.go(0)
             })
         }
-       }
+       },
+    
   };
   export const getters = {
     

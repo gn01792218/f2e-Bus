@@ -186,7 +186,8 @@ export default createStore({
         "Version": "21.08.1"
       }
     ],
-    selectItem:{},  //選擇的資料
+    selectRouteItem:{},  //選擇的路線資料
+    selectStopItem:{}, //選擇的站牌資料
   },
   mutations: {
     setCurrentCity(state:any,city:string){
@@ -200,9 +201,12 @@ export default createStore({
       state.currentCategory = category
       console.log("設置分類為",state.currentCategory)
     },
-    setSelectItem(state:any,payload:any){
-      state.selectItem = payload
-    }
+    setSelectRouteItem(state:any,payload:any){
+      state.selectRouteItem = payload
+    },
+    setSelectStopItem(state:any,payload:any){
+      state.selectStopItem = payload
+    },
   },
   actions: {
   },

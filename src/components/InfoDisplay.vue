@@ -1,21 +1,24 @@
 <template>
   <h2>查詢:{{ currentCategory }}</h2>
-  <h2>{{ countDisplay }}秒後刷新</h2>
-  <h2 v-if="selectItemData.RouteName">
-    [{{selectItemData.RouteName.Zh_tw}}]{{ selectItemData.DepartureStopNameZh }}-{{selectItemData.DestinationStopNameZh}}
+  <h2 v-if="currentCategory=='StopName' && selectStopItemData.StopName">查詢{{currentCityChineseName}}的[{{selectStopItemData.StopName.Zh_tw}}]站牌</h2>
+  <h2>會經過此站牌的路線有:</h2>
+  
+    <p v-for="(i,index) in throughStopRoutes" :key="index">{{i.RouteName.Zh_tw}}</p>
+  <h2 v-if="selectRouteItemData.RouteName">
+    [{{selectRouteItemData.RouteName.Zh_tw}}]{{ selectRouteItemData.DepartureStopNameZh }}-{{selectItemData.DestinationStopNameZh}}
   </h2>
   <ul class="nav nav-tabs">
     <li class="nav-item" @click="selectDirection(0)">
       <a class="nav-link" :class="{ active: direction == 0 }"
-        >{{ selectItemData.DepartureStopNameZh }}-{{
-          selectItemData.DestinationStopNameZh
+        >{{ selectRouteItemData.DepartureStopNameZh }}-{{
+          selectRouteItemData.DestinationStopNameZh
         }}</a
       >
     </li>
     <li class="nav-item" @click="selectDirection(1)">
       <a class="nav-link" :class="{ active: direction == 1 }"
-        >{{ selectItemData.DestinationStopNameZh }}-{{
-          selectItemData.DepartureStopNameZh
+        >{{ selectRouteItemData.DestinationStopNameZh }}-{{
+          selectRouteItemData.DepartureStopNameZh
         }}</a
       >
     </li>
@@ -70,29 +73,49 @@ export default defineComponent({
     onMounted(() => {
     });
     const store = useStore();
-    const selectItemData = computed(() => {  //1.選擇的公車路線或2.不重複的縣市所有站牌名稱
-      return store.state.selectItem;
+    const selectRouteItemData = computed(() => {  //1.選擇的公車路線
+      return store.state.selectRouteItem;
     });
+    const selectStopItemData = computed(()=>{ //2.選擇的縣市某站牌名稱
+      return store.state.selectStopItem;
+    })
+    const cityBusRoutes = computed(() => {  //縣市所有公車路線資料
+      return store.state.busRoute.cityBusRoute
+    })
     const itemDisplayData = computed(() => {  //取得該路線所有公車站牌資料
       return store.state.busStop.cityBusStopByRouteName;
     });
+    const cityAllRouteStops = computed(()=>{
+      return store.state.busStop.cityAllRoutesStops
+    })
     const busEstimatedTime = computed(()=>{ //取得該路線的公車預估到站資料
       return store.state.busEstimatedTime.busEstimatedTime
     })
+    const currentCity = computed(() => {
+      return store.state.currentCity;
+    });
+    
     const currentCategory = computed(() => {
       return Category[store.state.currentCategory];
     });
-    const direction = computed(()=>{
+    const currentCityChineseName = computed(() => {
+      return store.state.currentCityChineseName;
+    });
+    const direction = computed(() => {
       return store.state.busStop.currentDirection
     });
-    const updateCount = ref(30);
-    const countDisplay = computed(() => {
-      return updateCount.value;
+    const throughStopRoutes = ref({})
+    watch(selectRouteItemData, () => {
+      store.commit("busStop/getCityBusStopByRoute", selectRouteItemData.value);
+      store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
     });
-    watch(selectItemData, () => {
-      store.commit("busStop/getCityBusStopByRoute", selectItemData.value);
-      store.commit('busEstimatedTime/getBusEstimatedTime',selectItemData.value);
-    });
+    watch(selectStopItemData,() => {
+      console.log(selectStopItemData.value)
+      //偵測到站牌名稱資料後，取此站牌名稱的StopUID
+      //先取得縣市的所有公車路線名稱後，使用stop
+      console.log("站牌資料改變")
+      getRoutesByStop()
+    })
     watch(itemDisplayData.value, () => {
       console.log("此路線的所有站牌資料",itemDisplayData.value)
     });
@@ -102,14 +125,42 @@ export default defineComponent({
     function selectDirection(directionNum:Direction) {
       store.commit('busStop/setCurrentDirection',directionNum)
     }
+    function getRoutesByStop(){
+      if(selectRouteItemData.value && cityBusRoutes.value){
+        let stopUID = selectStopItemData.value.StopUID
+        let currentCityAllRouteStops = cityAllRouteStops.value[currentCity.value]
+        //用此名單去請求
+        let filteRouteList = currentCityAllRouteStops.filter((route:any)=>{
+          let isRightData = false
+          let StopsList = route.Stops
+            StopsList.forEach((i:any)=>{
+              if(i.StopUID==stopUID){
+                isRightData = true
+              }
+            })
+          return isRightData
+        })
+        const set = new Set();
+        const result = filteRouteList.filter((item: any) =>
+              !set.has(item.RouteName.Zh_tw)
+                ? set.add(item.RouteName.Zh_tw)
+                : false
+            );
+        filteRouteList = result
+        throughStopRoutes.value =filteRouteList
+        console.log("站名",stopUID,"所有公車路線名稱",currentCityAllRouteStops,"最後得到的名單",filteRouteList)
+      }
+    }
     return {
       //dtat
       itemDisplayData,
-      selectItemData,
+      selectRouteItemData,
       direction,
       currentCategory,
-      countDisplay,
       busEstimatedTime,
+      selectStopItemData,
+      currentCityChineseName,
+      throughStopRoutes,
       //methods
       selectDirection,
     };

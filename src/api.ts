@@ -48,3 +48,8 @@ export const getStopByCity = (City:string) => {  //給站點搜尋時使用，�
 export const getStopByCityAndRouteName = (City:string,RouteName:number) => {
     return req('get',`/v2/Bus/StopOfRoute/City/${City}/${RouteName}?$format=JSON`)
 }
+
+//取得指定縣市下所有路線的所有站牌
+export const getCityAllRouteStop = (City:string) => { 
+    return req('get',`/v2/Bus/StopOfRoute/City/${City}?$format=JSON`)
+}
