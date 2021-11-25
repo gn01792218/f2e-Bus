@@ -1,4 +1,52 @@
 <template>
+  <div class="selectNav row justify-content-around m-0">
+    <div class="col-12 col-md-2">
+      <a href="#" class="row miniSelectBtn">
+          <div class="align-items-center justify-content-between d-flex">
+            <div class="bus1"></div>
+            <p>首頁</p>
+            <div class="enter"></div>
+          </div>
+        </a>
+      </div>
+       <div class="col-12 col-md-2">
+        <a href="#" class="row miniSelectBtn">
+          <div class="align-items-center justify-content-between d-flex">
+            <div class="bus1"></div>
+            <p>公車動態</p>
+            <div class="enter"></div>
+          </div>
+        </a>
+      </div>
+       <div class="col-12 col-md-2">
+        <a href="#" class="row miniSelectBtn">
+          <div class="align-items-center justify-content-between d-flex">
+            <div class="bus1"></div>
+            <p>站點查詢</p>
+            <div class="enter"></div>
+          </div>
+        </a>
+      </div>
+       <div class="col-12 col-md-2">
+        <a href="#" class="row miniSelectBtn">
+          <div class="align-items-center justify-content-between d-flex">
+            <div class="bus1"></div>
+            <p>票價查詢</p>
+            <div class="enter"></div>
+          </div>
+        </a>
+      </div>
+       <div class="col-12 col-md-2">
+        <a href="#" class="row miniSelectBtn">
+          <div class="align-items-center justify-content-between d-flex">
+            <div class="bus1"></div>
+            <p>路線規劃</p>
+            <div class="enter"></div>
+          </div>
+        </a>
+      </div>
+     </div>
+    
   <Filter/>
   <h2>查詢:{{ currentCategory }}</h2>
   <h2 v-if="currentCategory=='StopName' && selectStopItemData.StopName">查詢{{currentCityChineseName}}的[{{selectStopItemData.StopName.Zh_tw}}]站牌</h2>

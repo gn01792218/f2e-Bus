@@ -27,7 +27,7 @@
 //icon
 .bus1 {
   @include icon;
-  @include iconScale(0, 0, 1);
+  @include iconScale(0, 0, 0.6);
 }
 .step1 {
   @include icon;
@@ -55,7 +55,7 @@
 }
 .enter {
   @include icon;
-  @include iconScale(-140, 0, 1);
+  @include iconScale(-630, 0, 0.4);
 }
 .ticket {
   @include icon;
@@ -88,10 +88,18 @@
 }
 //fade動畫
 //fade動畫
-.fade-left-enter-active, .fade-left-leave-active ,.fade-right-enter , .fade-right-leave-to { //進入和出去的過程是0.5s，漸進完成動畫
-  transition: all .5s ease-out;
+.fade-left-enter-active,
+.fade-left-leave-active,
+.fade-right-enter,
+.fade-right-leave-to {
+  //進入和出去的過程是0.5s，漸進完成動畫
+  transition: all 0.5s ease-out;
 }
-.fade-left-enter, .fade-left-leave-to ,.fade-right-enter , .fade-right-leave-to { //進入和出去的最後都是opacity0
+.fade-left-enter,
+.fade-left-leave-to,
+.fade-right-enter,
+.fade-right-leave-to {
+  //進入和出去的最後都是opacity0
   transform: translateX(-100%);
   opacity: 0;
 }

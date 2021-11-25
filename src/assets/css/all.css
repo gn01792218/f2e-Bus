@@ -76,10 +76,10 @@ ul li {
 .bus1 {
   cursor: pointer;
   background-image: url("../images/icon.png");
-  width: 70px;
-  height: 70px;
+  width: 42px;
+  height: 42px;
   background-position: 0px 0px;
-  background-size: 1050px auto;
+  background-size: 630px auto;
 }
 
 .step1 {
@@ -139,10 +139,10 @@ ul li {
 .enter {
   cursor: pointer;
   background-image: url("../images/icon.png");
-  width: 70px;
-  height: 70px;
-  background-position: -140px 0px;
-  background-size: 1050px auto;
+  width: 28px;
+  height: 28px;
+  background-position: -252px 0px;
+  background-size: 420px auto;
 }
 
 .ticket {
@@ -208,12 +208,18 @@ ul li {
   background-size: 255px auto;
 }
 
-.fade-left-enter-active, .fade-left-leave-active, .fade-right-enter, .fade-right-leave-to {
-  -webkit-transition: all .5s ease-out;
-  transition: all .5s ease-out;
+.fade-left-enter-active,
+.fade-left-leave-active,
+.fade-right-enter,
+.fade-right-leave-to {
+  -webkit-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
 }
 
-.fade-left-enter, .fade-left-leave-to, .fade-right-enter, .fade-right-leave-to {
+.fade-left-enter,
+.fade-left-leave-to,
+.fade-right-enter,
+.fade-right-leave-to {
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
   opacity: 0;
@@ -296,18 +302,12 @@ ul li {
 }
 
 .miniSelectBtn {
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
   height: 70px;
   background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
   -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
           box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
   border-radius: 7px;
-}
-
-.miniSelectBtn p {
-  margin: 1rem;
 }
 
 .categoryBar {

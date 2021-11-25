@@ -32,12 +32,8 @@
   border-radius: $borderRadius;
 }
 .miniSelectBtn {
-  justify-content: space-around;
   height: 70px;
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
   box-shadow: $outShadow;
   border-radius: $borderRadius;
-  p {
-    margin: 1rem;
-  }
 }
