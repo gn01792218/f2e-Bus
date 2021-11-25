@@ -81,6 +81,11 @@
       </div>
     </section>
     <section class="categoryBar d-flex" >
+      <TaiwanMap class="d-none d-md-block" />
+      <CategoryBar/>
+    </section>
+    
+    <!-- <section class="categoryBar d-flex" >
         <TaiwanMap class="d-none d-md-block" />
         <transition-group name="fade-left">
         <div class="select" v-if="currentCity">
@@ -108,24 +113,27 @@
             </div>
           </transition-group>
                
-    </section>
+    </section> -->
   </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, ref, watch } from "vue";
 import { useStore } from "vuex";
+import CategoryBar from '@/components/CategoryBar.vue'
 import TaiwanMap from "@/components/TaiwanMap.vue";
 import { Category } from "@/types/enum";
 export default defineComponent({
   components: {
-    TaiwanMap,
+    TaiwanMap,CategoryBar,
   },
   setup() {
     const store = useStore();
     const cityList = store.state.cityList;
     const keyWord = ref("");
-    const placeholder = ref("請輸入公車路線號碼或起訖站名稱");
+    const placeholder = computed(()=>{
+      return store.state.placeHolder
+    });
     const currentCity = computed(() => {
       return store.state.currentCity;
     });
@@ -179,27 +187,27 @@ export default defineComponent({
           break;
       }
     }
-    function setFilterCategory(category: Category) {
-      store.commit("setCurrentCategory", category);
-      switch (category) {
-        case Category.BusRoute:
-          placeholder.value = "請輸入公車路線號碼或起訖站名稱";
-          store.commit("busRoute/getCityBusRoute", currentCity.value);
-          break;
-        case Category.StopName:
-          placeholder.value = "請輸入要查詢的公車站牌";
-          store.commit("busStop/getCityBusStop", currentCity.value);
-          store.commit('busStop/getCityAllRoutesStops',currentCity.value); //也需要所有公車路線下的所有站牌資料
-          // store.commit("busRoute/getCityBusRoute",currentCity.value); //也需要此縣市所有路線資料
-          break;
-        case Category.Ticket:
-          placeholder.value = "請輸入要查詢的起訖站名";
-          break;
-        case Category.BusPlanning:
-          placeholder.value = "請輸入欲前往的地點";
-          break;
-      }
-    }
+    // function setFilterCategory(category: Category) {
+    //   store.commit("setCurrentCategory", category);
+    //   switch (category) {
+    //     case Category.BusRoute:
+    //       placeholder.value = "請輸入公車路線號碼或起訖站名稱";
+    //       store.commit("busRoute/getCityBusRoute", currentCity.value);
+    //       break;
+    //     case Category.StopName:
+    //       placeholder.value = "請輸入要查詢的公車站牌";
+    //       store.commit("busStop/getCityBusStop", currentCity.value);
+    //       store.commit('busStop/getCityAllRoutesStops',currentCity.value); //也需要所有公車路線下的所有站牌資料
+    //       // store.commit("busRoute/getCityBusRoute",currentCity.value); //也需要此縣市所有路線資料
+    //       break;
+    //     case Category.Ticket:
+    //       placeholder.value = "請輸入要查詢的起訖站名";
+    //       break;
+    //     case Category.BusPlanning:
+    //       placeholder.value = "請輸入欲前往的地點";
+    //       break;
+    //   }
+    // }
     function sendCityRouteData(routeItemData:any){
       store.commit('setSelectRouteItem',routeItemData)
     }
@@ -217,7 +225,7 @@ export default defineComponent({
       placeholder,
       //methods
       selectCity,
-      setFilterCategory,
+      // setFilterCategory,
       sendCityRouteData,
       sendCityStopData,
     };

@@ -5,6 +5,7 @@ import busStop from './busStop'
 import busEstimatedTime from './busEstimatedTime'
 export default createStore({
   state: {
+    placeHolder:"",
     currentCity:"", //當前選擇的縣市
     currentCityChineseName:"",
     currentCategory:Category.BusRoute,  //預設為搜尋公車路線
@@ -207,6 +208,9 @@ export default createStore({
     setSelectStopItem(state:any,payload:any){
       state.selectStopItem = payload
     },
+    setPlaceHolder(state:any,text:string){
+      state.placeHolder = text
+    }
   },
   actions: {
   },
