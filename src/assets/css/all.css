@@ -364,11 +364,6 @@ ul li {
           justify-content: center;
 }
 
-.categoryBar {
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-}
-
 .filterInput {
   width: 30vw;
   background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
