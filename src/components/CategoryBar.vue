@@ -30,8 +30,10 @@
 import {defineComponent , computed} from 'vue'
 import { useStore } from "vuex";
 import { Category } from "@/types/enum";
+import { useRouter } from 'vue-router';
 export default defineComponent({
    setup(){
+        const router = useRouter()
         const store = useStore();
         const currentCity = computed(() => {
             return store.state.currentCity;
@@ -55,7 +57,8 @@ export default defineComponent({
                 case Category.BusPlanning:
                     store.commit('setPlaceHolder',"請輸入欲前往的地點")
                 break;
-      }
+            }
+            router.push('/InfoDisplay')
     }
         return {
             //data

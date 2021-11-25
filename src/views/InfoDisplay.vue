@@ -1,8 +1,8 @@
 <template>
+  <Filter/>
   <h2>查詢:{{ currentCategory }}</h2>
   <h2 v-if="currentCategory=='StopName' && selectStopItemData.StopName">查詢{{currentCityChineseName}}的[{{selectStopItemData.StopName.Zh_tw}}]站牌</h2>
   <h2>會經過此站牌的路線有:</h2>
-  
     <p v-for="(i,index) in throughStopRoutes" :key="index">{{i.RouteName.Zh_tw}}</p>
   <h2 v-if="selectRouteItemData.RouteName">
     [{{selectRouteItemData.RouteName.Zh_tw}}]{{ selectRouteItemData.DepartureStopNameZh }}-{{selectItemData.DestinationStopNameZh}}
@@ -63,11 +63,12 @@
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref, watch } from "vue";
 import OpenStreeMap from "@/components/OpenStreeMap.vue";
+import Filter from '@/components/Filter.vue'
 import { useStore } from "vuex";
 import { Category , Direction} from "@/types/enum";
 export default defineComponent({
   components: {
-    OpenStreeMap,
+    OpenStreeMap,Filter,
   },
   setup() {
     onMounted(() => {
