@@ -1,5 +1,4 @@
 import { getStopByCityAndRouteName , getStopByCity , getCityAllRouteStop} from '../api'
-import router from '@/router';
 import {Direction} from '../types/enum'
 export const state = {
   cityBusStop: {}, //縣市的所有公車的所有站牌資料
@@ -9,6 +8,7 @@ export const state = {
   
 };
 export const actions = {
+
 
 }
 export const mutations = {
@@ -24,9 +24,6 @@ export const mutations = {
             );
         state.cityBusStop[cityName] = result
         console.log(state.cityBusStop)
-      }).catch((e:any)=>{
-        console.log(e)
-        // router.go(0)
       })
     }
   },
@@ -38,9 +35,6 @@ export const mutations = {
         state.cityBusStopByRouteName.back = res.data.filter((i:any)=>{
           return i.Direction==1
         })
-      }).catch((e:any)=>{
-        console.log(e)
-        // router.go(0)
       })
   },
   getCityAllRoutesStops(state:any,cityName:string){

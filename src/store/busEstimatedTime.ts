@@ -1,5 +1,4 @@
 import {getEstimatedTimeOfArrivalByCityAndRouteName} from '../api'
-import router from '@/router';
 export const state = {
     busEstimatedTime:{}
   };
@@ -16,9 +15,6 @@ export const state = {
                     return (i.StopStatus==3 || i.StopStatus==0) && i.Direction==1
                 })
                 console.log(state.busEstimatedTime)
-            }).catch((e:any)=>{
-              console.log(e)
-              // router.go(0)
             })
         
        }

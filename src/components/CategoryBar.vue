@@ -1,5 +1,4 @@
 <template>
-        <transition-group name="fade-left">
         <div class="select" v-if="currentCity">
           <h3 class="orderTab p-2">Step2:選擇查詢服務</h3>
             <div class="row">
@@ -22,8 +21,7 @@
               <p class="">乘車規劃</p>             
             </button> 
           </div>  
-            </div>
-          </transition-group>     
+            </div>  
 </template>
 
 <script lang="ts">
@@ -37,6 +35,9 @@ export default defineComponent({
         const store = useStore();
         const currentCity = computed(() => {
             return store.state.currentCity;
+        });
+        const currentCategory = computed(() => {
+            return Category[store.state.currentCategory];
         });
         function setFilterCategory(category: Category) {
             store.commit("setCurrentCategory", category);
@@ -59,10 +60,10 @@ export default defineComponent({
                 break;
             }
             router.push('/InfoDisplay')
-    }
+        }
         return {
             //data
-            currentCity,
+            currentCity,currentCategory,
             //methods
             setFilterCategory,
             

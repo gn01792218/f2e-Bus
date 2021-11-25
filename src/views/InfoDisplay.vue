@@ -1,7 +1,7 @@
 <template>
   <div class="selectNav row justify-content-around m-0">
     <div class="col-12 col-md-2">
-      <a href="#" class="row miniSelectBtn">
+      <a href="#" class="row miniSelectBtn" >
           <div class="align-items-center justify-content-between d-flex">
             <div class="bus1"></div>
             <p>首頁</p>
@@ -10,7 +10,7 @@
         </a>
       </div>
        <div class="col-12 col-md-2">
-        <a href="#" class="row miniSelectBtn">
+        <a class="row miniSelectBtn" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
           <div class="align-items-center justify-content-between d-flex">
             <div class="bus1"></div>
             <p>公車動態</p>
@@ -19,7 +19,7 @@
         </a>
       </div>
        <div class="col-12 col-md-2">
-        <a href="#" class="row miniSelectBtn">
+        <a  class="row miniSelectBtn" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
           <div class="align-items-center justify-content-between d-flex">
             <div class="bus1"></div>
             <p>站點查詢</p>
@@ -28,7 +28,7 @@
         </a>
       </div>
        <div class="col-12 col-md-2">
-        <a href="#" class="row miniSelectBtn">
+        <a class="row miniSelectBtn" :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
           <div class="align-items-center justify-content-between d-flex">
             <div class="bus1"></div>
             <p>票價查詢</p>
@@ -37,7 +37,7 @@
         </a>
       </div>
        <div class="col-12 col-md-2">
-        <a href="#" class="row miniSelectBtn">
+        <a class="row miniSelectBtn" :class="{btnActive:currentCategory=='BusPlanning'}" @click="setFilterCategory(3)" >
           <div class="align-items-center justify-content-between d-flex">
             <div class="bus1"></div>
             <p>路線規劃</p>
@@ -46,15 +46,12 @@
         </a>
       </div>
      </div>
-    
   <Filter/>
   <h2>查詢:{{ currentCategory }}</h2>
+  <p v-if="selectRouteItemData.RouteName">[{{selectRouteItemData.RouteName.Zh_tw}}] {{selectRouteItemData.DepartureStopNameZh}}-{{selectRouteItemData.DestinationStopNameZh}}</p>
   <h2 v-if="currentCategory=='StopName' && selectStopItemData.StopName">查詢{{currentCityChineseName}}的[{{selectStopItemData.StopName.Zh_tw}}]站牌</h2>
   <h2>會經過此站牌的路線有:</h2>
     <p v-for="(i,index) in throughStopRoutes" :key="index">{{i.RouteName.Zh_tw}}</p>
-  <h2 v-if="selectRouteItemData.RouteName">
-    [{{selectRouteItemData.RouteName.Zh_tw}}]{{ selectRouteItemData.DepartureStopNameZh }}-{{selectItemData.DestinationStopNameZh}}
-  </h2>
   <ul class="nav nav-tabs">
     <li class="nav-item" @click="selectDirection(0)">
       <a class="nav-link" :class="{ active: direction == 0 }"
@@ -113,6 +110,7 @@ import { computed, defineComponent, onMounted, ref, watch } from "vue";
 import OpenStreeMap from "@/components/OpenStreeMap.vue";
 import Filter from '@/components/Filter.vue'
 import { useStore } from "vuex";
+import { useRouter } from 'vue-router';
 import { Category , Direction} from "@/types/enum";
 export default defineComponent({
   components: {
@@ -122,6 +120,7 @@ export default defineComponent({
     onMounted(() => {
     });
     const store = useStore();
+    const router = useRouter()
     const selectRouteItemData = computed(() => {  //1.選擇的公車路線
       return store.state.selectRouteItem;
     });
@@ -155,6 +154,7 @@ export default defineComponent({
     });
     const throughStopRoutes = ref({})
     watch(selectRouteItemData, () => {
+      console.log("選擇的路線資料",selectRouteItemData.value)
       store.commit("busStop/getCityBusStopByRoute", selectRouteItemData.value);
       store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
     });
@@ -200,6 +200,28 @@ export default defineComponent({
         console.log("站名",stopUID,"所有公車路線名稱",currentCityAllRouteStops,"最後得到的名單",filteRouteList)
       }
     }
+    function setFilterCategory(category: Category) {
+            store.commit("setCurrentCategory", category);
+            switch (category) {
+                case Category.BusRoute:
+                    store.commit('setPlaceHolder',"請輸入公車路線號碼或起訖站名稱")
+                    store.commit("busRoute/getCityBusRoute", currentCity.value);
+                    break;
+                case Category.StopName:
+                    store.commit('setPlaceHolder',"請輸入要查詢的公車站牌")
+                    store.commit("busStop/getCityBusStop", currentCity.value);
+                    store.commit('busStop/getCityAllRoutesStops',currentCity.value); //也需要所有公車路線下的所有站牌資料
+                    // store.commit("busRoute/getCityBusRoute",currentCity.value); //也需要此縣市所有路線資料
+                    break;
+                case Category.Ticket:
+                    store.commit('setPlaceHolder',"請輸入要查詢的起訖站名")
+                break;
+                case Category.BusPlanning:
+                    store.commit('setPlaceHolder',"請輸入欲前往的地點")
+                break;
+            }
+            router.push('/InfoDisplay')
+        }
     return {
       //dtat
       itemDisplayData,
@@ -212,6 +234,7 @@ export default defineComponent({
       throughStopRoutes,
       //methods
       selectDirection,
+      setFilterCategory,
     };
   },
 });

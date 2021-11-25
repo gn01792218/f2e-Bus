@@ -47,7 +47,6 @@
             <!-- 查詢公車路線時，列出縣市所有路線 -->
             <a
               class="dropdown-item"
-              href="#"
               v-if="currentCategory == 'BusRoute'"
               @click="sendCityRouteData(data)"
               >[{{ data.RouteName.Zh_tw }}]{{ data.DepartureStopNameZh }}-{{
@@ -57,7 +56,6 @@
             <!-- 站點查詢時，列出縣市所有公車站牌 -->
             <a
               class="dropdown-item"
-              href="#"
               v-if="currentCategory == 'StopName'"
               @click="sendCityStopData(data)"
               >{{ data.StopName.Zh_tw }}
@@ -67,18 +65,12 @@
       </div>
       </div>
     </section>
-    <!-- <section class="categoryBar d-flex" >
-      <TaiwanMap class="d-none d-md-block" />
-      <CategoryBar/>
-    </section> -->
   </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent, ref, watch } from "vue";
 import { useStore } from "vuex";
-// import CategoryBar from '@/components/CategoryBar.vue'
-// import TaiwanMap from "@/components/TaiwanMap.vue";
 import { Category } from "@/types/enum";
 export default defineComponent({
   components: {
@@ -144,31 +136,12 @@ export default defineComponent({
           break;
       }
     }
-    // function setFilterCategory(category: Category) {
-    //   store.commit("setCurrentCategory", category);
-    //   switch (category) {
-    //     case Category.BusRoute:
-    //       placeholder.value = "請輸入公車路線號碼或起訖站名稱";
-    //       store.commit("busRoute/getCityBusRoute", currentCity.value);
-    //       break;
-    //     case Category.StopName:
-    //       placeholder.value = "請輸入要查詢的公車站牌";
-    //       store.commit("busStop/getCityBusStop", currentCity.value);
-    //       store.commit('busStop/getCityAllRoutesStops',currentCity.value); //也需要所有公車路線下的所有站牌資料
-    //       // store.commit("busRoute/getCityBusRoute",currentCity.value); //也需要此縣市所有路線資料
-    //       break;
-    //     case Category.Ticket:
-    //       placeholder.value = "請輸入要查詢的起訖站名";
-    //       break;
-    //     case Category.BusPlanning:
-    //       placeholder.value = "請輸入欲前往的地點";
-    //       break;
-    //   }
-    // }
     function sendCityRouteData(routeItemData:any){
+      console.log("傳送當前選擇的資料",routeItemData)
       store.commit('setSelectRouteItem',routeItemData)
     }
     function sendCityStopData(stopItemData:any){
+      console.log("傳送當前選擇的資料",stopItemData)
       store.commit('setSelectStopItem',stopItemData)
     }
     return {
@@ -182,7 +155,6 @@ export default defineComponent({
       placeholder,
       //methods
       selectCity,
-      // setFilterCategory,
       sendCityRouteData,
       sendCityStopData,
     };

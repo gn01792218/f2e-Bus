@@ -1,5 +1,4 @@
 import {getRouteByCity} from '../api'
-import router from '@/router';
 export const state = {
     cityBusRoute:{}, //此縣市的所有公車路線資料
   };
@@ -15,9 +14,6 @@ export const state = {
                   return Number(a.RouteID) > Number(b.RouteID) ? 1:-1
                 })
                 console.log(state.cityBusRoute)
-            }).catch((e:any)=>{
-              console.log(e)
-              // router.go(0)
             })
         }
        },
