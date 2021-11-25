@@ -315,6 +315,14 @@ ul li {
       justify-content: space-around;
 }
 
+.orderTab {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
+  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
+  -webkit-box-shadow: -2px -2px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+          box-shadow: -2px -2px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+  border-radius: 5px;
+}
+
 .sv {
   height: 350px;
   fill: #a8cdd7;
@@ -433,13 +441,5 @@ ul li {
   border-top: 5px solid #edf3f8;
   -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
           filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
-}
-
-.orderTab {
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
-  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
-  -webkit-box-shadow: -2px -2px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
-          box-shadow: -2px -2px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
-  border-radius: 5px;
 }
 /*# sourceMappingURL=all.css.map */

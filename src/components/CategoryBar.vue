@@ -1,6 +1,4 @@
 <template>
-    <section class="categoryBar d-flex" >
-        <!-- <TaiwanMap class="d-none d-md-block" /> -->
         <transition-group name="fade-left">
         <div class="select" v-if="currentCity">
           <h3 class="orderTab p-2">Step2:選擇查詢服務</h3>
@@ -26,7 +24,6 @@
           </div>  
             </div>
           </transition-group>     
-    </section>
 </template>
 
 <script lang="ts">
