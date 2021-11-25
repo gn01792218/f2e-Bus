@@ -246,21 +246,23 @@ ul li {
 }
 
 .footer img {
-  margin-top: -8%;
+  margin-top: -7%;
+  -webkit-filter: drop-shadow(1px 1px 1px rgba(5, 5, 5, 0.8)) drop-shadow(-1px -1px 1px white);
+          filter: drop-shadow(1px 1px 1px rgba(5, 5, 5, 0.8)) drop-shadow(-1px -1px 1px white);
 }
 
 .SquareBtn {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
-  -webkit-box-shadow: -2px -2px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
-          box-shadow: -2px -2px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
-  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+          box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+  border-radius: 7px;
   border: none;
 }
 
 .SquareBtn div {
-  -webkit-filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5)) drop-shadow(1px 1px 1px rgba(29, 18, 18, 0.5));
-          filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5)) drop-shadow(1px 1px 1px rgba(29, 18, 18, 0.5));
+  -webkit-filter: drop-shadow(1px 1px 1px rgba(5, 5, 5, 0.8)) drop-shadow(-1px -1px 1px white);
+          filter: drop-shadow(1px 1px 1px rgba(5, 5, 5, 0.8)) drop-shadow(-1px -1px 1px white);
 }
 
 .SquareBtn p {
@@ -270,17 +272,17 @@ ul li {
 .SquareBtn:hover {
   background: #e3edf7;
   border-radius: 7px;
-  -webkit-box-shadow: inset -3px -3px 4px #ffffff, inset 2px 3px 5px rgba(0, 0, 0, 0.25);
-          box-shadow: inset -3px -3px 4px #ffffff, inset 2px 3px 5px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: inset -4px -4px 9px rgba(255, 255, 255, 0.88), inset 4px 4px 14px #c1d5ee;
+          box-shadow: inset -4px -4px 9px rgba(255, 255, 255, 0.88), inset 4px 4px 14px #c1d5ee;
 }
 
 .btnActive {
   background: linear-gradient(160deg, #50caff 0%, #0478ff 100%);
-  -webkit-filter: drop-shadow(1px 1px 2px rgba(5, 5, 5, 0.3)) drop-shadow(-1px -1px 1px white);
-          filter: drop-shadow(1px 1px 2px rgba(5, 5, 5, 0.3)) drop-shadow(-1px -1px 1px white);
+  -webkit-filter: drop-shadow(2px 2px 4px rgba(5, 5, 5, 0.3)) drop-shadow(-1px -1px 2px white);
+          filter: drop-shadow(2px 2px 4px rgba(5, 5, 5, 0.3)) drop-shadow(-1px -1px 2px white);
   border-radius: 7px;
-  -webkit-box-shadow: inset -2.5px -2.5px 6px #ffffff, inset 3px 3px 5px rgba(0, 0, 0, 0.6), -2px -2px 5px #ffffff;
-          box-shadow: inset -2.5px -2.5px 6px #ffffff, inset 3px 3px 5px rgba(0, 0, 0, 0.6), -2px -2px 5px #ffffff;
+  -webkit-box-shadow: inset -2.5px -2.5px 6px #ffffff, inset 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px #ffffff;
+          box-shadow: inset -2.5px -2.5px 6px #ffffff, inset 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px #ffffff;
 }
 
 .tab {
@@ -288,29 +290,27 @@ ul li {
   height: 50px;
   background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
-  -webkit-box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
-          box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
-  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+          box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+  border-radius: 7px;
 }
 
 .miniSelectBtn {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   height: 70px;
   background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
-  -webkit-box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
-          box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
-  border-radius: 10px;
+  -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+          box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+  border-radius: 7px;
 }
 
 .miniSelectBtn p {
   margin: 1rem;
 }
 
-.tab:hover {
-  background: #dde8f1;
-  -webkit-box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.6), inset 2px 2px 10px #c5d7ee;
-          box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.6), inset 2px 2px 10px #c5d7ee;
-  border-radius: 10px;
+.categoryBar {
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
@@ -318,9 +318,9 @@ ul li {
 .orderTab {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
-  -webkit-box-shadow: -2px -2px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
-          box-shadow: -2px -2px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
-  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+          box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+  border-radius: 7px;
 }
 
 .sv {
@@ -373,17 +373,17 @@ ul li {
   width: 30vw;
   background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
-  -webkit-box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
-          box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
-  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+          box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+  border-radius: 7px;
   border: none;
 }
 
 .filterInput:hover {
-  background: #dde8f1;
-  -webkit-box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.6), inset 2px 2px 10px #c5d7ee;
-          box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.6), inset 2px 2px 10px #c5d7ee;
-  border-radius: 5px;
+  background: #e3edf7;
+  -webkit-box-shadow: inset -4px -4px 9px rgba(255, 255, 255, 0.88), inset 4px 4px 14px #c1d5ee;
+          box-shadow: inset -4px -4px 9px rgba(255, 255, 255, 0.88), inset 4px 4px 14px #c1d5ee;
+  border-radius: 7px;
 }
 
 .filterInput:focus-visible,
@@ -399,19 +399,18 @@ ul li {
   margin: 10px;
   background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
-  -webkit-box-shadow: -1px -1px 5px #ffffff, 3px 3px 10px rgba(24, 24, 24, 0.4);
-          box-shadow: -1px -1px 5px #ffffff, 3px 3px 10px rgba(24, 24, 24, 0.4);
-  border-radius: 5px;
+  -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+          box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+  border-radius: 7px;
   border: none;
 }
 
 .dropdown-item:hover {
   padding: 10px;
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
-  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
-  -webkit-box-shadow: -1px -1px 3px #ffffff, 3px 3px 10px rgba(24, 24, 24, 0.4);
-          box-shadow: -1px -1px 3px #ffffff, 3px 3px 10px rgba(24, 24, 24, 0.4);
-  border-radius: 5px;
+  background: linear-gradient(160deg, #50caff 0%, #0478ff 100%);
+  -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+          box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+  border-radius: 7px;
 }
 
 .point {
@@ -420,9 +419,9 @@ ul li {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
   position: relative;
-  border-radius: 0.3rem;
-  -webkit-box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
-          box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+  border-radius: 7px;
+  -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+          box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
 }
 
 .point div {

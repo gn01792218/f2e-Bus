@@ -7,15 +7,14 @@
 .filterInput {
   width: 30vw;
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
-  box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
-  border-radius: 5px;
+  box-shadow: $outShadow;
+  border-radius: $borderRadius;
   border: none;
 }
 .filterInput:hover {
-  background: #dde8f1;
-  box-shadow: inset -2px -2px 5px rgba(255, 255, 255, 0.6),
-    inset 2px 2px 10px #c5d7ee;
-  border-radius: 5px;
+  background: $backdrop-color;
+  box-shadow: $insideShadow;
+  border-radius: $borderRadius;
 }
 .filterInput:focus-visible,
 .filterInput:focus {
@@ -28,23 +27,23 @@
   overflow-y: auto;
   margin: 10px;
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
-  box-shadow: -1px -1px 5px #ffffff, 3px 3px 10px rgba(24, 24, 24, 0.4);
-  border-radius: 5px;
+  box-shadow: $outShadow;
+  border-radius: $borderRadius;
   border: none;
 }
 .dropdown-item:hover {
   padding: 10px;
-  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
-  box-shadow: -1px -1px 3px #ffffff, 3px 3px 10px rgba(24, 24, 24, 0.4);
-  border-radius: 5px;
+  background: linear-gradient(160deg, #50caff 0%, #0478ff 100%);
+  box-shadow: $outShadow;
+  border-radius: $borderRadius;
 }
 .point {
   width: 2.5rem;
   height: 2.5rem;
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
   position: relative;
-  border-radius: 0.3rem;
-  box-shadow: -1px -1px 5px #ffffff, 1px 1px 5px rgba(24, 24, 24, 0.4);
+  border-radius: $borderRadius;
+  box-shadow: $outShadow;
   div {
     filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5))
       drop-shadow(1px 1px 1px rgba(29, 18, 18, 0.5));
@@ -62,4 +61,3 @@
   filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
   // drop-shadow(1px 1px 1px rgba(29, 18, 18, 0.5));
 }
-
