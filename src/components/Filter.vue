@@ -1,12 +1,11 @@
 <template>
   <div class="filter">
-    <section class="filter-title d-flex">
-      <div>
+    <section class="filter-title w-100 m-2">
+      <!-- <div>
         <p>選擇篩選方式</p>
         <p>{{ currentCategory }}</p>
-      </div>
-      <div>
-        <div class="dropdown d-flex m-3">
+      </div> -->
+        <div class="dropdown d-flex">
         <button
           class="btn btn-secondary dropdown-toggle me-3"
           type="button"
@@ -33,7 +32,7 @@
         </ul>
         <input
           type="text"
-          class="filterInput form-control"
+          class="filterInput form-control w-100"
           id="dropdownMenuButton1"
           data-bs-toggle="dropdown"
           v-model="keyWord"
@@ -62,7 +61,6 @@
             </a>
           </li>
         </ul>
-      </div>
       </div>
     </section>
   </div>

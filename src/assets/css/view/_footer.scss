@@ -1,18 +1,17 @@
 .footer {
-    //   position: fixed;
-    //   bottom: 0;
-    text-align: center;
-    background-color: #0a0a0a;
-    margin: 0;
-    padding: 0;
-    // background-image: $footerBg;
-    //   height: 100px;
-    //   background-position-y: bottom;
-    //   background-size: contain;
-    img {
-      margin-top: -7%;
-      filter: drop-shadow(1px 1px 1px rgba(5, 5, 5, 0.8))
-        drop-shadow(-1px -1px 1px rgba(255, 255, 255, 1));
-    }
+  // position: fixed;
+  // bottom: 0;
+  text-align: center;
+  background-color: #0a0a0a;
+  margin: 0;
+  padding: 0;
+  // background-image: $footerBg;
+  //   height: 100px;
+  // background-position-y: bottom;
+  //   background-size: contain;
+  img {
+    margin-top: -7%;
+    filter: drop-shadow(1px 1px 1px rgba(5, 5, 5, 0.8))
+      drop-shadow(-1px -1px 1px rgba(255, 255, 255, 1));
+  }
 }
-

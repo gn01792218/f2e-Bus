@@ -1,5 +1,5 @@
 <template>
-    <footer class="footer mb-0 container-fluid"> 
+    <footer class="footer container-fluid"> 
       <img class="w-100" src="../assets/images/footer.png" alt="街道公車圖">
         <ul class="d-flex justify-content-center">
           <li class="figma col-1"></li>

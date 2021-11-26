@@ -5,7 +5,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav row w-100 ">
+      <ul class="navbar-nav row w-100  ">
         <li class="nav-item miniSelectBtn col-12 col-md-5 col-lg-2 m-2 ">
           <a class="nav-link d-flex align-items-center" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
             <div class="bus1"></div>

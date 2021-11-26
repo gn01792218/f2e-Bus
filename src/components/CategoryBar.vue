@@ -2,21 +2,21 @@
         <div class="select" v-if="currentCity">
           <h3 class="orderTab p-2">選擇查詢服務</h3>
             <div class="row ms-2">
-              <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
+              <button class="col-12 col-md-5 SquareBtn m-2" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
                 <div class="bus1 m-3"></div>
                 <p class="">公車動態</p>
               </button>
-              <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
+              <button class="col-12 col-md-5 SquareBtn m-2" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
                <div class="busStop m-3"></div>
                 <p class="">站點查詢</p>
               </button>
             </div>
           <div class="row ms-2">
-            <button class="col-5 SquareBtn m-2" :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
+            <button class="col-12 col-md-5 SquareBtn m-2" :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
               <div class="ticket m-3"></div>
               <p class="">票價查詢</p>             
             </button>
-            <button class="col-5 SquareBtn m-2 "  :class="{btnActive:currentCategory=='BusPlanning'}" @click="setFilterCategory(3)">
+            <button class="col-12 col-md-5 SquareBtn m-2 "  :class="{btnActive:currentCategory=='BusPlanning'}" @click="setFilterCategory(3)">
               <div class="roadPlan m-3"></div>
               <p class="">乘車規劃</p>             
             </button> 
