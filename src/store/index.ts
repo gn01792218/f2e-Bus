@@ -6,6 +6,7 @@ import busEstimatedTime from './busEstimatedTime'
 export default createStore({
   state: {
     placeHolder:"",
+    isrequestLoaded:false, //請求時的loading
     currentCity:"", //當前選擇的縣市
     currentCityChineseName:"",
     currentCategory:Category.BusRoute,  //預設為搜尋公車路線
@@ -210,6 +211,9 @@ export default createStore({
     },
     setPlaceHolder(state:any,text:string){
       state.placeHolder = text
+    },
+    setRequestLoading(state:any,isLoading:boolean){
+      state.isrequestLoaded = isLoading
     }
   },
   actions: {
