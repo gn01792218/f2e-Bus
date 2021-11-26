@@ -2,6 +2,7 @@
   <ol-map :loadTilesWhileAnimating="true" :loadTilesWhileInteracting="true" style="height:600px">
     <ol-view ref="view" :center="center" :rotation="rotation" :zoom="zoom" 
     :projection="projection" />
+     <ol-fullscreen-control v-if="fullscreencontrol" />
     <ol-tile-layer>
         <ol-source-osm />
     </ol-tile-layer>
@@ -9,6 +10,12 @@
       <ol-vector-layer v-for="(i,index) in itemDisplayData.go[0].Stops" :key="index">
         <ol-source-vector>
           <ol-animation-slide :duration="2000" :repeat="1">
+          <ol-feature v-if="index<itemDisplayData.go[0].Stops.length-1">
+                <ol-geom-line-string :coordinates="[[itemDisplayData.go[0].Stops[index].StopPosition.PositionLon,itemDisplayData.go[0].Stops[index].StopPosition.PositionLat],[itemDisplayData.go[0].Stops[index+1].StopPosition.PositionLon,itemDisplayData.go[0].Stops[index+1].StopPosition.PositionLat]]"></ol-geom-line-string>
+                <ol-style>
+                        <ol-style-stroke :color="strokeColor" :width="strokeWidth"></ol-style-stroke>          
+                </ol-style>
+          </ol-feature>
             <ol-feature >
                 <ol-geom-point :coordinates="[i.StopPosition.PositionLon,i.StopPosition.PositionLat]"></ol-geom-point>
                 <ol-style>
@@ -27,6 +34,12 @@
       <ol-vector-layer v-for="(i,index) in itemDisplayData.back[0].Stops" :key="index">
         <ol-source-vector>
           <ol-animation-slide :duration="2000" :repeat="1">
+            <ol-feature v-if="index<itemDisplayData.back[0].Stops.length-1">
+                <ol-geom-line-string :coordinates="[[itemDisplayData.back[0].Stops[index].StopPosition.PositionLon,itemDisplayData.back[0].Stops[index].StopPosition.PositionLat],[itemDisplayData.back[0].Stops[index+1].StopPosition.PositionLon,itemDisplayData.back[0].Stops[index+1].StopPosition.PositionLat]]"></ol-geom-line-string>
+                <ol-style>
+                        <ol-style-stroke :color="strokeColor" :width="strokeWidth"></ol-style-stroke>          
+                </ol-style>
+          </ol-feature>
             <ol-feature >
                 <ol-geom-point :coordinates="[i.StopPosition.PositionLon,i.StopPosition.PositionLat]"></ol-geom-point>
                 <ol-style>
@@ -62,10 +75,11 @@ export default defineComponent({
         const projection = ref('EPSG:4326')
         const zoom = ref(14)
         const rotation = ref(0)
-        const radius = ref(20)
+        const radius = ref(10)
         const strokeWidth = ref(5)
         const strokeColor = ref('red')
         const fillColor = ref('white')
+        const fullscreencontrol= ref(true)
     //vuex
     const store = useStore()
     const itemDisplayData = computed(() => {
@@ -95,6 +109,7 @@ export default defineComponent({
       strokeColor,
       fillColor,
       direction,
+      fullscreencontrol,
     }
   }
 });
