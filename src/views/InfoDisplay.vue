@@ -38,7 +38,7 @@
   <p v-if="selectRouteItemData.RouteName">[{{selectRouteItemData.RouteName.Zh_tw}}] {{selectRouteItemData.DepartureStopNameZh}}-{{selectRouteItemData.DestinationStopNameZh}}</p>
   <h2 v-if="currentCategory=='StopName' && selectStopItemData.StopName">查詢{{currentCityChineseName}}的[{{selectStopItemData.StopName.Zh_tw}}]站牌</h2>
   <h2>會經過此站牌的路線有:</h2>
-    <p v-for="(i,index) in throughStopRoutes" :key="index">{{i.RouteName.Zh_tw}}</p>
+    <p class="throughStopRoutes" v-for="(i,index) in throughStopRoutes" :key="index" @click="showThroughStopRouteData(i)">{{i.RouteName.Zh_tw}}</p>
   <ul class="nav nav-tabs">
     <li class="nav-item" @click="selectDirection(0)">
       <a class="nav-link" :class="{ active: direction == 0 }"
@@ -158,6 +158,9 @@ export default defineComponent({
     watch(busEstimatedTime.value,()=>{
       console.log("預估時間資料",busEstimatedTime.value)
     })
+    function showThroughStopRouteData(routeData:any){
+      store.commit("busStop/getCityBusStopByRoute", routeData);
+    }
     function selectDirection(directionNum:Direction) {
       store.commit('busStop/setCurrentDirection',directionNum)
     }
@@ -208,7 +211,7 @@ export default defineComponent({
                 break;
             }
             router.push('/InfoDisplay')
-        }
+    }
     return {
       //dtat
       itemDisplayData,
@@ -222,6 +225,7 @@ export default defineComponent({
       //methods
       selectDirection,
       setFilterCategory,
+      showThroughStopRouteData,
     };
   },
 });
