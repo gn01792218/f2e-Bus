@@ -6,11 +6,16 @@ body {
 }
 ul {
   list-style: none;
-  padding-left: 0;
+  li {
+    padding: 0;
+  }
 }
 .nav-item {
   cursor: pointer;
 }
 .select {
   width: 40vw;
+}
+.row {
+  padding: 0;
 }

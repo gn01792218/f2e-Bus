@@ -8,7 +8,10 @@ body {
 
 ul {
   list-style: none;
-  padding-left: 0;
+}
+
+ul li {
+  padding: 0;
 }
 
 .nav-item {
@@ -17,6 +20,10 @@ ul {
 
 .select {
   width: 40vw;
+}
+
+.row {
+  padding: 0;
 }
 
 .kin:hover {
@@ -250,6 +257,14 @@ ul {
   cursor: pointer;
 }
 
+.searchResultBar {
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
+  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
+  -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+          box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+  border-radius: 7px;
+}
+
 .footer {
   text-align: center;
   background-color: #0a0a0a;
@@ -293,8 +308,8 @@ ul {
   -webkit-filter: drop-shadow(2px 2px 4px rgba(5, 5, 5, 0.3)) drop-shadow(-1px -1px 2px white);
           filter: drop-shadow(2px 2px 4px rgba(5, 5, 5, 0.3)) drop-shadow(-1px -1px 2px white);
   border-radius: 7px;
-  -webkit-box-shadow: inset -2.5px -2.5px 6px #ffffff, inset 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px #ffffff;
-          box-shadow: inset -2.5px -2.5px 6px #ffffff, inset 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px #ffffff;
+  -webkit-box-shadow: inset -2.5px -2.5px 6px #ffffff, inset 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 5px #ffffff;
+          box-shadow: inset -2.5px -2.5px 6px #ffffff, inset 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 5px #ffffff;
 }
 
 .miniSelectBtn {

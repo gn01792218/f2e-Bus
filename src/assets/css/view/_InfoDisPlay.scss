@@ -10,6 +10,14 @@
 .busInfo-li {
   justify-content: space-between;
 }
+
 .throughStopRoutes{
   cursor: pointer;
 }
+
+.searchResultBar {
+  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
+  box-shadow: $outShadow;
+  border-radius: $borderRadius;
+}
+
