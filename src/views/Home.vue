@@ -12,7 +12,7 @@
         </div>
       </div>
     </div> -->
-    <h3 class="orderTab col-3 m-3 p-2">Step1:選擇城市</h3>
+    <h3 class="orderTab col-3 m-3 p-2">請先選擇城市</h3>
     <section class="categoryBar d-flex" >
       <TaiwanMap class="d-none d-md-block" />
       <CategoryBar/>

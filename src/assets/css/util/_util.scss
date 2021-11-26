@@ -27,7 +27,7 @@
 //icon
 .bus1 {
   @include icon;
-  @include iconScale(0, 0, 0.6);
+  @include iconScale(0, 0, 1);
 }
 .step1 {
   @include icon;
@@ -55,7 +55,7 @@
 }
 .enter {
   @include icon;
-  @include iconScale(-630, 0, 0.4);
+  @include iconScale(-630, 0, 0.3);
 }
 .ticket {
   @include icon;

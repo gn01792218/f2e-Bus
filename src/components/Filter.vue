@@ -2,7 +2,7 @@
   <div class="filter">
     <section class="filter-title d-flex">
       <div>
-        <p>篩選方式</p>
+        <p>選擇篩選方式</p>
         <p>{{ currentCategory }}</p>
       </div>
       <div>

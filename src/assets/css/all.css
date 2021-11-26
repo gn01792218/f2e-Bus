@@ -11,12 +11,12 @@ ul {
   padding-left: 0;
 }
 
-ul li {
-  margin: 10px;
-}
-
 .nav-item {
   cursor: pointer;
+}
+
+.select {
+  width: 40vw;
 }
 
 .kin:hover {
@@ -76,10 +76,10 @@ ul li {
 .bus1 {
   cursor: pointer;
   background-image: url("../images/icon.png");
-  width: 42px;
-  height: 42px;
+  width: 70px;
+  height: 70px;
   background-position: 0px 0px;
-  background-size: 630px auto;
+  background-size: 1050px auto;
 }
 
 .step1 {
@@ -139,10 +139,10 @@ ul li {
 .enter {
   cursor: pointer;
   background-image: url("../images/icon.png");
-  width: 28px;
-  height: 28px;
-  background-position: -252px 0px;
-  background-size: 420px auto;
+  width: 21px;
+  height: 21px;
+  background-position: -189px 0px;
+  background-size: 315px auto;
 }
 
 .ticket {
@@ -232,10 +232,12 @@ ul li {
 .busInfo {
   width: 50%;
   background-color: burlywood;
+  height: 80vh;
 }
 
 .openStreeMap {
   width: 50%;
+  height: 80vh;
 }
 
 .busInfo-li {
@@ -291,9 +293,7 @@ ul li {
           box-shadow: inset -2.5px -2.5px 6px #ffffff, inset 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px #ffffff;
 }
 
-.tab {
-  width: 50px;
-  height: 50px;
+.miniSelectBtn {
   background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
   -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
@@ -301,13 +301,20 @@ ul li {
   border-radius: 7px;
 }
 
-.miniSelectBtn {
-  height: 70px;
-  background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
-  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
-  -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
-          box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+.miniSelectBtn div {
+  -webkit-filter: drop-shadow(1px 1px 1px rgba(5, 5, 5, 0.8)) drop-shadow(-1px -1px 1px white);
+          filter: drop-shadow(1px 1px 1px rgba(5, 5, 5, 0.8)) drop-shadow(-1px -1px 1px white);
+}
+
+.miniSelectBtn p {
+  font-size: 1.3rem;
+}
+
+.miniSelectBtn:hover {
+  background: #e3edf7;
   border-radius: 7px;
+  -webkit-box-shadow: inset -4px -4px 9px rgba(255, 255, 255, 0.88), inset 4px 4px 14px #c1d5ee;
+          box-shadow: inset -4px -4px 9px rgba(255, 255, 255, 0.88), inset 4px 4px 14px #c1d5ee;
 }
 
 .categoryBar {

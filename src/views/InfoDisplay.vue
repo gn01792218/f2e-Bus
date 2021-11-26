@@ -1,51 +1,38 @@
 <template>
-  <div class="selectNav row justify-content-around m-0">
-    <div class="col-12 col-md-2">
-      <a href="#" class="row miniSelectBtn" >
-          <div class="align-items-center justify-content-between d-flex">
-            <div class="bus1"></div>
-            <p>首頁</p>
-            <div class="enter"></div>
-          </div>
-        </a>
-      </div>
-       <div class="col-12 col-md-2">
-        <a class="row miniSelectBtn" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
-          <div class="align-items-center justify-content-between d-flex">
+  <nav class="selectNavbar navbar-expand-md navbar-light">
+    <a href="#"><img class="d-sm-block d-md-none w-75 ms-3" src="../assets/images/header.png" alt="" ></a>
+    <button class="navbar-toggler ms-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav row w-100 ">
+        <li class="nav-item col-12 col-md-3 ">
+          <a class="nav-link d-flex align-items-center miniSelectBtn" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
             <div class="bus1"></div>
             <p>公車動態</p>
-            <div class="enter"></div>
-          </div>
-        </a>
-      </div>
-       <div class="col-12 col-md-2">
-        <a  class="row miniSelectBtn" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
-          <div class="align-items-center justify-content-between d-flex">
-            <div class="bus1"></div>
+          </a>
+        </li>
+        <li class="nav-item col-12 col-md-3">
+          <a  class="nav-link d-flex align-items-center miniSelectBtn" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
+            <div class="busStop"></div>
             <p>站點查詢</p>
-            <div class="enter"></div>
-          </div>
-        </a>
-      </div>
-       <div class="col-12 col-md-2">
-        <a class="row miniSelectBtn" :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
-          <div class="align-items-center justify-content-between d-flex">
-            <div class="bus1"></div>
+          </a>
+        </li>
+        <li class="nav-item col-12 col-md-3">
+          <a class="nav-link d-flex align-items-center miniSelectBtn" :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
+            <div class="ticket"></div>
             <p>票價查詢</p>
-            <div class="enter"></div>
-          </div>
-        </a>
-      </div>
-       <div class="col-12 col-md-2">
-        <a class="row miniSelectBtn" :class="{btnActive:currentCategory=='BusPlanning'}" @click="setFilterCategory(3)" >
-          <div class="align-items-center justify-content-between d-flex">
-            <div class="bus1"></div>
+          </a>
+        </li>
+        <li class="nav-item col-12 col-md-3">
+          <a class="nav-link d-flex align-items-center miniSelectBtn" :class="{btnActive:currentCategory=='BusPlanning'}" @click="setFilterCategory(3)" >
+            <div class="roadPlan"></div>
             <p>路線規劃</p>
-            <div class="enter"></div>
-          </div>
-        </a>
-      </div>
-     </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+</nav>
   <Filter/>
   <h2>查詢:{{ currentCategory }}</h2>
   <p v-if="selectRouteItemData.RouteName">[{{selectRouteItemData.RouteName.Zh_tw}}] {{selectRouteItemData.DepartureStopNameZh}}-{{selectRouteItemData.DestinationStopNameZh}}</p>
