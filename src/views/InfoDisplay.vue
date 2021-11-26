@@ -6,26 +6,26 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav row w-100 ">
-        <li class="nav-item col-12 col-md-3 ">
-          <a class="nav-link d-flex align-items-center miniSelectBtn" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
+        <li class="nav-item miniSelectBtn col-12 col-md-5 col-lg-2 m-2 ">
+          <a class="nav-link d-flex align-items-center" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
             <div class="bus1"></div>
-            <p>公車動態</p>
+            <p class="">公車動態</p>
           </a>
         </li>
-        <li class="nav-item col-12 col-md-3">
-          <a  class="nav-link d-flex align-items-center miniSelectBtn" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
+        <li class="nav-item  miniSelectBtn col-12 col-md-5 col-lg-2 m-2">
+          <botton class="nav-link d-flex align-items-center" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
             <div class="busStop"></div>
             <p>站點查詢</p>
-          </a>
+          </botton>
         </li>
-        <li class="nav-item col-12 col-md-3">
-          <a class="nav-link d-flex align-items-center miniSelectBtn" :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
+        <li class="nav-item miniSelectBtn col-12 col-md-5 col-lg-2 m-2">
+          <a class="nav-link d-flex align-items-center " :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
             <div class="ticket"></div>
             <p>票價查詢</p>
           </a>
         </li>
-        <li class="nav-item col-12 col-md-3">
-          <a class="nav-link d-flex align-items-center miniSelectBtn" :class="{btnActive:currentCategory=='BusPlanning'}" @click="setFilterCategory(3)" >
+        <li class="nav-item miniSelectBtn col-12 col-md-5 col-lg-2 m-2">
+          <a class="nav-link d-flex align-items-center " :class="{btnActive:currentCategory=='BusPlanning'}" @click="setFilterCategory(3)" >
             <div class="roadPlan"></div>
             <p>路線規劃</p>
           </a>
@@ -35,10 +35,10 @@
 </nav>
   <Filter/>
   <h2>查詢:{{ currentCategory }}</h2>
-  <p v-if="selectRouteItemData.RouteName">[{{selectRouteItemData.RouteName.Zh_tw}}] {{selectRouteItemData.DepartureStopNameZh}}-{{selectRouteItemData.DestinationStopNameZh}}</p>
+  <p class="searchResultBar" v-if="selectRouteItemData.RouteName">[{{selectRouteItemData.RouteName.Zh_tw}}] {{selectRouteItemData.DepartureStopNameZh}}-{{selectRouteItemData.DestinationStopNameZh}}</p>
   <h2 v-if="currentCategory=='StopName' && selectStopItemData.StopName">查詢{{currentCityChineseName}}的[{{selectStopItemData.StopName.Zh_tw}}]站牌</h2>
   <h2>會經過此站牌的路線有:</h2>
-    <p v-for="(i,index) in throughStopRoutes" :key="index">{{i.RouteName.Zh_tw}}</p>
+    <p class="searchResultBar" v-for="(i,index) in throughStopRoutes" :key="index">{{i.RouteName.Zh_tw}}</p>
   <ul class="nav nav-tabs">
     <li class="nav-item" @click="selectDirection(0)">
       <a class="nav-link" :class="{ active: direction == 0 }"

@@ -1,5 +1,4 @@
 .SquareBtn {
-  // height: 70px;
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
   box-shadow: $outShadow;
   border-radius: $borderRadius;
@@ -22,7 +21,7 @@
   filter: $filterEffect;
   border-radius: $borderRadius;
   box-shadow: inset -2.5px -2.5px 6px #ffffff,
-    inset 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 10px #ffffff;
+    inset 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 5px #ffffff;
 }
 .miniSelectBtn {
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
