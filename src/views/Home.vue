@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <section class="categoryBar d-flex" >
+    <section class="categoryBar d-flex row" >
       <TaiwanMap class="d-none d-md-block" />
       <CategoryBar/>
     </section>

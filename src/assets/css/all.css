@@ -22,14 +22,6 @@ ul li {
   cursor: pointer;
 }
 
-.select {
-  width: 40vw;
-}
-
-.row {
-  padding: 0;
-}
-
 .kin:hover {
   cursor: pointer;
   background-image: url("../images/island.png");
