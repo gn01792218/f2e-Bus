@@ -53,3 +53,11 @@ export const getStopByCityAndRouteName = (City:string,RouteName:number) => {
 export const getCityAllRouteStop = (City:string) => { 
     return req('get',`/v2/Bus/StopOfRoute/City/${City}?$format=JSON`)
 }
+
+//票價API
+export const getRouteFareByCity = (City:string) => { 
+    return req('get',`/v2/Bus/RouteFare/City/${City}?$format=JSON`)
+}
+export const getRouteFareByCityAndRouteName = (City:string,RouteName:number) => {  //注意，並非所有縣市都有!
+    return req('get',`/v2/Bus/RouteFare/City/${City}/${RouteName}?$format=JSON`)
+}
