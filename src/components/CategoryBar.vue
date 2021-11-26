@@ -40,6 +40,7 @@ export default defineComponent({
             return Category[store.state.currentCategory];
         });
         function setFilterCategory(category: Category) {
+          if(currentCity.value!==""){
             store.commit("setCurrentCategory", category);
             switch (category) {
                 case Category.BusRoute:
@@ -60,6 +61,8 @@ export default defineComponent({
                 break;
             }
             router.push('/InfoDisplay')
+          }
+            
         }
         return {
             //data

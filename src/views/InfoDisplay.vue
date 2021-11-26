@@ -1,38 +1,5 @@
 <template>
-  <nav class="selectNavbar navbar-expand-md navbar-light">
-    <a href="#"><img class="d-sm-block d-md-none w-75 ms-3" src="../assets/images/header.png" alt="" ></a>
-    <button class="navbar-toggler ms-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav row w-100 justify-content-around">
-        <li class="nav-item miniSelectBtn col-12 col-md-5 col-lg-2 m-2 ">
-          <a class="nav-link d-flex align-items-center" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
-            <div class="bus1"></div>
-            <p class="text-danger">公車動態</p>
-          </a>
-        </li>
-        <li class="nav-item  miniSelectBtn col-12 col-md-5 col-lg-2 m-2">
-          <botton class="nav-link d-flex align-items-center" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
-            <div class="busStop"></div>
-            <p class="text-primary">站點查詢</p>
-          </botton>
-        </li>
-        <li class="nav-item miniSelectBtn col-12 col-md-5 col-lg-2 m-2">
-          <a class="nav-link d-flex align-items-center " :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
-            <div class="ticket"></div>
-            <p class="text-warning">票價查詢</p>
-          </a>
-        </li>
-        <li class="nav-item miniSelectBtn col-12 col-md-5 col-lg-2 m-2">
-          <a class="nav-link d-flex align-items-center " :class="{btnActive:currentCategory=='BusPlanning'}" @click="setFilterCategory(3)" >
-            <div class="roadPlan"></div>
-            <p class="text-success">路線規劃</p>
-          </a>
-        </li>
-      </ul>
-    </div>
-</nav>
+  <TopCategory/>
   <Filter/>
   <h2>查詢:{{ currentCategory }}</h2>
   <p class="searchResultBar" v-if="selectRouteItemData.RouteName">[{{selectRouteItemData.RouteName.Zh_tw}}] {{selectRouteItemData.DepartureStopNameZh}}-{{selectRouteItemData.DestinationStopNameZh}}</p>
@@ -57,34 +24,57 @@
   </ul>
   <div class="d-flex">
     <div class="busInfo">
-      <ul v-if="direction == 0 && itemDisplayData.go">
-        <li>去</li>
-        <li class="busInfo-li d-flex"
-          v-for="(i, index) in itemDisplayData.go[0].Stops"
-          :key="index"
-        >
-            <p>[{{ i.StopSequence }}]{{ i.StopName.Zh_tw }}</p>
-            <p v-if="i.PlateNumb">行駛車輛{{ i.PlateNumb }}</p>
-            <p v-else>目前無發車</p>
-            <p v-if="i.EstimateTime">
-              預估{{ Number(i.Estimates[0].EstimateTime) / 60 }}分後到站
-            </p>
-        </li>
-      </ul>
-      <ul v-if="direction == 1 && itemDisplayData.back">
-        <li>返</li>
-        <li class="busInfo-li d-flex"
-          v-for="(i, index) in itemDisplayData.back[0].Stops"
-          :key="index"
-        >
-            <p>[{{ i.StopSequence }}]{{ i.StopName.Zh_tw }}</p>
-            <p v-if="i.PlateNumb">行駛車輛{{ i.PlateNumb }}</p>
-            <p v-else>目前無發車</p>
-            <p v-if="i.EstimateTime">
-              預估{{ Number(i.Estimates[0].EstimateTime) / 60 }}分後到站
-            </p>
-        </li>
-      </ul>
+      <div class="go" v-if="direction == 0 && itemDisplayData.go">
+        <h3>去</h3>
+        <div class="busInfo-container d-flex">
+           <ul >
+            <li class="busInfo-li"
+              v-for="(i, index) in itemDisplayData.go[0].Stops"
+              :key="index"
+            >
+            <p>[{{i.StopSequence}}]{{i.StopName.Zh_tw}}</p>
+            </li>
+
+          </ul>
+          <ul v-if="direction == 0 && busEstimatedTime.go">
+            <li
+              v-for="(i,index) in busEstimatedTime.go" :key="index"
+            >
+            <p v-if="i.EstimateTime">預估{{i.EstimateTime/60}}分後到站</p>
+            <p v-if="i.StopStatus==1">尚未發車</p>
+            <p v-if="i.StopStatus==2">交管不停靠</p>
+            <p v-if="i.StopStatus==3">末班車已駛離</p>
+            <p v-if="i.StopStatus==4">本日未營運</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="back" v-if="direction == 1 && itemDisplayData.back">
+        <h3>返</h3>
+        <div class="busInfo-container d-flex">
+          <ul>
+            <li class="busInfo-li"
+              v-for="(i, index) in itemDisplayData.back[0].Stops"
+              :key="index"
+            >
+            <p>[{{i.StopSequence}}]{{i.StopName.Zh_tw}}</p>
+            </li>
+          </ul>
+          <ul v-if="direction == 1 && busEstimatedTime.back">
+            <li
+              v-for="(i,index) in busEstimatedTime.back" :key="index"
+            >
+            <p v-if="i.EstimateTime">預估{{i.EstimateTime/60}}分後到站</p>
+            <p v-if="i.StopStatus==1">尚未發車</p>
+            <p v-if="i.StopStatus==2">交管不停靠</p>
+            <p v-if="i.StopStatus==3">末班車已駛離</p>
+            <p v-if="i.StopStatus==4">本日未營運</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+     
+      
     </div>
     <div class="openStreeMap">
       <OpenStreeMap />
@@ -94,20 +84,22 @@
 
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref, watch } from "vue";
+import TopCategory from '@/components/TopCategory.vue'
 import OpenStreeMap from "@/components/OpenStreeMap.vue";
 import Filter from '@/components/Filter.vue'
 import { useStore } from "vuex";
-import { useRouter } from 'vue-router';
 import { Category , Direction} from "@/types/enum";
 export default defineComponent({
   components: {
-    OpenStreeMap,Filter,
+    TopCategory,
+    OpenStreeMap,
+    Filter,
   },
   setup() {
     onMounted(() => {
     });
     const store = useStore();
-    const router = useRouter()
+    
     const selectRouteItemData = computed(() => {  //1.選擇的公車路線
       return store.state.selectRouteItem;
     });
@@ -141,7 +133,6 @@ export default defineComponent({
     });
     const throughStopRoutes = ref({})
     watch(selectRouteItemData, () => {
-      console.log("選擇的路線資料",selectRouteItemData.value)
       store.commit("busStop/getCityBusStopByRoute", selectRouteItemData.value);
       store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
     });
@@ -167,6 +158,7 @@ export default defineComponent({
     function getRoutesByStop(){
       if(selectRouteItemData.value && cityBusRoutes.value){
         let stopUID = selectStopItemData.value.StopUID
+        console.log(currentCity.value,"資料",cityAllRouteStops.value)
         let currentCityAllRouteStops = cityAllRouteStops.value[currentCity.value]
         //用此名單去請求
         let filteRouteList = currentCityAllRouteStops.filter((route:any)=>{
@@ -190,28 +182,6 @@ export default defineComponent({
         console.log("站名",stopUID,"所有公車路線名稱",currentCityAllRouteStops,"最後得到的名單",filteRouteList)
       }
     }
-    function setFilterCategory(category: Category) {
-            store.commit("setCurrentCategory", category);
-            switch (category) {
-                case Category.BusRoute:
-                    store.commit('setPlaceHolder',"請輸入公車路線號碼或起訖站名稱")
-                    store.commit("busRoute/getCityBusRoute", currentCity.value);
-                    break;
-                case Category.StopName:
-                    store.commit('setPlaceHolder',"請輸入要查詢的公車站牌")
-                    store.commit("busStop/getCityBusStop", currentCity.value);
-                    store.commit('busStop/getCityAllRoutesStops',currentCity.value); //也需要所有公車路線下的所有站牌資料
-                    // store.commit("busRoute/getCityBusRoute",currentCity.value); //也需要此縣市所有路線資料
-                    break;
-                case Category.Ticket:
-                    store.commit('setPlaceHolder',"請輸入要查詢的起訖站名")
-                break;
-                case Category.BusPlanning:
-                    store.commit('setPlaceHolder',"請輸入欲前往的地點")
-                break;
-            }
-            router.push('/InfoDisplay')
-    }
     return {
       //dtat
       itemDisplayData,
@@ -224,7 +194,7 @@ export default defineComponent({
       throughStopRoutes,
       //methods
       selectDirection,
-      setFilterCategory,
+      // setFilterCategory,
       showThroughStopRouteData,
     };
   },

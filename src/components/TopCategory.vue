@@ -1,0 +1,85 @@
+<template>
+     <nav class="selectNavbar navbar-expand-md navbar-light">
+    <a href="#"><img class="d-sm-block d-md-none w-75 ms-3" src="../assets/images/header.png" alt="" ></a>
+    <button class="navbar-toggler ms-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav  w-100 justify-content-around">
+        <li class="nav-item miniSelectBtn col-12 col-md-5 col-lg-2 m-1 ">
+          <a class="nav-link d-flex align-items-center" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
+            <div class="bus1"></div>
+            <p class="category-text text-danger">公車動態</p>
+          </a>
+        </li>
+        <li class="nav-item  miniSelectBtn col-12 col-md-5 col-lg-2 m-1">
+          <botton class="nav-link d-flex align-items-center" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
+            <div class="busStop"></div>
+            <p class="category-text text-primary">站點查詢</p>
+          </botton>
+        </li>
+        <li class="nav-item miniSelectBtn col-12 col-md-5 col-lg-2 m-1">
+          <a class="nav-link d-flex align-items-center " :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
+            <div class="ticket"></div>
+            <p class="category-text text-warning">票價查詢</p>
+          </a>
+        </li>
+        <li class="nav-item miniSelectBtn col-12 col-md-5 col-lg-2 m-1">
+          <a class="nav-link d-flex align-items-center " :class="{btnActive:currentCategory=='BusPlanning'}" @click="setFilterCategory(3)" >
+            <div class="roadPlan"></div>
+            <p class="category-text text-success">路線規劃</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+ 
+</template>
+
+<script lang="ts">
+import {defineComponent , computed} from 'vue'
+import { useStore } from "vuex";
+import { Category } from "@/types/enum";
+import { useRouter } from 'vue-router';
+export default defineComponent({
+    components:{
+
+    },
+    setup(){
+        const store = useStore();
+        const currentCity = computed(() => {
+            return store.state.currentCity;
+        });
+        const router = useRouter()
+        function setFilterCategory(category: Category) {
+            if(currentCity.value!==""){
+                store.commit("setCurrentCategory", category);
+                switch (category) {
+                    case Category.BusRoute:
+                        store.commit('setPlaceHolder',"請輸入公車路線號碼或起訖站名稱")
+                        store.commit("busRoute/getCityBusRoute", currentCity.value);
+                        break;
+                    case Category.StopName:
+                        store.commit('setPlaceHolder',"請輸入要查詢的公車站牌")
+                        store.commit("busStop/getCityBusStop", currentCity.value);
+                        store.commit('busStop/getCityAllRoutesStops',currentCity.value); //也需要所有公車路線下的所有站牌資料
+                        // store.commit("busRoute/getCityBusRoute",currentCity.value); //也需要此縣市所有路線資料
+                        break;
+                    case Category.Ticket:
+                        store.commit('setPlaceHolder',"請輸入要查詢的起訖站名")
+                    break;
+                    case Category.BusPlanning:
+                        store.commit('setPlaceHolder',"請輸入欲前往的地點")
+                    break;
+                }
+                router.push('/InfoDisplay')
+            }
+            
+        }
+        return{
+            //msthods
+            setFilterCategory,
+        }
+    }
+})
+</script>

@@ -7,14 +7,19 @@ export const state = {
   }
   export const mutations = {
     getBusEstimatedTime(state:any,payLoad:any){
-            console.log(`請求${payLoad.City}${payLoad.RouteName.Zh_tw}資料`)
+            console.log(`請求${payLoad.City}${payLoad.RouteID}資料`)
             store.commit('setRequestLoading',true)
             getEstimatedTimeOfArrivalByCityAndRouteName(payLoad.City,payLoad.RouteName.Zh_tw)?.then(res=>{
+              console.log("請求到的路線預估時間資料",res.data)
                 state.busEstimatedTime.go = res.data.filter((i:any)=>{
-                    return (i.StopStatus==3 || i.StopStatus==0) && i.Direction==0
+                    return  i.Direction==0 && i.RouteName.Zh_tw==payLoad.RouteName.Zh_tw
+                }).sort((a:any,b:any)=>{
+                  return Number(a.StopSequence) > Number(b.StopSequence) ? 1:-1
                 })
                 state.busEstimatedTime.back = res.data.filter((i:any)=>{
-                    return (i.StopStatus==3 || i.StopStatus==0) && i.Direction==1
+                    return  i.Direction==1 && i.RouteName.Zh_tw==payLoad.RouteName.Zh_tw
+                }).sort((a:any,b:any)=>{
+                  return Number(a.StopSequence) > Number(b.StopSequence) ? 1:-1
                 })
                 console.log(state.busEstimatedTime)
                 store.commit('setRequestLoading',false)

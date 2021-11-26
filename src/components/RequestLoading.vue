@@ -1,5 +1,5 @@
 <template>
-    <div v-if="!requestLoaded" class="requestLoading w-100 h-100 position-absolute"></div>
+    <div v-if="requestLoaded" class="requestLoading w-100 h-100 position-absolute"></div>
  
 </template>
 

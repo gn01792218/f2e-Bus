@@ -1,6 +1,6 @@
 <template>
- <header class="header d-none d-md-block row">
-    <div class="col-12 col-lg-8 ">
+ <header class="header d-none d-md-block">
+    <div class="header-bg w-75">
         <a href="#"><img  class="w-100" src="../assets/images/header.png" alt="公車任意門"></a>  
     </div>
         
