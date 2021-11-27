@@ -45,7 +45,6 @@
   color:$decoration_color2;
   text-align: center;
 }
-
 .searchResultBar {
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
   box-shadow: $outShadow;
@@ -57,4 +56,7 @@
     font-weight: bolder;
     color:$decoration_color2;
   }
+}
+.originStopGo,.originStopBack,.targetStopGo,.targetStopBack{
+  justify-content: center;
 }

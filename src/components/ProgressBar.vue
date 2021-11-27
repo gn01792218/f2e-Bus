@@ -8,6 +8,7 @@
 <script lang="ts">
 import {defineComponent , computed , ref , watch} from 'vue'
 import { useStore } from "vuex";
+import { Category } from "@/types/enum";
 export default defineComponent({
     components:{
 
@@ -23,9 +24,13 @@ export default defineComponent({
         const busEstimatedTime = computed(()=>{ //取得該路線的公車預估到站資料
             return store.state.busEstimatedTime.busEstimatedTime
         })
+        const currentCategory = computed(() => {
+            return Category[store.state.currentCategory];
+        });
         const updateCountDown = ref(30)
         const timer = ref<any>({})
         watch(selectRouteItemData, () => {
+            console.log(selectRouteItemData.value)
             store.commit("busReallTime/getRouteBusReallTime",selectRouteItemData.value)
             store.commit("busStop/getCityBusStopByRoute", selectRouteItemData.value);
             store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
@@ -45,19 +50,25 @@ export default defineComponent({
             resetTimer()
             timer.value = setInterval(()=>{
                 if(updateCountDown.value<=0){
-                if(selectRouteItemData.value){
-                    store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
-                }
-                updateCountDown.value = 30
+                    if(selectRouteItemData.value && currentCategory.value=='BusRoute'){
+                        store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
+                    }else if(itemDisplayData.value && currentCategory.value=='StopName'){
+                         store.commit('busEstimatedTime/getBusEstimatedTime',itemDisplayData.value.go[0]);
+                    }
+                    updateCountDown.value = 30
                 }
                 updateCountDown.value--
             },1000)
         }
         function updateData(){
             resetTimer()
-            store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
+            if(currentCategory.value=='BusRoute' && selectRouteItemData.value){
+                store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
+            }else if(currentCategory.value=='StopName' && itemDisplayData.value){
+                store.commit('busEstimatedTime/getBusEstimatedTime',itemDisplayData.value.go[0]);
             }
-            function resetTimer(){
+            }
+        function resetTimer(){
             if(timer.value){
                 clearInterval(timer.value)
                 updateCountDown.value = 30

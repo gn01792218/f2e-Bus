@@ -1,5 +1,5 @@
 <template>
-  <ProgressBar />
+  <ProgressBar v-if="currentCategory == 'BusRoute' || currentCategory == 'StopName'"/>
   <TopCategory />
   <div class="infoDisplay-container d-flex">
     <div class="busInfo-container col-12 col-md-6 m-2 m-md-0 p-2">
@@ -20,12 +20,13 @@
           }}</span> ] 站牌的公車路線
           </p>
         </div>
-        <div class="throughStopRoutes-container d-flex">
+        <div class="throughStopRoutes-container d-flex" >
           <a
           class="throughStopRoutes searchResultBar col-2 m-2 p-1"
           v-for="(i, index) in throughStopRoutes"
           :key="index"
           @click="showThroughStopRouteData(i)"
+          
         >
           [{{ i.RouteName.Zh_tw }}]{{ i.DepartureStopNameZh
           }}{{ i.DestinationStopNameZh }}
@@ -35,12 +36,12 @@
       </div>
       <ul class="nav nav-tabs">
         <li
-          v-if="currentCategory == 'BusRoute'"
+          v-if="currentCategory == 'BusRoute' || currentCategory == 'Ticket'"
           class="nav-item col-6 text-center"
           @click="selectDirection(0)"
         >
           <p class="nav-link text-dark" :class="{ btnActive: direction == 0 }"
-            >{{ selectRouteItemData.DepartureStopNameZh }}-{{
+          >{{ selectRouteItemData.DepartureStopNameZh }}-{{
               selectRouteItemData.DestinationStopNameZh
             }}</p
           >
@@ -67,7 +68,7 @@
           >
         </li>
         <li
-          v-if="currentCategory == 'BusRoute'"
+          v-if="currentCategory == 'BusRoute' || currentCategory == 'Ticket'"
           class="nav-item col-6 text-center"
           @click="selectDirection(1)"
         >
@@ -99,7 +100,118 @@
           >
         </li>
       </ul>
-      <div class="busInfo">
+      <div v-if="currentCategory == 'Ticket'" class="fareDropDown d-flex mt-3">
+        <div class="originStopGo dropdown col-6 d-flex p-2" v-if="direction == 0 && itemDisplayData.go">
+          <span>選擇起站</span>
+        <button
+          class="btn btn-secondary dropdown-toggle me-3"
+          type="button"
+          id="dropdownMenu2"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span v-if="originStop!=''">{{ originStop }}</span>
+          <span v-else>起點站</span>
+        </button>
+        <ul
+          class="dropdown-menu filter-dropdown"
+          aria-labelledby="dropdownMenu2"
+        >
+          <li v-for="(i, index) in itemDisplayData.go[0].Stops" :key="index">
+            <button
+              class="dropdown-item"
+              type="button"
+              @click="setOriginStop(i.StopName.Zh_tw)"
+            >
+               <p>[{{ i.StopSequence }}]{{ i.StopName.Zh_tw }}</p>
+            </button>
+          </li>
+        </ul>
+        </div>
+        <div class="originStopBack dropdown col-6 d-flex p-2" v-if="direction == 1 && itemDisplayData.back">
+          <span>選擇起站</span>
+        <button
+          class="btn btn-secondary dropdown-toggle me-3"
+          type="button"
+          id="dropdownMenu2"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span v-if="originStop!=''">{{ originStop }}</span>
+          <span v-else>起點站</span>
+        </button>
+         <ul
+          class="dropdown-menu filter-dropdown"
+          aria-labelledby="dropdownMenu2"
+        >
+          <li v-for="(i, index) in itemDisplayData.back[0].Stops" :key="index">
+            <button
+              class="dropdown-item"
+              type="button"
+              @click="setOriginStop(i.StopName.Zh_tw)"
+            >
+               <p>[{{ i.StopSequence }}]{{ i.StopName.Zh_tw }}</p>
+            </button>
+          </li>
+        </ul>
+        </div>
+        <div class="targetStopGo dropdown col-6 d-flex p-2" v-if="direction == 0 && itemDisplayData.go">
+          <span>選擇迄站</span>
+        <button
+          class="btn btn-secondary dropdown-toggle me-3"
+          type="button"
+          id="dropdownMenu2"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span v-if="targetStop!=''">{{ targetStop }}</span>
+          <span v-else>終點站</span>
+        </button>
+        <ul
+          class="dropdown-menu filter-dropdown"
+          aria-labelledby="dropdownMenu2"
+          
+        >
+          <li v-for="(i, index) in itemDisplayData.go[0].Stops" :key="index">
+            <button
+              class="dropdown-item"
+              type="button"
+              @click="setTargetStop(i.StopName.Zh_tw)"
+            >
+               <p>[{{ i.StopSequence }}]{{ i.StopName.Zh_tw }}</p>
+            </button>
+          </li>
+        </ul>
+        </div>
+        <div class="targetStopBack dropdown col-6 d-flex p-2" v-if="direction == 1 && itemDisplayData.back">
+          <span>選擇迄站</span>
+        <button
+          class="btn btn-secondary dropdown-toggle me-3"
+          type="button"
+          id="dropdownMenu2"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span v-if="targetStop!=''">{{ targetStop }}</span>
+          <span v-else>終點站</span>
+        </button>
+        <ul
+          class="dropdown-menu filter-dropdown"
+          aria-labelledby="dropdownMenu2"
+        >
+          <li v-for="(i, index) in itemDisplayData.back[0].Stops" :key="index">
+            <button
+              class="dropdown-item"
+              type="button"
+              @click="setTargetStop(i.StopName.Zh_tw)"
+            >
+               <p>[{{ i.StopSequence }}]{{ i.StopName.Zh_tw }}</p>
+            </button>
+          </li>
+        </ul>
+        </div>
+      </div>
+      <div class="busInfo" v-if="currentCategory == 'StopName' || currentCategory == 'BusRoute'">
         <div class="go" v-if="direction == 0 && itemDisplayData.go">
           <div class="busInfo-container d-flex">
             <ul>
@@ -163,7 +275,8 @@
       </div>
     </div>
     <div class="openStreeMap col-12 col-md-6 m-2 m-md-0 p-2">
-      <OpenStreeMap />
+      <OpenStreeMap v-if="currentCategory == 'BusRoute' || currentCategory == 'StopName'" />
+      <FareInfo v-if="currentCategory == 'Ticket'"/>
     </div>
   </div>
 </template>
@@ -174,6 +287,7 @@ import TopCategory from "@/components/TopCategory.vue";
 import OpenStreeMap from "@/components/OpenStreeMap.vue";
 import Filter from "@/components/Filter.vue";
 import ProgressBar from "@/components/ProgressBar.vue";
+import FareInfo from '@/components/FareInfo.vue'
 import { useStore } from "vuex";
 import { Category, Direction } from "@/types/enum";
 export default defineComponent({
@@ -182,11 +296,11 @@ export default defineComponent({
     OpenStreeMap,
     Filter,
     ProgressBar,
+    FareInfo,
   },
   setup() {
     onMounted(() => {});
     const store = useStore();
-
     const selectRouteItemData = computed(() => {
       //1.選擇的公車路線
       return store.state.selectRouteItem;
@@ -206,6 +320,9 @@ export default defineComponent({
     const cityAllRouteStops = computed(() => {
       return store.state.busStop.cityAllRoutesStops;
     });
+    const busFaresData = computed(()=>{ //選取的該路線票價資訊
+      return store.state.busFare.routeFare
+    })
     const busEstimatedTime = computed(() => {
       //取得該路線的公車預估到站資料
       return store.state.busEstimatedTime.busEstimatedTime;
@@ -213,7 +330,6 @@ export default defineComponent({
     const currentCity = computed(() => {
       return store.state.currentCity;
     });
-
     const currentCategory = computed(() => {
       return Category[store.state.currentCategory];
     });
@@ -223,6 +339,12 @@ export default defineComponent({
     const direction = computed(() => {
       return store.state.busStop.currentDirection;
     });
+    const targetStop = computed(()=>{
+      return store.state.busFare.selectTargetStop
+    })
+    const originStop = computed(()=>{
+       return store.state.busFare.selectOriginStop
+    })
     const throughStopRoutes = ref({});
     watch(selectStopItemData, () => {
       console.log("得到所選公車站牌資料", selectStopItemData.value);
@@ -268,9 +390,14 @@ export default defineComponent({
       }
     }
     function sendStopPosition(stopData:any){
-      console.log("設置站牌座標",stopData,[stopData.StopPosition.PositionLon,stopData.StopPosition.PositionLat])
       store.commit('busStop/setcurrentCenterStopPosition',[stopData.StopPosition.PositionLon,stopData.StopPosition.PositionLat]) 
       store.commit('openStreeMap/setMapZoom',20)
+    }
+    function setOriginStop(stopName:string){
+      store.commit('busFare/setOriginStop',stopName)
+    }
+    function setTargetStop(stopName:string){
+      store.commit('busFare/setTargetStop',stopName)
     }
     return {
       //dtat
@@ -282,10 +409,14 @@ export default defineComponent({
       selectStopItemData,
       currentCityChineseName,
       throughStopRoutes,
+      originStop,
+      targetStop,
       //methods
       selectDirection,
       showThroughStopRouteData,
       sendStopPosition,
+      setOriginStop,
+      setTargetStop,
     };
   },
 });

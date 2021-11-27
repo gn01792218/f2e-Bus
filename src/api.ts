@@ -4,6 +4,7 @@ import req from './http'
 const stopProperty ="$select=StopName%2CStopUID&"
 const routeProperty = "$select=RouteID%2CRouteName%2COperators%2CDepartureStopNameZh%2CDestinationStopNameZh&"
 const busReallTimeProperty = '$select=RouteName%2CPlateNumb%2CBusPosition%2CDirection%2CDutyStatus&'
+const busFareProperty = '$select=RouteName%2CODFares&'
 //公車動態API
 //取得指定[縣市]的公車動態定時資料(A1)[逐筆更新]
 // export const getReallTimeBusByCity = (City:string) => {
@@ -59,5 +60,5 @@ export const getRouteFareByCity = (City:string) => {
     return req('get',`/v2/Bus/RouteFare/City/${City}?$format=JSON`)
 }
 export const getRouteFareByCityAndRouteName = (City:string,RouteName:number) => {  //注意，並非所有縣市都有!
-    return req('get',`/v2/Bus/RouteFare/City/${City}/${RouteName}?$format=JSON`)
+    return req('get',`/v2/Bus/RouteFare/City/${City}/${RouteName}?${busFareProperty}$format=JSON`)
 }

@@ -69,7 +69,9 @@ export default defineComponent({
                         store.commit('busStop/getCityAllRoutesStops',currentCity.value); //也需要所有公車路線下的所有站牌資料
                         break;
                     case Category.Ticket:
-                        store.commit('setPlaceHolder',"請輸入要查詢的起訖站名")
+                      console.log("請求縣市所有公車路線資料")
+                        store.commit('setPlaceHolder',"請輸入欲查詢的公車路線號碼")
+                        store.commit("busRoute/getCityBusRoute", currentCity.value);
                     break;
                     case Category.BusPlanning:
                         store.commit('setPlaceHolder',"請輸入欲前往的地點")

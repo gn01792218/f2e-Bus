@@ -325,6 +325,12 @@ ul li {
   color: #0C69C0;
 }
 
+.originStopGo, .originStopBack, .targetStopGo, .targetStopBack {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .footer {
   position: fixed;
   z-index: 1;

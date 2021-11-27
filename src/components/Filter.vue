@@ -1,11 +1,7 @@
 <template>
   <div class="filter">
     <section class="filter-title w-100">
-      <!-- <div>
-        <p>選擇篩選方式</p>
-        <p>{{ currentCategory }}</p>
-      </div> -->
-        <div class="dropdown d-flex">
+      <div class="dropdown d-flex">
         <button
           class="btn btn-secondary dropdown-toggle me-3"
           type="button"
@@ -59,6 +55,15 @@
               @click="sendCityStopData(data)"
               >{{ data.StopName.Zh_tw }}
             </a>
+             <!-- 查詢車票時，先列出該縣市所有路線供搜尋 -->
+            <a
+              class="dropdown-item"
+              v-if="currentCategory == 'Ticket'"
+              @click="sendCityRouteDataForFare(data)"
+              >[{{ data.RouteName.Zh_tw }}]{{ data.DepartureStopNameZh }}-{{
+                data.DestinationStopNameZh
+              }}</a
+            >
           </li>
         </ul>
       </div>
@@ -92,10 +97,12 @@ export default defineComponent({
     });
     const vuexData = computed(() => {
       switch (currentCategory.value) {
+        case Category[Category.Ticket]:
         case Category[Category.BusRoute]:
           return store.state.busRoute.cityBusRoute[currentCity.value];
         case Category[Category.StopName]:
           return store.state.busStop.cityBusStop[currentCity.value];
+        
       }
     });
     const filterData = computed(() => {
@@ -115,6 +122,14 @@ export default defineComponent({
               return i.StopName.Zh_tw.includes(keyWord.value);
             });
             return filterData;
+          case Category[Category.Ticket]:
+            return vuexData.value.filter((i: any) => {
+              return (
+                i.RouteName.Zh_tw.includes(keyWord.value) ||
+                i.DepartureStopNameZh.includes(keyWord.value) ||
+                i.DestinationStopNameZh.includes(keyWord.value)
+              );
+            });
         }
       }
     });
@@ -124,6 +139,7 @@ export default defineComponent({
     function selectCity(cityName: string) {
       store.commit("setCurrentCity", cityName);
       switch (currentCategory.value) {
+        case Category[Category.Ticket]:
         case Category[Category.BusRoute]:
           console.log("執行公車路線搜尋");
           store.commit("busRoute/getCityBusRoute", cityName);
@@ -144,6 +160,11 @@ export default defineComponent({
       console.log("傳送當前選擇的站牌資料",stopItemData)
       store.commit('setSelectStopItem',stopItemData)
     }
+    function sendCityRouteDataForFare(routeItemData:any){
+      console.log("傳送當前選擇的路線資料",routeItemData)
+      store.commit('busFare/getRouteFareBy',routeItemData)
+      store.commit('setSelectRouteItem',routeItemData) //為了列出該路線的所有站牌做準備
+    }
     return {
       //data
       keyWord,
@@ -157,6 +178,7 @@ export default defineComponent({
       selectCity,
       sendCityRouteData,
       sendCityStopData,
+      sendCityRouteDataForFare,
     };
   },
 });
