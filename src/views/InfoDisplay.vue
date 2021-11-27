@@ -1,4 +1,5 @@
 <template>
+  <ProgressBar/>
   <TopCategory/>
   <Filter/>
   <h2>查詢:{{ currentCategory }}</h2>
@@ -40,8 +41,9 @@
             <li
               v-for="(i,index) in busEstimatedTime.go" :key="index"
             >
-            <p v-if="i.EstimateTime">預估{{i.EstimateTime/60}}分後到站</p>
-            <p v-if="i.StopStatus==1">尚未發車</p>
+            <p v-if="i.EstimateTime && i.EstimateTime>180">{{parseInt(i.EstimateTime/60)}}分後到站</p>
+            <p v-if="i.EstimateTime<=180">即將進站</p>
+            <p v-if="i.StopStatus==1">{{(i.NextBusTime).split("T")[1].split(":")[0]}}:{{(i.NextBusTime).split("T")[1].split(":")[1]}}</p>
             <p v-if="i.StopStatus==2">交管不停靠</p>
             <p v-if="i.StopStatus==3">末班車已駛離</p>
             <p v-if="i.StopStatus==4">本日未營運</p>
@@ -64,8 +66,9 @@
             <li
               v-for="(i,index) in busEstimatedTime.back" :key="index"
             >
-            <p v-if="i.EstimateTime">預估{{i.EstimateTime/60}}分後到站</p>
-            <p v-if="i.StopStatus==1">尚未發車</p>
+            <p v-if="i.EstimateTime && i.EstimateTime>180">{{parseInt(i.EstimateTime/60)}}分後到站</p>
+            <p v-if="i.EstimateTime<=180">即將進站</p>
+            <p v-if="i.StopStatus==1">{{(i.NextBusTime).split("T")[1].split(":")[0]}}:{{(i.NextBusTime).split("T")[1].split(":")[1]}}</p>
             <p v-if="i.StopStatus==2">交管不停靠</p>
             <p v-if="i.StopStatus==3">末班車已駛離</p>
             <p v-if="i.StopStatus==4">本日未營運</p>
@@ -80,6 +83,7 @@
       <OpenStreeMap />
     </div>
   </div>
+  
 </template>
 
 <script lang="ts">
@@ -87,6 +91,7 @@ import { computed, defineComponent, onMounted, ref, watch } from "vue";
 import TopCategory from '@/components/TopCategory.vue'
 import OpenStreeMap from "@/components/OpenStreeMap.vue";
 import Filter from '@/components/Filter.vue'
+import ProgressBar from '@/components/ProgressBar.vue'
 import { useStore } from "vuex";
 import { Category , Direction} from "@/types/enum";
 export default defineComponent({
@@ -94,6 +99,7 @@ export default defineComponent({
     TopCategory,
     OpenStreeMap,
     Filter,
+    ProgressBar,
   },
   setup() {
     onMounted(() => {
@@ -132,6 +138,30 @@ export default defineComponent({
       return store.state.busStop.currentDirection
     });
     const throughStopRoutes = ref({})
+    // const updateCountDown = ref(30)
+    // const timer = ref<any>({})
+    // function updatecountDownFun(){
+    //   resetTimer()
+    //   timer.value = setInterval(()=>{
+    //     if(updateCountDown.value<=0){
+    //       if(selectRouteItemData.value){
+    //         store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
+    //       }
+    //       updateCountDown.value = 30
+    //     }
+    //     updateCountDown.value--
+    //   },1000)
+    // }
+    // function updateData(){
+    //   resetTimer()
+    //   store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
+    // }
+    // function resetTimer(){
+    //   if(timer.value){
+    //     clearInterval(timer.value)
+    //     updateCountDown.value = 30
+    //   }
+    // }
     watch(selectRouteItemData, () => {
       store.commit("busStop/getCityBusStopByRoute", selectRouteItemData.value);
       store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
@@ -146,9 +176,10 @@ export default defineComponent({
     watch(itemDisplayData.value, () => {
       console.log("此路線的所有站牌資料",itemDisplayData.value)
     });
-    watch(busEstimatedTime.value,()=>{
-      console.log("預估時間資料",busEstimatedTime.value)
-    })
+    // watch(busEstimatedTime.value,()=>{
+    //   updatecountDownFun()
+    //   console.log("預估時間資料",busEstimatedTime.value)
+    // })
     function showThroughStopRouteData(routeData:any){
       store.commit("busStop/getCityBusStopByRoute", routeData);
     }
@@ -194,7 +225,6 @@ export default defineComponent({
       throughStopRoutes,
       //methods
       selectDirection,
-      // setFilterCategory,
       showThroughStopRouteData,
     };
   },

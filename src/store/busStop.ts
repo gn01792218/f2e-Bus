@@ -34,10 +34,10 @@ export const mutations = {
       getStopByCityAndRouteName(payLoad.City,payLoad.RouteName.Zh_tw)?.then((res:any)=>{
         store.commit('setRequestLoading',true)
         state.cityBusStopByRouteName.go = res.data.filter((i:any)=>{
-          return i.Direction==0
+          return i.Direction==0 && i.RouteName.Zh_tw==payLoad.RouteName.Zh_tw
         })
         state.cityBusStopByRouteName.back = res.data.filter((i:any)=>{
-          return i.Direction==1
+          return i.Direction==1 && i.RouteName.Zh_tw==payLoad.RouteName.Zh_tw
         })
         store.commit('setRequestLoading',false)
       })
