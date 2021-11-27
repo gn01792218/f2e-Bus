@@ -3,6 +3,8 @@ import { createStore } from 'vuex'
 import busRoute from './busRoute'
 import busStop from './busStop'
 import busEstimatedTime from './busEstimatedTime'
+import busReallTime from './busReallTime'
+import busFare from './busFare'
 export default createStore({
   state: {
     placeHolder:"",
@@ -222,5 +224,7 @@ export default createStore({
     busRoute,
     busStop,
     busEstimatedTime,
+    busReallTime,
+    busFare,
   }
 })

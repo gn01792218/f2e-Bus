@@ -138,48 +138,14 @@ export default defineComponent({
       return store.state.busStop.currentDirection
     });
     const throughStopRoutes = ref({})
-    // const updateCountDown = ref(30)
-    // const timer = ref<any>({})
-    // function updatecountDownFun(){
-    //   resetTimer()
-    //   timer.value = setInterval(()=>{
-    //     if(updateCountDown.value<=0){
-    //       if(selectRouteItemData.value){
-    //         store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
-    //       }
-    //       updateCountDown.value = 30
-    //     }
-    //     updateCountDown.value--
-    //   },1000)
-    // }
-    // function updateData(){
-    //   resetTimer()
-    //   store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
-    // }
-    // function resetTimer(){
-    //   if(timer.value){
-    //     clearInterval(timer.value)
-    //     updateCountDown.value = 30
-    //   }
-    // }
     watch(selectRouteItemData, () => {
       store.commit("busStop/getCityBusStopByRoute", selectRouteItemData.value);
       store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
+      store.commit('busReallTime/getRouteBusReallTime',selectRouteItemData.value)
     });
     watch(selectStopItemData,() => {
-      console.log(selectStopItemData.value)
-      //偵測到站牌名稱資料後，取此站牌名稱的StopUID
-      //先取得縣市的所有公車路線名稱後，使用stop
-      console.log("站牌資料改變")
       getRoutesByStop()
     })
-    watch(itemDisplayData.value, () => {
-      console.log("此路線的所有站牌資料",itemDisplayData.value)
-    });
-    // watch(busEstimatedTime.value,()=>{
-    //   updatecountDownFun()
-    //   console.log("預估時間資料",busEstimatedTime.value)
-    // })
     function showThroughStopRouteData(routeData:any){
       store.commit("busStop/getCityBusStopByRoute", routeData);
     }
