@@ -1,12 +1,15 @@
 .sv {
-  height: 350px;
+  width:500px;
+  height: 450px;
   // background-color: yellow;
   fill: #a8cdd7;
   stroke: white;
+  transform: scale(1.5);
 }
 .island {
-  top: -5%;
-  left: -50%;
+  top: 5%;
+  left: -40%;
+  z-index: 1;
 }
 .active {
   fill: red;

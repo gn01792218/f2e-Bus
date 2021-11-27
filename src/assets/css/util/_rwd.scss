@@ -1,0 +1,20 @@
+@media screen and (max-width: 1280px) {
+}
+@media screen and (max-width: 1024px) {
+    .neumorphism{
+        font-size:$font-midium-2;
+    }
+    .SquareBtn{
+        p{
+            font-size: $font-midium;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .footer{
+        position: static;
+    }
+    .categoryService{
+        margin-top: 10px;
+    }
+}

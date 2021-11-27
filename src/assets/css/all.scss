@@ -7,12 +7,17 @@
 @import './util/util';
 
 //view
+@import './view/home';
 @import './view/header';
 @import './view/InfoDisPlay';
 @import './view/footer';
 //compoment
+@import './compnent/openStreeMap';
 @import './compnent/loading';
 @import './compnent/botton';
 @import './compnent/categoryBar';
 @import './compnent/taiwanMap';
 @import './compnent/filter';
+
+//rwd
+@import './util/rwd';

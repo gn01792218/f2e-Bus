@@ -1,6 +1,5 @@
 <template>
   <div id="map" class="mapContainer position-relative mb-3 col-12 col-md-6">
-    <h3 class="text-center">請先選擇城市</h3>
     <div class="island position-absolute">
       <div class="langjon text-center" @click="toCity('LienchiangCounty')">
         連江

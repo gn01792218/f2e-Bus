@@ -1,5 +1,8 @@
 .categoryBar {
-  justify-content: space-around;
+  justify-content: space-between;
+}
+.category-container{
+  justify-content: center;
 }
 .orderTab {
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
@@ -8,4 +11,7 @@
 }
 .category-text{
   margin-top: 1rem;
+}
+.category-ul{
+  flex-wrap: wrap;
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="filter">
-    <section class="filter-title w-100 m-2">
+    <section class="filter-title w-100">
       <!-- <div>
         <p>選擇篩選方式</p>
         <p>{{ currentCategory }}</p>
@@ -131,6 +131,8 @@ export default defineComponent({
         case Category[Category.StopName]:
           console.log("執行公車站牌搜尋");
           store.commit("busStop/getCityBusStop", cityName);
+          store.commit("busRoute/getCityBusRoute",cityName); //也需要此縣市所有路線資料
+          store.commit('busStop/getCityAllRoutesStops',cityName); //也需要所有公車路線下的所有站牌資料
           break;
       }
     }
@@ -139,7 +141,7 @@ export default defineComponent({
       store.commit('setSelectRouteItem',routeItemData)
     }
     function sendCityStopData(stopItemData:any){
-      console.log("傳送當前選擇的資料",stopItemData)
+      console.log("傳送當前選擇的站牌資料",stopItemData)
       store.commit('setSelectStopItem',stopItemData)
     }
     return {

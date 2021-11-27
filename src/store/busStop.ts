@@ -40,6 +40,7 @@ export const mutations = {
           return i.Direction==1 && i.RouteName.Zh_tw==payLoad.RouteName.Zh_tw
         })
         store.commit('setRequestLoading',false)
+        console.log(state.cityBusStopByRouteName)
       })
   },
   getCityAllRoutesStops(state:any,cityName:string){

@@ -2,20 +2,12 @@ body {
   background-color: #e3edf7;
 }
 
-.main {
-  margin-bottom: 5%;
-}
-
 ul {
   list-style: none;
 }
 
 ul li {
   padding: 0;
-}
-
-.home {
-  height: 70vh;
 }
 
 .nav-item {
@@ -25,64 +17,64 @@ ul li {
 .kin:hover {
   cursor: pointer;
   background-image: url("../images/island.png");
-  width: 63.8px;
-  height: 37.8px;
+  width: 95.7px;
+  height: 56.7px;
   background-position: 0px 0px;
-  background-size: 382.8px auto;
+  background-size: 574.2px auto;
 }
 
 .kin {
   cursor: pointer;
   background-image: url("../images/island.png");
-  width: 63.8px;
-  height: 37.8px;
-  background-position: -319px 0px;
-  background-size: 382.8px auto;
+  width: 95.7px;
+  height: 56.7px;
+  background-position: -478.5px 0px;
+  background-size: 574.2px auto;
 }
 
 .ponho:hover {
   cursor: pointer;
   background-image: url("../images/island.png");
-  width: 63.8px;
-  height: 37.8px;
-  background-position: -63.8px 0px;
-  background-size: 382.8px auto;
+  width: 95.7px;
+  height: 56.7px;
+  background-position: -95.7px 0px;
+  background-size: 574.2px auto;
 }
 
 .ponho {
   cursor: pointer;
   background-image: url("../images/island.png");
-  width: 63.8px;
-  height: 37.8px;
-  background-position: -191.4px 0px;
-  background-size: 382.8px auto;
+  width: 95.7px;
+  height: 56.7px;
+  background-position: -287.1px 0px;
+  background-size: 574.2px auto;
 }
 
 .langjon {
   cursor: pointer;
   background-image: url("../images/island.png");
-  width: 63.8px;
-  height: 37.8px;
-  background-position: -255.2px 0px;
-  background-size: 382.8px auto;
+  width: 95.7px;
+  height: 56.7px;
+  background-position: -382.8px 0px;
+  background-size: 574.2px auto;
 }
 
 .langjon:hover {
   cursor: pointer;
   background-image: url("../images/island.png");
-  width: 63.8px;
-  height: 37.8px;
-  background-position: -127.6px 0px;
-  background-size: 382.8px auto;
+  width: 95.7px;
+  height: 56.7px;
+  background-position: -191.4px 0px;
+  background-size: 574.2px auto;
 }
 
 .bus1 {
   cursor: pointer;
   background-image: url("../images/icon.png");
-  width: 70px;
-  height: 70px;
+  width: 56px;
+  height: 56px;
   background-position: 0px 0px;
-  background-size: 1050px auto;
+  background-size: 840px auto;
 }
 
 .step1 {
@@ -106,19 +98,19 @@ ul li {
 .roadPlan {
   cursor: pointer;
   background-image: url("../images/icon.png");
-  width: 70px;
-  height: 70px;
-  background-position: -210px 0px;
-  background-size: 1050px auto;
+  width: 56px;
+  height: 56px;
+  background-position: -168px 0px;
+  background-size: 840px auto;
 }
 
 .busStop {
   cursor: pointer;
   background-image: url("../images/icon.png");
-  width: 70px;
-  height: 70px;
-  background-position: -350px 0px;
-  background-size: 1050px auto;
+  width: 56px;
+  height: 56px;
+  background-position: -280px 0px;
+  background-size: 840px auto;
 }
 
 .help {
@@ -151,10 +143,10 @@ ul li {
 .ticket {
   cursor: pointer;
   background-image: url("../images/icon.png");
-  width: 70px;
-  height: 70px;
-  background-position: -770px 0px;
-  background-size: 1050px auto;
+  width: 56px;
+  height: 56px;
+  background-position: -616px 0px;
+  background-size: 840px auto;
 }
 
 .step2 {
@@ -169,46 +161,46 @@ ul li {
 .figma {
   cursor: pointer;
   background-image: url("../images/1234567.png");
-  width: 51px;
-  height: 51px;
+  width: 34px;
+  height: 34px;
   background-position: 0px 0px;
-  background-size: 255px auto;
+  background-size: 170px auto;
 }
 
 .boostrap {
   cursor: pointer;
   background-image: url("../images/1234567.png");
-  width: 59.5px;
-  height: 59.5px;
-  background-position: -59.5px 0px;
-  background-size: 297.5px auto;
+  width: 34px;
+  height: 34px;
+  background-position: -34px 0px;
+  background-size: 170px auto;
 }
 
 .icons8 {
   cursor: pointer;
   background-image: url("../images/1234567.png");
-  width: 51px;
-  height: 51px;
-  background-position: -102px 0px;
-  background-size: 255px auto;
+  width: 34px;
+  height: 34px;
+  background-position: -68px 0px;
+  background-size: 170px auto;
 }
 
 .vue {
   cursor: pointer;
   background-image: url("../images/1234567.png");
-  width: 51px;
-  height: 51px;
-  background-position: -153px 0px;
-  background-size: 255px auto;
+  width: 34px;
+  height: 34px;
+  background-position: -102px 0px;
+  background-size: 170px auto;
 }
 
 .ts {
   cursor: pointer;
   background-image: url("../images/1234567.png");
-  width: 51px;
-  height: 51px;
-  background-position: -204px 0px;
-  background-size: 255px auto;
+  width: 34px;
+  height: 34px;
+  background-position: -136px 0px;
+  background-size: 170px auto;
 }
 
 .fade-left-enter-active,
@@ -228,16 +220,49 @@ ul li {
   opacity: 0;
 }
 
+.categoryService, .selectCity {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.cityList p {
+  margin-top: 1rem;
+  text-align: center;
+}
+
 .header-bg {
   margin-left: auto;
   margin-right: auto;
 }
 
+.infoDisplay-container {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
 .busInfo {
-  width: 50%;
-  background-color: burlywood;
-  height: 80vh;
+  width: 100%;
+  height: 39vh;
   overflow: auto;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
+  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
+  -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+          box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+  border-radius: 7px;
+  font-weight: bolder;
+}
+
+.busInfo-li:hover {
+  cursor: pointer;
+  background: linear-gradient(160deg, #50caff 0%, #0478ff 100%);
+  -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+          box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+  border-radius: 7px;
 }
 
 .busInfo-container {
@@ -246,19 +271,39 @@ ul li {
           justify-content: space-between;
 }
 
-.openStreeMap {
-  width: 50%;
-  height: 80vh;
-}
-
 .busInfo-li {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
 
+.busEstimatedTime-li p {
+  text-align: center;
+}
+
+.longTime {
+  background-color: #f2f1ed;
+}
+
+.nearTime {
+  background-color: #f39800;
+}
+
+.alertTime {
+  background-color: #e60013;
+}
+
+.throughStopRoutes-container {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
 .throughStopRoutes {
   cursor: pointer;
+  color: #0C69C0;
+  text-align: center;
 }
 
 .searchResultBar {
@@ -267,9 +312,23 @@ ul li {
   -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
           box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
   border-radius: 7px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.searchResultBar p {
+  margin-top: 1rem;
+  font-weight: bolder;
+  color: #0C69C0;
 }
 
 .footer {
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
   text-align: center;
   background-color: #0a0a0a;
   margin: 0;
@@ -277,9 +336,14 @@ ul li {
 }
 
 .footer img {
-  margin-top: -7%;
+  height: 100px;
+  margin-top: -5%;
   -webkit-filter: drop-shadow(1px 1px 1px rgba(5, 5, 5, 0.8)) drop-shadow(-1px -1px 1px white);
           filter: drop-shadow(1px 1px 1px rgba(5, 5, 5, 0.8)) drop-shadow(-1px -1px 1px white);
+}
+
+.openStreeMap {
+  height: 60vh;
 }
 
 .requestLoading {
@@ -295,6 +359,17 @@ ul li {
           box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
   border-radius: 7px;
   border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: bolder;
 }
 
 .SquareBtn div {
@@ -314,16 +389,39 @@ ul li {
 }
 
 .btnActive {
-  background: linear-gradient(160deg, #50caff 0%, #0478ff 100%);
-  color: black;
-  -webkit-filter: drop-shadow(2px 2px 4px rgba(5, 5, 5, 0.3)) drop-shadow(-1px -1px 2px white);
-          filter: drop-shadow(2px 2px 4px rgba(5, 5, 5, 0.3)) drop-shadow(-1px -1px 2px white);
+  width: 100%;
+  background: linear-gradient(160deg, #50caff 0%, #0478ff 100%) !important;
+  -webkit-filter: drop-shadow(2px 2px 4px rgba(5, 5, 5, 0.3)) drop-shadow(-1px -1px 2px white) !important;
+          filter: drop-shadow(2px 2px 4px rgba(5, 5, 5, 0.3)) drop-shadow(-1px -1px 2px white) !important;
   border-radius: 7px;
   -webkit-box-shadow: inset -2.5px -2.5px 6px #ffffff, inset 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 5px #ffffff;
           box-shadow: inset -2.5px -2.5px 6px #ffffff, inset 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 5px #ffffff;
 }
 
+.btnActive p {
+  color: black !important;
+}
+
+.citybtnActive {
+  background: linear-gradient(160deg, #50caff 0%, #0478ff 100%);
+  -webkit-filter: drop-shadow(2px 2px 4px rgba(5, 5, 5, 0.3)) drop-shadow(-1px -1px 2px white) !important;
+          filter: drop-shadow(2px 2px 4px rgba(5, 5, 5, 0.3)) drop-shadow(-1px -1px 2px white) !important;
+  border-radius: 7px;
+  -webkit-box-shadow: inset -2.5px -2.5px 6px #ffffff, inset 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 5px #ffffff;
+          box-shadow: inset -2.5px -2.5px 6px #ffffff, inset 2px 2px 10px rgba(0, 0, 0, 0.5), -2px -2px 5px #ffffff;
+}
+
+.citybtnActive p {
+  color: black !important;
+}
+
 .miniSelectBtn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
   -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
@@ -347,9 +445,32 @@ ul li {
           box-shadow: inset -4px -4px 9px rgba(255, 255, 255, 0.88), inset 4px 4px 14px #c1d5ee;
 }
 
+.neumorphism {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-image: -webkit-gradient(linear, left top, right bottom, from(#d8e6f5), to(#edf3f8));
+  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
+  -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+          box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+  border-radius: 7px;
+  color: #0C69C0;
+  font-weight: bolder;
+}
+
 .categoryBar {
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.category-container {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .orderTab {
@@ -364,15 +485,24 @@ ul li {
   margin-top: 1rem;
 }
 
+.category-ul {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
 .sv {
-  height: 350px;
+  width: 500px;
+  height: 450px;
   fill: #a8cdd7;
   stroke: white;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .island {
-  top: -5%;
-  left: -50%;
+  top: 5%;
+  left: -40%;
+  z-index: 1;
 }
 
 .active {
@@ -479,5 +609,23 @@ ul li {
   border-radius: 7px;
   -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
           box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
+}
+
+@media screen and (max-width: 1024px) {
+  .neumorphism {
+    font-size: 1.3rem;
+  }
+  .SquareBtn p {
+    font-size: 1.6rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    position: static;
+  }
+  .categoryService {
+    margin-top: 10px;
+  }
 }
 /*# sourceMappingURL=all.css.map */

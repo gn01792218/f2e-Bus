@@ -17,15 +17,25 @@ export default defineComponent({
         const selectRouteItemData = computed(() => {  //1.選擇的公車路線
             return store.state.selectRouteItem;
         });
+        const itemDisplayData = computed(() => {  //取得該路線所有公車站牌資料
+            return store.state.busStop.cityBusStopByRouteName;
+        });
         const busEstimatedTime = computed(()=>{ //取得該路線的公車預估到站資料
             return store.state.busEstimatedTime.busEstimatedTime
         })
         const updateCountDown = ref(30)
         const timer = ref<any>({})
         watch(selectRouteItemData, () => {
+            store.commit("busReallTime/getRouteBusReallTime",selectRouteItemData.value)
             store.commit("busStop/getCityBusStopByRoute", selectRouteItemData.value);
             store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
         });
+         watch(itemDisplayData.value,()=>{
+            console.log("選擇的公車路線",itemDisplayData.value)
+            store.commit("busReallTime/getRouteBusReallTime",itemDisplayData.value.go[0])
+            // store.commit("busStop/getCityBusStopByRoute", itemDisplayData.value.go[0]);
+            store.commit('busEstimatedTime/getBusEstimatedTime',itemDisplayData.value.go[0]);
+        })
         watch(busEstimatedTime.value,()=>{
             updatecountDownFun()
             console.log("預估時間資料",busEstimatedTime.value)

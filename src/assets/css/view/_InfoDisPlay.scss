@@ -1,26 +1,60 @@
-.busInfo {
-  width: 50%;
-  background-color: burlywood;
-  height: 80vh;
+.infoDisplay-container{
+  flex-wrap: wrap;
+}
+.busInfo{
+  width: 100%;
+  height: 39vh;
   overflow: auto;
+  background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
+  box-shadow: $outShadow;
+  border-radius: $borderRadius;
+  font-weight: bolder;
+}
+.busInfo-li:hover{
+  cursor: pointer;;
+  background: linear-gradient(160deg, #50caff 0%, #0478ff 100%);
+  box-shadow: $outShadow;
+  border-radius: $borderRadius;
 }
 .busInfo-container{
   justify-content: space-between;
 }
-.openStreeMap {
-  width: 50%;
-  height: 80vh;
-}
 .busInfo-li {
   justify-content: space-between;
 }
-
+.busEstimatedTime-li{
+  p{
+    text-align: center;
+  } 
+}
+.longTime{
+  background-color: $main_color;
+}
+.nearTime{
+  background-color:$secondary_color;
+}
+.alertTime{
+  background-color:$decoration_color;
+}
+.throughStopRoutes-container{
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
 .throughStopRoutes {
   cursor: pointer;
+  color:$decoration_color2;
+  text-align: center;
 }
 
 .searchResultBar {
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);
   box-shadow: $outShadow;
   border-radius: $borderRadius;
+  justify-content: space-around;
+  align-items: center;
+  p{
+    margin-top: 1rem;
+    font-weight: bolder;
+    color:$decoration_color2;
+  }
 }
