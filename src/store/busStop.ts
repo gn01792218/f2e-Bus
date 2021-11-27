@@ -6,7 +6,7 @@ export const state = {
   cityBusStopByRouteName: {} , //某公車路線的所有站牌資料
   currentDirection:Direction.go, //選擇的方向
   cityAllRoutesStops:{},//所有公車路線，的站牌資料
-  
+  currentCenterStopPosition:{},
 };
 export const actions = {
 
@@ -58,6 +58,9 @@ export const mutations = {
   },
   setCurrentDirection(state:any,dirNum:Direction){
     state.currentDirection = dirNum
+  },
+  setcurrentCenterStopPosition(state:any,payLoad:any){
+    state.currentCenterStopPosition = payLoad
   }
 };
 export const getters = {

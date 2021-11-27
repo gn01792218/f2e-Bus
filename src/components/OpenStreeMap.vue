@@ -91,14 +91,12 @@ import { Category, Direction } from "@/types/enum";
 export default defineComponent({
   setup(){
         const center = computed(()=>{
-          if(itemDisplayData.value.go && direction.value == Direction.go){
-            return [itemDisplayData.value.go[0].Stops[0].StopPosition.PositionLon,itemDisplayData.value.go[0].Stops[0].StopPosition.PositionLat]
-          }else if(itemDisplayData.value.back && direction.value == Direction.back){
-            return [itemDisplayData.value.back[0].Stops[0].StopPosition.PositionLon,itemDisplayData.value.back[0].Stops[0].StopPosition.PositionLat]
-          }
+          return store.state.busStop.currentCenterStopPosition
         })
         const projection = ref('EPSG:4326')
-        const zoom = ref(14)
+        const zoom = computed(()=>{
+          return store.state.openStreeMap.zoomIn
+        })
         const rotation = ref(0)
         const radius = ref(10)
         const strokeWidth = ref(5)
@@ -106,40 +104,47 @@ export default defineComponent({
         const fillColor = ref('white')
         const fullscreencontrol= ref(true)
         const busIcon = require('../assets/images/bus.png')
-    //vuex
-    const store = useStore()
-    const itemDisplayData = computed(() => {
-      return store.state.busStop.cityBusStopByRouteName;
-    });
-    const currentCategory = computed(() => {
-      return Category[store.state.currentCategory];
-    });
-    const direction = computed(()=>{
-      return store.state.busStop.currentDirection
-    });
-    const busReallTime = computed(()=>{
-      return store.state.busReallTime.routeBusReallTime
-    })
-    watch(busReallTime.value,()=>{
-      console.log("公車動態資料",busReallTime.value)
-    })
-    return{
-      //data
-      itemDisplayData,
-      currentCategory,
-      center,
-      projection,
-      zoom,
-      rotation,
-      radius,
-      strokeWidth,
-      strokeColor,
-      fillColor,
-      direction,
-      fullscreencontrol,
-      busReallTime,
-      busIcon,
-    }
+        //vuex
+        const store = useStore()
+        const itemDisplayData = computed(() => {
+          return store.state.busStop.cityBusStopByRouteName;
+        });
+        const currentCategory = computed(() => {
+          return Category[store.state.currentCategory];
+        });
+        const direction = computed(()=>{
+          return store.state.busStop.currentDirection
+        });
+        const busReallTime = computed(()=>{
+          return store.state.busReallTime.routeBusReallTime
+        })
+        watch(busReallTime.value,()=>{
+          console.log("公車動態資料",busReallTime.value)
+        })
+        watch(itemDisplayData.value,()=>{  //設置地圖預設中心為路線的第一個站牌
+          if(itemDisplayData.value.go && direction.value == Direction.go){
+                store.commit('busStop/setcurrentCenterStopPosition',[itemDisplayData.value.go[0].Stops[0].StopPosition.PositionLon,itemDisplayData.value.go[0].Stops[0].StopPosition.PositionLat]) 
+              }else if(itemDisplayData.value.back && direction.value == Direction.back){
+                store.commit('busStop/setcurrentCenterStopPosition', [itemDisplayData.value.back[0].Stops[0].StopPosition.PositionLon,itemDisplayData.value.back[0].Stops[0].StopPosition.PositionLat])
+              }
+        })
+        return{
+          //data
+          itemDisplayData,
+          currentCategory,
+          center,
+          projection,
+          zoom,
+          rotation,
+          radius,
+          strokeWidth,
+          strokeColor,
+          fillColor,
+          direction,
+          fullscreencontrol,
+          busReallTime,
+          busIcon,
+        }
   }
 });
 </script>

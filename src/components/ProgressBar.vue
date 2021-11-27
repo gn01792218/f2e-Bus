@@ -29,12 +29,13 @@ export default defineComponent({
             store.commit("busReallTime/getRouteBusReallTime",selectRouteItemData.value)
             store.commit("busStop/getCityBusStopByRoute", selectRouteItemData.value);
             store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
+            store.commit('openStreeMap/setMapZoom',14)
         });
          watch(itemDisplayData.value,()=>{
             console.log("選擇的公車路線",itemDisplayData.value)
             store.commit("busReallTime/getRouteBusReallTime",itemDisplayData.value.go[0])
-            // store.commit("busStop/getCityBusStopByRoute", itemDisplayData.value.go[0]);
             store.commit('busEstimatedTime/getBusEstimatedTime',itemDisplayData.value.go[0]);
+            store.commit('openStreeMap/setMapZoom',14)
         })
         watch(busEstimatedTime.value,()=>{
             updatecountDownFun()

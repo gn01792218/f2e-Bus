@@ -5,6 +5,7 @@ import busStop from './busStop'
 import busEstimatedTime from './busEstimatedTime'
 import busReallTime from './busReallTime'
 import busFare from './busFare'
+import openStreeMap from './openStreeMap'
 export default createStore({
   state: {
     placeHolder:"",
@@ -226,5 +227,6 @@ export default createStore({
     busEstimatedTime,
     busReallTime,
     busFare,
+    openStreeMap,
   }
 })

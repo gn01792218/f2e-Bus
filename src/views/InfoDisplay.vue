@@ -107,6 +107,7 @@
                 class="busInfo-li p-1"
                 v-for="(i, index) in itemDisplayData.go[0].Stops"
                 :key="index"
+                @click="sendStopPosition(i)"
               >
                 <p>[{{ i.StopSequence }}]{{ i.StopName.Zh_tw }}</p>
               </li>
@@ -136,6 +137,7 @@
                 class="busInfo-li p-1"
                 v-for="(i, index) in itemDisplayData.back[0].Stops"
                 :key="index"
+                @click="sendStopPosition(i)"
               >
                 <p>[{{ i.StopSequence }}]{{ i.StopName.Zh_tw }}</p>
               </li>
@@ -265,6 +267,11 @@ export default defineComponent({
         );
       }
     }
+    function sendStopPosition(stopData:any){
+      console.log("設置站牌座標",stopData,[stopData.StopPosition.PositionLon,stopData.StopPosition.PositionLat])
+      store.commit('busStop/setcurrentCenterStopPosition',[stopData.StopPosition.PositionLon,stopData.StopPosition.PositionLat]) 
+      store.commit('openStreeMap/setMapZoom',20)
+    }
     return {
       //dtat
       itemDisplayData,
@@ -278,6 +285,7 @@ export default defineComponent({
       //methods
       selectDirection,
       showThroughStopRouteData,
+      sendStopPosition,
     };
   },
 });
