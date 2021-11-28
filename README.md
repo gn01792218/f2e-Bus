@@ -25,7 +25,8 @@ npm run build
 - Vue Cli
 - Axios
 - gsap 
-- 
+- D3.js
+- VU3-OpenLayers Map
 ## 資料串接
 TDC 運輸資料流通服務
 
