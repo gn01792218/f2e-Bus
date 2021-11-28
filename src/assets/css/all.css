@@ -571,6 +571,11 @@ ul li {
           box-shadow: 0px 0px beige;
 }
 
+.dropdown-menu {
+  overflow: auto;
+  max-height: 50vh;
+}
+
 .filter-dropdown {
   overflow-y: auto;
   margin: 10px;

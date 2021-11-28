@@ -17,10 +17,11 @@
 .filterInput:focus {
   box-shadow: 0px 0px beige;
 }
-
+.dropdown-menu{
+  overflow: auto;
+  max-height:50vh;
+}
 .filter-dropdown {
-  // width: 30vw;
-  // height: 500px;
   overflow-y: auto;
   margin: 10px;
   background-image: linear-gradient(to bottom right, #d8e6f5, #edf3f8);

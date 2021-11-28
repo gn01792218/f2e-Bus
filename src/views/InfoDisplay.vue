@@ -54,9 +54,7 @@
           @click="selectDirection(0)"
         >
           <a
-          v-if="itemDisplayData && itemDisplayData.go && itemDisplayData.go[0] && itemDisplayData.go[0].Stops && itemDisplayData.go[0].Stops[0] && itemDisplayData.go[0].Stops[
-                itemDisplayData.go[0].Stops.length - 1
-              ]"
+          v-if="itemDisplayData && itemDisplayData.go && itemDisplayData.go[0] && itemDisplayData.go[0].Stops && itemDisplayData.go[0].Stops[0] && itemDisplayData.go[0].Stops[itemDisplayData.go[0].Stops.length - 1]"
             class="nav-link text-dark col-6"
             :class="{ btnActive: direction == 0 }"
             >{{itemDisplayData.go[0].Stops[0].StopName.Zh_tw }}-{{
@@ -83,14 +81,12 @@
           @click="selectDirection(1)"
         >
           <a
-            v-if="itemDisplayData && itemDisplayData.back && itemDisplayData.back[0] && itemDisplayData.back[0].Stops&& itemDisplayData.back[0].Stops[0] && itemDisplayData.back[0].Stops[
-                itemDisplayData.back[0].Stops.length - 1
-              ]"
+            v-if="itemDisplayData && itemDisplayData.back && itemDisplayData.back[0] && itemDisplayData.back[0].Stops && itemDisplayData.back[0].Stops[0] && itemDisplayData.back[0].Stops[itemDisplayData.back[0].Stops.length - 1]"
             class="nav-link"
             :class="{ btnActive: direction == 1 }"
             >{{ itemDisplayData.back[0].Stops[0].StopName.Zh_tw }}-{{
               itemDisplayData.back[0].Stops[
-                itemDisplayData.go[0].Stops.length - 1
+                itemDisplayData.back[0].Stops.length - 1
               ].StopName.Zh_tw
             }}</a
           >
@@ -273,7 +269,7 @@
       </div>
     </div>
     <div class="openStreeMap col-12 col-md-6 m-2 m-md-0 p-2">
-      <OpenStreeMap v-if="currentCategory == 'BusRoute' || currentCategory == 'StopName'" />
+      <OpenStreeMap v-if="currentCategory !== 'Ticket'"/>
       <FareInfo v-if="currentCategory == 'Ticket'"/>
     </div>
   </div>

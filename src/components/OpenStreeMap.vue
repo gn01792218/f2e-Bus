@@ -6,7 +6,40 @@
     <ol-tile-layer>
         <ol-source-osm />
     </ol-tile-layer>
-    <div v-if="itemDisplayData.go && direction==0">
+    <div v-if="currentCategory=='NearStop'">
+      <ol-vector-layer>
+        <ol-source-vector>
+            <ol-feature>
+                <ol-geom-point :coordinates="userPosition"></ol-geom-point>
+                <ol-style>
+                    <ol-style-circle radius='20'>
+                        <ol-style-fill color="yellow"></ol-style-fill>
+                        <ol-style-stroke color="blue" :width='strokeWidth'></ol-style-stroke>
+                        <ol-style-text text="me" scale="2" ></ol-style-text>
+                    </ol-style-circle>
+                </ol-style>
+            </ol-feature>
+        </ol-source-vector>
+    </ol-vector-layer>
+    <div v-if="nearStop">
+      <ol-vector-layer v-for="(i,index) in nearStop" :key="index">
+        <ol-source-vector>
+          <ol-feature v-if="i.StopPosition">
+            <ol-geom-point :coordinates="[i.StopPosition.PositionLon,i.StopPosition.PositionLat]"></ol-geom-point>
+            <ol-style>
+              <ol-style-circle radius='40'>
+                <ol-style-fill :color="fillColor"></ol-style-fill>
+                <ol-style-stroke :color="strokeColor" :width='strokeWidth'></ol-style-stroke>
+                <ol-style-text :text='i.StopName.Zh_tw' ></ol-style-text>
+              </ol-style-circle>
+            </ol-style>
+          </ol-feature>
+        </ol-source-vector>
+      </ol-vector-layer>
+    </div>
+    
+    </div>
+    <div v-if="itemDisplayData.go && direction==0 && currentCategory!=='NearStop'">
       <ol-vector-layer v-for="(i,index) in itemDisplayData.go[0].Stops" :key="index">
         <ol-source-vector>
           <ol-animation-slide :duration="1000" :repeat="1">
@@ -29,7 +62,8 @@
            </ol-animation-slide>
         </ol-source-vector>
     </ol-vector-layer>
-    <ol-vector-layer v-for="(i,index) in busReallTime.go" :key="index">
+    <div v-if="currentCategory=='BusRoute' || currentCategory=='StopName'">
+      <ol-vector-layer v-for="(i,index) in busReallTime.go" :key="index">
         <ol-source-vector>
           <ol-feature>
             <ol-geom-point :coordinates="[i.BusPosition.PositionLon,i.BusPosition.PositionLat]"></ol-geom-point>
@@ -43,7 +77,9 @@
         </ol-source-vector>
       </ol-vector-layer>
     </div>
-      <div v-if="itemDisplayData.back && direction==1">
+    
+    </div>
+    <div v-if="itemDisplayData.back && direction==1 && currentCategory!=='NearStop'">
       <ol-vector-layer v-for="(i,index) in itemDisplayData.back[0].Stops" :key="index">
         <ol-source-vector>
           <ol-animation-slide :duration="1000" :repeat="1">
@@ -109,6 +145,9 @@ export default defineComponent({
         const itemDisplayData = computed(() => {
           return store.state.busStop.cityBusStopByRouteName;
         });
+        const currentCity = computed(() => {
+          return store.state.currentCity;
+        });
         const currentCategory = computed(() => {
           return Category[store.state.currentCategory];
         });
@@ -117,6 +156,17 @@ export default defineComponent({
         });
         const busReallTime = computed(()=>{
           return store.state.busReallTime.routeBusReallTime
+        })
+        const userPosition = computed(()=>{
+          return store.state.nearUserStops.userPosition
+        })
+        const nearStop = computed(()=>{
+          return store.state.nearUserStops.nearStopData
+        })
+        watch(currentCity,()=>{
+          if(currentCategory.value=='NearStop'){
+            getUserGeoPosition()
+          }
         })
         watch(busReallTime.value,()=>{
           console.log("公車動態資料",busReallTime.value)
@@ -128,6 +178,17 @@ export default defineComponent({
                 store.commit('busStop/setcurrentCenterStopPosition', [itemDisplayData.value.back[0].Stops[0].StopPosition.PositionLon,itemDisplayData.value.back[0].Stops[0].StopPosition.PositionLat])
               }
         })
+        function getUserGeoPosition(){
+          if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition((position)=> {
+              store.commit('nearUserStops/setUserPosition',[position.coords.longitude, position.coords.latitude])
+              store.commit('busStop/setcurrentCenterStopPosition',[position.coords.longitude,position.coords.latitude]) //以使用者為中心定位地圖
+              store.commit('nearUserStops/getnearStopData',currentCity.value)
+              store.commit('openStreeMap/setMapZoom',14)
+            });
+          } else {
+          }
+        }
         return{
           //data
           itemDisplayData,
@@ -144,6 +205,8 @@ export default defineComponent({
           fullscreencontrol,
           busReallTime,
           busIcon,
+          userPosition,
+          nearStop,
         }
   }
 });

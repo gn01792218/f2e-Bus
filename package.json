@@ -7,7 +7,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "serve": "vue-cli-service serve --open",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "push_PROD": "sh deploy.sh prod"
   },
   "dependencies": {
     "@popperjs/core": "^2.10.2",

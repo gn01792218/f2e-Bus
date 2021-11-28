@@ -28,7 +28,7 @@ export enum Category{
     BusRoute,
     StopName,
     Ticket,
-    BusPlanning,
+    NearStop,
 }
 export enum Direction{
     go,

@@ -15,7 +15,7 @@
       </button>
       <button class="col-5 SquareBtn m-2" @click="setFilterCategory(3)">
         <div class="roadPlan m-3"></div>
-        <p class="text-success">路線規劃</p>
+        <p class="text-success">附近站牌</p>
       </button>
     </div>
   </div>
@@ -36,6 +36,17 @@ export default defineComponent({
     const currentCategory = computed(() => {
       return Category[store.state.currentCategory];
     });
+    function getUserGeoPosition(){
+          if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition((position)=> {
+              store.commit('nearUserStops/setUserPosition',[position.coords.longitude, position.coords.latitude])
+              store.commit('busStop/setcurrentCenterStopPosition',[position.coords.longitude,position.coords.latitude]) //以使用者為中心定位地圖
+              store.commit('nearUserStops/getnearStopData',currentCity.value)
+              store.commit('openStreeMap/setMapZoom',14)
+            });
+          } else {
+          }
+    }
     function setFilterCategory(category: Category) {
       if (currentCity.value !== "") {
         store.commit("setCurrentCategory", category);
@@ -54,8 +65,8 @@ export default defineComponent({
             store.commit("setPlaceHolder", "請輸入欲查詢的公車路線號碼");
             store.commit("busRoute/getCityBusRoute", currentCity.value);
             break;
-          case Category.BusPlanning:
-            store.commit("setPlaceHolder", "請輸入欲前往的地點");
+          case Category.NearStop:
+            getUserGeoPosition()
             break;
         }
         router.push("/InfoDisplay");

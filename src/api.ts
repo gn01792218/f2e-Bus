@@ -29,6 +29,7 @@ export const getRouteByCityAndRouteName = (City:string,RouteName:number) => {
     return req('get',`/v2/Bus/Route/City/${City}/${RouteName}?${routeProperty}$format=JSON`)
 }
 
+
 //站牌相關
 //取得某縣市所有公車站牌
 export const getStopByCity = (City:string) => {  //給站點搜尋時使用，資料減肥:只需要站牌名稱就好
@@ -37,6 +38,9 @@ export const getStopByCity = (City:string) => {  //給站點搜尋時使用，�
 //取得縣市某公車路線之公車站牌
 export const getStopByCityAndRouteName = (City:string,RouteName:number) => {
     return req('get',`/v2/Bus/StopOfRoute/City/${City}/${RouteName}?${stopProperty}$format=JSON`)
+}
+export const getNearStopByCity = (City:string,positionLat:number,positionLon:number) => {  //搜尋使用者附近站牌
+    return req('get',`/v2/Bus/Stop/City/${City}?${allStopProperty}$spatialFilter=nearby(${positionLat}%2C%20${positionLon}%2C%20500)&$format=JSON`)
 }
 
 //取得指定縣市下所有路線的所有站牌

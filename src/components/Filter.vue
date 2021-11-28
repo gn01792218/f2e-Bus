@@ -12,6 +12,7 @@
           <span v-if="currentCity">{{ currentCityChineseName }}</span>
           <span v-else>選擇縣市</span>
         </button>
+        <p v-if="currentCategory == 'NearStop'">請記得選擇您所在的城市唷!</p>
         <ul
           class="dropdown-menu filter-dropdown"
           aria-labelledby="dropdownMenu2"
@@ -26,7 +27,7 @@
             </button>
           </li>
         </ul>
-        <input
+        <input v-if="currentCategory !== 'NearStop'"
           type="text"
           class="filterInput form-control w-100"
           id="dropdownMenuButton1"
