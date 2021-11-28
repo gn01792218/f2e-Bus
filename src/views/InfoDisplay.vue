@@ -51,16 +51,12 @@
           class="nav-item text-center col-6"
           @click="selectDirection(0)"
         >
+        
           <a
             class="nav-link text-dark col-6"
             :class="{ btnActive: direction == 0 }"
-            v-if="
-              itemDisplayData.go &&
-              itemDisplayData.go[0] &&
-              itemDisplayData.go[0].Stops[0] &&
-              itemDisplayData.go[0].Stops[itemDisplayData.go[0].length - 1]
-            "
-            >{{ itemDisplayData.go[0].Stops[0].StopName.Zh_tw }}-{{
+            v-if="itemDisplayData.go && itemDisplayData.go[0]"
+            >{{itemDisplayData.go[0].Stops[0].StopName.Zh_tw }}-{{
               itemDisplayData.go[0].Stops[
                 itemDisplayData.go[0].Stops.length - 1
               ].StopName.Zh_tw
@@ -86,12 +82,7 @@
           <a
             class="nav-link"
             :class="{ btnActive: direction == 1 }"
-            v-if="
-              itemDisplayData.back &&
-              itemDisplayData.back[0] &&
-              itemDisplayData.back[0].Stops[0] &&
-              itemDisplayData.back[0].Stops[itemDisplayData.back[0].length - 1]
-            "
+            v-if="itemDisplayData.back && itemDisplayData.back[0]"
             >{{ itemDisplayData.back[0].Stops[0].StopName.Zh_tw }}-{{
               itemDisplayData.back[0].Stops[
                 itemDisplayData.go[0].Stops.length - 1
@@ -230,11 +221,12 @@
                   {{ parseInt(i.EstimateTime / 60) }}分後到站
                 </p>
                 <p class="alertTime" v-if="i.EstimateTime <= 180">即將進站</p>
-                <p class="longTime" v-if="i.StopStatus == 1">
+                <p class="longTime" v-if="i.StopStatus == 1 && i.NextBusTime">
                   {{ i.NextBusTime.split("T")[1].split(":")[0] }}:{{
                     i.NextBusTime.split("T")[1].split(":")[1]
                   }}
                 </p>
+                <p v-if="i.StopStatus == 1 && !i.NextBusTime">尚未發車</p>
                 <p v-if="i.StopStatus == 2">交管不停靠</p>
                 <p v-if="i.StopStatus == 3">末班車已駛離</p>
                 <p v-if="i.StopStatus == 4">本日未營運</p>
@@ -260,11 +252,12 @@
                   {{ parseInt(i.EstimateTime / 60) }}分後到站
                 </p>
                 <p class="alertTime" v-if="i.EstimateTime <= 180">即將進站</p>
-                <p class="longTime" v-if="i.StopStatus == 1">
+                <p class="longTime" v-if="i.StopStatus == 1 && i.NextBusTime">
                   {{ i.NextBusTime.split("T")[1].split(":")[0] }}:{{
                     i.NextBusTime.split("T")[1].split(":")[1]
                   }}
                 </p>
+                <p v-if="i.StopStatus == 1 && !i.NextBusTime">尚未發車</p>
                 <p v-if="i.StopStatus == 2">交管不停靠</p>
                 <p v-if="i.StopStatus == 3">末班車已駛離</p>
                 <p v-if="i.StopStatus == 4">本日未營運</p>
@@ -309,6 +302,12 @@ export default defineComponent({
       //2.選擇的縣市某站牌名稱
       return store.state.selectStopItem;
     });
+    // const selectRouteByStopFilter = computed(()=>{ //被點選的""經過此站牌的"路線
+    //   return store.state.busStop.currentSelectRouteData
+    // })
+    // watch(selectRouteByStopFilter,()=>{
+    //   console.log("被點選的 經過此站牌的路線",selectRouteByStopFilter.value)
+    // })
     const cityBusRoutes = computed(() => {
       //縣市所有公車路線資料
       return store.state.busRoute.cityBusRoute;
@@ -320,9 +319,9 @@ export default defineComponent({
     const cityAllRouteStops = computed(() => {
       return store.state.busStop.cityAllRoutesStops;
     });
-    const busFaresData = computed(()=>{ //選取的該路線票價資訊
-      return store.state.busFare.routeFare
-    })
+    // const busFaresData = computed(()=>{ //選取的該路線票價資訊
+    //   return store.state.busFare.routeFare
+    // })
     const busEstimatedTime = computed(() => {
       //取得該路線的公車預估到站資料
       return store.state.busEstimatedTime.busEstimatedTime;
@@ -347,7 +346,6 @@ export default defineComponent({
     })
     const throughStopRoutes = ref({});
     watch(selectStopItemData, () => {
-      console.log("得到所選公車站牌資料", selectStopItemData.value);
       getRoutesByStop();
     });
     function showThroughStopRouteData(routeData: any) {
@@ -403,6 +401,7 @@ export default defineComponent({
       //dtat
       itemDisplayData,
       selectRouteItemData,
+      // selectRouteByStopFilter,
       direction,
       currentCategory,
       busEstimatedTime,

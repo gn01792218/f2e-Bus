@@ -331,6 +331,10 @@ ul li {
           justify-content: center;
 }
 
+.nav-link {
+  width: 100%;
+}
+
 .footer {
   position: fixed;
   z-index: 1;
