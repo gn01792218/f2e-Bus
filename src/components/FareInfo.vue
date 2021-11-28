@@ -10,7 +10,6 @@ import {defineComponent , computed, watch ,ref} from 'vue'
 import { useStore } from "vuex";
 export default defineComponent({
     components:{
-
     },
     setup(){
         const store = useStore();
@@ -44,20 +43,17 @@ export default defineComponent({
         watch(selectRouteItemData,()=>{
              store.commit("busStop/getCityBusStopByRoute", selectRouteItemData.value);
         })
-        function getFareInfo(){
+        async function getFareInfo(){
             if(direction.value==0){
-                console.log()
-                let fareData = routeFareData.value.go.filter((i:any)=>{
+                let fareData =await routeFareData.value.go.filter((i:any)=>{
                     return i.OriginStop.StopName == originStop.value && i.DestinationStop.StopName == targetStop.value
                 })
-                console.log(fareData[0])
                 fareInfo.value = fareData[0].Fares[0].Price
                 console.log(fareInfo.value)
             }else if(direction.value==1){
-                let fareData = routeFareData.value.back.filter((i:any)=>{
+                let fareData =await routeFareData.value.back.filter((i:any)=>{
                     return i.OriginStop.StopName == originStop.value && i.DestinationStop.StopName == targetStop.value
                 })
-                console.log(fareData[0])
                 fareInfo.value = fareData[0].Fares[0].Price
                 console.log(fareInfo.value)
             }

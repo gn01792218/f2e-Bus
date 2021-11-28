@@ -4,18 +4,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "serve": "vue-cli-service serve --open",
-    "build": "vue-cli-service build",
-    "push_PROD": "sh deploy.sh prod"
+    "build": "vue-cli-service build"
   },
   "dependencies": {
     "@popperjs/core": "^2.10.2",
     "axios": "^0.24.0",
     "bootstrap": "^5.1.3",
     "core-js": "^3.8.3",
-    "gh-pages": "^3.2.3",
     "i": "^0.3.7",
     "jssha": "^3.2.0",
     "vue": "^3.2.13",
