@@ -1,6 +1,8 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
+  publicPath: '/f2e-bus/',
   outputDir: 'docs',
+  assetsDir: 'f2e-bus',
   transpileDependencies: true,
   devServer: {
     open: true,//啟動預設瀏覽器開啟
