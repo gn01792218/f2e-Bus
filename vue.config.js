@@ -1,5 +1,6 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
+  outputDir: 'docs',
   transpileDependencies: true,
   devServer: {
     open: true,//啟動預設瀏覽器開啟
