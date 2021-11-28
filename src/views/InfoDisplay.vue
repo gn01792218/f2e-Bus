@@ -20,17 +20,19 @@
           }}</span> ] 站牌的公車路線
           </p>
         </div>
-        <div class="throughStopRoutes-container d-flex" >
-          <a
+        <div class="throughStopRoutes-container d-flex">
+          <div
           class="throughStopRoutes searchResultBar col-2 m-2 p-1"
           v-for="(i, index) in throughStopRoutes"
           :key="index"
-          @click="showThroughStopRouteData(i)"
-          
+          @click="showThroughStopRouteData(i,index)"
+          :class="{citybtnActive:index==currentRouteIndex}"
         >
+        <span>
           [{{ i.RouteName.Zh_tw }}]{{ i.DepartureStopNameZh
           }}{{ i.DestinationStopNameZh }}
-        </a>
+        </span>
+        </div>
         </div>
         
       </div>
@@ -51,11 +53,12 @@
           class="nav-item text-center col-6"
           @click="selectDirection(0)"
         >
-        
           <a
+          v-if="itemDisplayData && itemDisplayData.go && itemDisplayData.go[0] && itemDisplayData.go[0].Stops && itemDisplayData.go[0].Stops[0] && itemDisplayData.go[0].Stops[
+                itemDisplayData.go[0].Stops.length - 1
+              ]"
             class="nav-link text-dark col-6"
             :class="{ btnActive: direction == 0 }"
-            v-if="itemDisplayData.go && itemDisplayData.go[0]"
             >{{itemDisplayData.go[0].Stops[0].StopName.Zh_tw }}-{{
               itemDisplayData.go[0].Stops[
                 itemDisplayData.go[0].Stops.length - 1
@@ -80,9 +83,11 @@
           @click="selectDirection(1)"
         >
           <a
+            v-if="itemDisplayData && itemDisplayData.back && itemDisplayData.back[0] && itemDisplayData.back[0].Stops&& itemDisplayData.back[0].Stops[0] && itemDisplayData.back[0].Stops[
+                itemDisplayData.back[0].Stops.length - 1
+              ]"
             class="nav-link"
             :class="{ btnActive: direction == 1 }"
-            v-if="itemDisplayData.back && itemDisplayData.back[0]"
             >{{ itemDisplayData.back[0].Stops[0].StopName.Zh_tw }}-{{
               itemDisplayData.back[0].Stops[
                 itemDisplayData.go[0].Stops.length - 1
@@ -302,12 +307,6 @@ export default defineComponent({
       //2.選擇的縣市某站牌名稱
       return store.state.selectStopItem;
     });
-    // const selectRouteByStopFilter = computed(()=>{ //被點選的""經過此站牌的"路線
-    //   return store.state.busStop.currentSelectRouteData
-    // })
-    // watch(selectRouteByStopFilter,()=>{
-    //   console.log("被點選的 經過此站牌的路線",selectRouteByStopFilter.value)
-    // })
     const cityBusRoutes = computed(() => {
       //縣市所有公車路線資料
       return store.state.busRoute.cityBusRoute;
@@ -344,11 +343,13 @@ export default defineComponent({
     const originStop = computed(()=>{
        return store.state.busFare.selectOriginStop
     })
+    const currentRouteIndex = ref(-1)
     const throughStopRoutes = ref({});
     watch(selectStopItemData, () => {
       getRoutesByStop();
     });
-    function showThroughStopRouteData(routeData: any) {
+    function showThroughStopRouteData(routeData: any,index:number) {
+      currentRouteIndex.value = index
       store.commit("busStop/getCityBusStopByRoute", routeData);
     }
     function selectDirection(directionNum: Direction) {
@@ -401,7 +402,6 @@ export default defineComponent({
       //dtat
       itemDisplayData,
       selectRouteItemData,
-      // selectRouteByStopFilter,
       direction,
       currentCategory,
       busEstimatedTime,
@@ -410,6 +410,7 @@ export default defineComponent({
       throughStopRoutes,
       originStop,
       targetStop,
+      currentRouteIndex,
       //methods
       selectDirection,
       showThroughStopRouteData,

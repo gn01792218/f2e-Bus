@@ -3,11 +3,11 @@ import {Direction} from '../types/enum'
 import store from '../store';
 export const state = {
   cityBusStop: {}, //縣市的所有公車的所有站牌資料
-  cityBusStopByRouteName: {} , //某公車路線的所有站牌資料
+  cityBusStopByRouteName: {} , //某公車路線的所有站牌資料； //被點選的經過此站牌的路線資料
   currentDirection:Direction.go, //選擇的方向
   cityAllRoutesStops:{},//所有公車路線，的站牌資料
-  currentCenterStopPosition:{},
-  // currentSelectRouteData:{}, //被點選的經過此站牌的路線資料
+  currentCenterStopPosition:[],
+
 };
 export const actions = {
 
@@ -32,8 +32,6 @@ export const mutations = {
     }
   },
   getCityBusStopByRoute(state:any,payLoad:any){
-    // console.log("傳送的公車路線資料",payLoad)
-      state.cityBusStopByRouteName = payLoad
       getStopByCityAndRouteName(payLoad.City,payLoad.RouteName.Zh_tw)?.then((res:any)=>{
         store.commit('setRequestLoading',true)
         state.cityBusStopByRouteName.go = res.data.filter((i:any)=>{

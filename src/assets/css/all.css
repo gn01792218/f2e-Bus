@@ -425,6 +425,10 @@ ul li {
   color: black !important;
 }
 
+.activeRoute {
+  background-color: #0478ff;
+}
+
 .miniSelectBtn {
   display: -webkit-box;
   display: -ms-flexbox;

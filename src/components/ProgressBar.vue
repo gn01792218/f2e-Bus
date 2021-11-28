@@ -18,7 +18,7 @@ export default defineComponent({
         const selectRouteItemData = computed(() => {  //1.選擇的公車路線
             return store.state.selectRouteItem;
         });
-        const itemDisplayData = computed(() => {  //取得該路線所有公車站牌資料
+        const itemDisplayData = computed(() => {  //取得該路線所有公車站牌資料；//被點選的經此站牌的公車路線
             return store.state.busStop.cityBusStopByRouteName;
         });
         const busEstimatedTime = computed(()=>{ //取得該路線的公車預估到站資料
@@ -36,7 +36,7 @@ export default defineComponent({
             store.commit('busEstimatedTime/getBusEstimatedTime',selectRouteItemData.value);
             store.commit('openStreeMap/setMapZoom',14)
         });
-         watch(itemDisplayData.value,()=>{
+        watch(itemDisplayData.value,()=>{
             console.log("選擇的公車路線",itemDisplayData.value)
             store.commit("busReallTime/getRouteBusReallTime",itemDisplayData.value.go[0])
             store.commit('busEstimatedTime/getBusEstimatedTime',itemDisplayData.value.go[0]);
