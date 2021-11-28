@@ -240,6 +240,11 @@ ul li {
   margin-right: auto;
 }
 
+.header-bg img {
+  -webkit-filter: drop-shadow(1px 1px 1px rgba(5, 5, 5, 0.8)) drop-shadow(-1px -1px 1px white);
+          filter: drop-shadow(1px 1px 1px rgba(5, 5, 5, 0.8)) drop-shadow(-1px -1px 1px white);
+}
+
 .infoDisplay-container {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
