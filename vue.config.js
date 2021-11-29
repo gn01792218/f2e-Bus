@@ -8,13 +8,13 @@ module.exports = defineConfig({
     https: false,
     // proxy: {//配置跨域
     //     '/api': {
-    //         target: 'http://api.xxx.com/api/',//介面地址
+    //         target: 'https://ptx.transportdata.tw/MOTC/',//介面地址
     //         ws: true,
     //         changOrigin: true,//允許跨域
     //         secure: false,//是否支援https
-    //         pathRewrite: {
-    //             '^/api': '' // /api表示http://xxx.com/api/
-    //         }
+    //         // pathRewrite: {
+    //         //     '^/api': '' // /api表示http://xxx.com/api/
+    //         // }
     //     }
     // }
   },
