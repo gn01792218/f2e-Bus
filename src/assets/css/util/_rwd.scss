@@ -2,6 +2,9 @@
   .home {
     height: 80vh;
   }
+  .infoDisplay-container {
+    height: 55vh;
+  }
 }
 @media screen and (max-width: 1024px) {
   .neumorphism {
@@ -13,7 +16,7 @@
     }
   }
   .infoDisplay-container {
-    height: 78.5vh;
+    height: 62vh;
   }
   .footer {
     position: fixed;
