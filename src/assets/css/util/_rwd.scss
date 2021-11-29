@@ -1,20 +1,35 @@
 @media screen and (max-width: 1280px) {
 }
 @media screen and (max-width: 1024px) {
-    .neumorphism{
-        font-size:$font-midium-2;
+  .neumorphism {
+    font-size: $font-midium-2;
+  }
+  .SquareBtn {
+    p {
+      font-size: $font-midium;
     }
-    .SquareBtn{
-        p{
-            font-size: $font-midium;
-        }
-    }
+  }
 }
 @media screen and (max-width: 768px) {
-    .footer{
-        position: static;
+  .footer {
+    bottom: 0;
+    img {
+      margin-top: -10%;
     }
-    .categoryService{
-        margin-top: 10px;
+  }
+  .categoryService {
+    margin-top: 10px;
+  }
+  .cityList {
+    p {
+      font-size: $font-small;
     }
+  }
+}
+@media screen and (max-width: 768px) {
+  .cityList {
+    p {
+      font-size: 0.8rem;
+    }
+  }
 }
