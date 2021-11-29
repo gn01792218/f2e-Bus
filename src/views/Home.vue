@@ -1,10 +1,10 @@
 <template>
   <div class="home">
     <section class="categoryBar d-flex row m-2 p-2" >
-      <div class="selectCity d-flex col-12 col-md-6" v-if="!currentCity">
+      <div class="selectCity d-flex col-12 col-md-6">
           <h3 class="neumorphism w-75 p-2">選擇城市</h3>
         <TaiwanMap class="d-none d-xl-block mt-5" />
-        <div class="cityList d-block d-xl-none">
+        <div class="cityList d-block d-xl-none" v-if="!currentCity">
           <div class="row justify-content-center">
             <div class="cityList-btnList miniSelectBtn col-3 m-2 mb-1 " :class="{citybtnActive:currentCity==i.City}" @click="toCity(i.City)" v-for="(i,index) in cityList" :key="index">
               <p>{{i.CityName}}</p>
