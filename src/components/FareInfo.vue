@@ -1,8 +1,8 @@
 <template>
- <div>
-     票價資訊
-     <h1>{{fareInfo }}</h1>
- </div>
+    <div class="fareInfo-container">
+        <h1 class="text-warning">票價資訊</h1>    
+        <h3>全票{{fareInfo}}元</h3>
+    </div>   
 </template>
 
 <script lang="ts">

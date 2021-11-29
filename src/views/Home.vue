@@ -5,8 +5,8 @@
           <h3 class="neumorphism w-75 p-2">選擇城市</h3>
         <TaiwanMap class="d-none d-xl-block mt-5" />
         <div class="cityList d-block d-xl-none">
-          <div class="row">
-            <div class="cityList-btnList miniSelectBtn col-4 m-4 mb-1 " :class="{citybtnActive:currentCity==i.City}" @click="toCity(i.City)" v-for="(i,index) in cityList" :key="index">
+          <div class="row justify-content-center">
+            <div class="cityList-btnList miniSelectBtn col-3 m-2 mb-1 " :class="{citybtnActive:currentCity==i.City}" @click="toCity(i.City)" v-for="(i,index) in cityList" :key="index">
               <p>{{i.CityName}}</p>
             </div>
           </div>

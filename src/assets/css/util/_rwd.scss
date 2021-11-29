@@ -1,4 +1,7 @@
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1366px) {
+  .home {
+    height: 80vh;
+  }
 }
 @media screen and (max-width: 1024px) {
   .neumorphism {
@@ -9,9 +12,16 @@
       font-size: $font-midium;
     }
   }
+  .infoDisplay-container {
+    height: 78.5vh;
+  }
+  .footer {
+    position: fixed;
+    bottom: 0;
 }
 @media screen and (max-width: 768px) {
   .footer {
+    position: fixed;
     bottom: 0;
     img {
       margin-top: -10%;
@@ -25,11 +35,24 @@
       font-size: $font-small;
     }
   }
+  .infoDisplay-container {
+    height: 67vh;
+  }
+  .home {
+    height: 85vh;
+  }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 375px) {
   .cityList {
     p {
       font-size: 0.8rem;
+    }
+  }
+  .footer {
+    bottom: 0;
+    img {
+      height: 50px;
+      margin-top: -12%;
     }
   }
 }

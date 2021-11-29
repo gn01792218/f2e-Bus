@@ -1,5 +1,5 @@
 <template>
-  <ol-map :loadTilesWhileAnimating="true" :loadTilesWhileInteracting="true" style="height:530px">
+  <ol-map :loadTilesWhileAnimating="true" :loadTilesWhileInteracting="true" style="height:550px">
     <ol-view ref="view" :center="center" :rotation="rotation" :zoom="zoom" 
     :projection="projection" />
      <ol-fullscreen-control v-if="fullscreencontrol" />
