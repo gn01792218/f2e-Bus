@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+     
     <section class="categoryBar d-flex row m-2 p-2" >
       <div class="selectCity d-flex col-12 col-md-6">
           <h3 class="neumorphism w-75 p-2">選擇城市</h3>

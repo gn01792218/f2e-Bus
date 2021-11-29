@@ -1,6 +1,6 @@
 <template>
-     <nav class="selectNavbar navbar-expand-md navbar-light">
-    <a href="#"><img class="d-sm-block d-md-none w-75 ms-3" src="../assets/images/header.png" alt="" ></a>
+  <nav class="selectNavbar navbar-expand-md navbar-light">
+    <a href="#"></a>
     <button class="navbar-toggler ms-sm-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -32,8 +32,7 @@
         </li>
       </ul>
     </div>
-  </nav>
- 
+  </nav> 
 </template>
 
 <script lang="ts">
