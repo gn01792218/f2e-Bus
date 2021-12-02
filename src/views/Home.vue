@@ -1,9 +1,8 @@
 <template>
-  <div class="home">
-     
+  <div class="home">   
     <section class="categoryBar d-flex row m-2 p-2" >
       <div class="selectCity d-flex col-12 col-md-6">
-          <h3 class="neumorphism w-75 p-2">選擇城市</h3>
+        <h3 class="neumorphism w-75 p-2">選擇城市</h3>
         <TaiwanMap class="d-none d-xl-block mt-5" />
         <div class="cityList d-block d-xl-none" v-if="!currentCity">
           <div class="row justify-content-center">
@@ -14,7 +13,7 @@
         </div>
       </div>
       <div class="categoryService d-flex col-12 col-md-6">
-        <h3 class="neumorphism w-75 p-2">選擇查詢服務</h3>
+        <h3 class="neumorphism w-75 p-2 mb-2">選擇查詢服務</h3>
         <CategoryBar class="mt-2"/>
       </div>
     </section>

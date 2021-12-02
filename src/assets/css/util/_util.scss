@@ -51,11 +51,11 @@
 }
 .backSpace {
   @include icon;
-  @include iconScale(-560, 0, 1);
+  @include iconScale(-560, 0, 0.5);
 }
 .enter {
   @include icon;
-  @include iconScale(-630, 0, 0.3);
+  @include iconScale(-631, 0, 0.3);
 }
 .ticket {
   @include icon;

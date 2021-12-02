@@ -6,28 +6,32 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="category-ul navbar-nav w-100 justify-content-around">
-        <li class="nav-item miniSelectBtn col-12 col-md-5 col-lg-2 m-1 ">
-          <div class="nav-link d-flex align-items-center" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
+        <li class="nav-item  col-12 col-md-5 col-lg-3 p-2">
+          <a class="nav-link miniSelectBtn d-flex align-items-center justify-content-around" :class="{btnActive:currentCategory=='BusRoute'}" @click="setFilterCategory(0)">
             <div class="bus1"></div>
             <p class="category-text text-danger">公車動態</p>
-          </div>
+            <div class="enter"></div>
+          </a>
         </li>
-        <li class="nav-item  miniSelectBtn col-12 col-md-5 col-lg-2 m-1">
-          <div class="nav-link d-flex align-items-center" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
+        <li class="nav-item  col-12 col-md-5 col-lg-3 p-2">
+          <div class="nav-link miniSelectBtn d-flex align-items-center justify-content-around" :class="{btnActive:currentCategory=='StopName'}" @click="setFilterCategory(1)">
             <div class="busStop"></div>
             <p class="category-text text-primary">站點查詢</p>
+            <div class="enter"></div>
           </div>
         </li>
-        <li class="nav-item miniSelectBtn col-12 col-md-5 col-lg-2 m-1">
-          <div class="nav-link d-flex align-items-center " :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
+        <li class="nav-item  col-12 col-md-5 col-lg-3 p-2">
+          <div class="nav-link miniSelectBtn d-flex align-items-center justify-content-around" :class="{btnActive:currentCategory=='Ticket'}" @click="setFilterCategory(2)">
             <div class="ticket"></div>
             <p class="category-text text-warning">票價查詢</p>
+            <div class="enter"></div>
           </div>
         </li>
-        <li class="nav-item miniSelectBtn col-12 col-md-5 col-lg-2 m-1">
-          <div class="nav-link d-flex align-items-center " :class="{btnActive:currentCategory=='BusPlanning'}" @click="setFilterCategory(3)" >
+        <li class="nav-item  col-12 col-md-5 col-lg-3 p-2">
+          <div class="nav-link miniSelectBtn d-flex align-items-center justify-content-around" :class="{btnActive:currentCategory=='BusPlanning'}" @click="setFilterCategory(3)" >
             <div class="roadPlan"></div>
             <p class="category-text text-success">附近站牌</p>
+            <div class="enter"></div>
           </div>
         </li>
       </ul>

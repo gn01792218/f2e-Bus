@@ -1,5 +1,5 @@
 <template>
-    <div class="fareInfo-container">
+    <div class="fareInfo-container ms-3">
         <h1 class="text-warning">票價資訊</h1>    
         <h3>全票{{fareInfo}}元</h3>
     </div>   

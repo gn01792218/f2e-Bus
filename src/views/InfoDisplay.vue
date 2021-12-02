@@ -2,12 +2,12 @@
   <ProgressBar v-if="currentCategory == 'BusRoute' || currentCategory == 'StopName'"/>
   <TopCategory />
   <div class="infoDisplay-container d-flex">
-    <div class="busInfo-container col-12 col-md-6 m-2 m-md-0 p-2">
+    <div class="busInfo-container col-12 col-md-6 mt-2 m-md-0 p-2">
       <Filter />
       <div v-if="currentCategory == 'BusRoute'" class="searchResultBar mt-3 mb-3 d-flex" >
         <p v-if="selectRouteItemData.RouteName">{{ selectRouteItemData.RouteName.Zh_tw }}</p>
         <p >
-          {{ selectRouteItemData.DepartureStopNameZh }}-{{
+           {{ selectRouteItemData.DepartureStopNameZh }} - {{
             selectRouteItemData.DestinationStopNameZh
           }}
         </p>
@@ -15,9 +15,9 @@
       <div v-if="currentCategory == 'StopName'">
         <div class="searchResultBar mt-3 mb-3 d-flex">
           <p  v-if="selectStopItemData.StopName">
-          經過{{ currentCityChineseName }}的 [ <span class="text-warning">{{
+          經過{{ currentCityChineseName }}的   <span class="text-warning">{{
             selectStopItemData.StopName.Zh_tw
-          }}</span> ] 站牌的公車路線
+          }}</span>   站牌的公車路線
           </p>
         </div>
         <div class="throughStopRoutes-container d-flex">
@@ -29,21 +29,21 @@
           :class="{citybtnActive:index==currentRouteIndex}"
         >
         <span>
-          [{{ i.RouteName.Zh_tw }}]{{ i.DepartureStopNameZh
-          }}{{ i.DestinationStopNameZh }}
+           {{ i.RouteName.Zh_tw }}  {{ i.DepartureStopNameZh
+          }} {{ i.DestinationStopNameZh }}
         </span>
         </div>
         </div>
         
       </div>
-      <ul class="nav nav-tabs">
+      <ul class="nav nav-tabs mt-2">
         <li
           v-if="currentCategory == 'BusRoute' || currentCategory == 'Ticket'"
           class="nav-item col-6 text-center"
           @click="selectDirection(0)"
         >
           <p class="nav-link text-dark" :class="{ btnActive: direction == 0 }"
-          >{{ selectRouteItemData.DepartureStopNameZh }}-{{
+          >{{ selectRouteItemData.DepartureStopNameZh }} - {{
               selectRouteItemData.DestinationStopNameZh
             }}</p
           >
@@ -57,7 +57,7 @@
           v-if="itemDisplayData && itemDisplayData.go && itemDisplayData.go[0] && itemDisplayData.go[0].Stops && itemDisplayData.go[0].Stops[0] && itemDisplayData.go[0].Stops[itemDisplayData.go[0].Stops.length - 1]"
             class="nav-link text-dark col-6"
             :class="{ btnActive: direction == 0 }"
-            >{{itemDisplayData.go[0].Stops[0].StopName.Zh_tw }}-{{
+            >{{itemDisplayData.go[0].Stops[0].StopName.Zh_tw }} - {{
               itemDisplayData.go[0].Stops[
                 itemDisplayData.go[0].Stops.length - 1
               ].StopName.Zh_tw
@@ -70,7 +70,7 @@
           @click="selectDirection(1)"
         >
           <a class="nav-link text-dark" :class="{ btnActive: direction == 1 }"
-            >{{ selectRouteItemData.DestinationStopNameZh }}-{{
+            >{{ selectRouteItemData.DestinationStopNameZh }} - {{
               selectRouteItemData.DepartureStopNameZh
             }}</a
           >
@@ -84,7 +84,7 @@
             v-if="itemDisplayData && itemDisplayData.back && itemDisplayData.back[0] && itemDisplayData.back[0].Stops && itemDisplayData.back[0].Stops[0] && itemDisplayData.back[0].Stops[itemDisplayData.back[0].Stops.length - 1]"
             class="nav-link"
             :class="{ btnActive: direction == 1 }"
-            >{{ itemDisplayData.back[0].Stops[0].StopName.Zh_tw }}-{{
+            >{{ itemDisplayData.back[0].Stops[0].StopName.Zh_tw }} - {{
               itemDisplayData.back[0].Stops[
                 itemDisplayData.back[0].Stops.length - 1
               ].StopName.Zh_tw
@@ -115,7 +115,7 @@
               type="button"
               @click="setOriginStop(i.StopName.Zh_tw)"
             >
-               <p>[{{ i.StopSequence }}]{{ i.StopName.Zh_tw }}</p>
+               <p> {{ i.StopSequence }} {{ i.StopName.Zh_tw }} </p>
             </button>
           </li>
         </ul>
@@ -142,38 +142,38 @@
               type="button"
               @click="setOriginStop(i.StopName.Zh_tw)"
             >
-               <p>[{{ i.StopSequence }}]{{ i.StopName.Zh_tw }}</p>
+               <p> {{ i.StopSequence }} {{ i.StopName.Zh_tw }} </p>
             </button>
           </li>
         </ul>
         </div>
         <div class="targetStopGo dropdown col-6 d-flex p-2" v-if="direction == 0 && itemDisplayData.go">
           <span>選擇迄站</span>
-        <button
-          class="btn btn-secondary dropdown-toggle me-3"
-          type="button"
-          id="dropdownMenu2"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
+          <button
+            class="btn btn-secondary dropdown-toggle me-3"
+            type="button"
+            id="dropdownMenu2"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
           <span v-if="targetStop!=''">{{ targetStop }}</span>
           <span v-else>終點站</span>
-        </button>
-        <ul
-          class="dropdown-menu filter-dropdown"
-          aria-labelledby="dropdownMenu2"
-          
-        >
-          <li v-for="(i, index) in itemDisplayData.go[0].Stops" :key="index">
-            <button
-              class="dropdown-item"
-              type="button"
-              @click="setTargetStop(i.StopName.Zh_tw)"
-            >
-               <p>[{{ i.StopSequence }}]{{ i.StopName.Zh_tw }}</p>
-            </button>
-          </li>
-        </ul>
+          </button>
+          <ul
+            class="dropdown-menu filter-dropdown"
+            aria-labelledby="dropdownMenu2"
+            
+          >
+            <li v-for="(i, index) in itemDisplayData.go[0].Stops" :key="index">
+              <button
+                class="dropdown-item"
+                type="button"
+                @click="setTargetStop(i.StopName.Zh_tw)"
+              >
+                <p> {{ i.StopSequence }} {{ i.StopName.Zh_tw }} </p>
+              </button>
+            </li>
+          </ul>
         </div>
         <div class="targetStopBack dropdown col-6 d-flex p-2" v-if="direction == 1 && itemDisplayData.back">
           <span>選擇迄站</span>
@@ -197,7 +197,7 @@
               type="button"
               @click="setTargetStop(i.StopName.Zh_tw)"
             >
-               <p>[{{ i.StopSequence }}]{{ i.StopName.Zh_tw }}</p>
+               <p> {{ i.StopSequence }} {{ i.StopName.Zh_tw }} </p>
             </button>
           </li>
         </ul>
@@ -205,18 +205,18 @@
       </div>
       <div class="busInfo" v-if="currentCategory == 'StopName' || currentCategory == 'BusRoute'">
         <div class="go" v-if="direction == 0 && itemDisplayData.go">
-          <div class="busInfo-container d-flex">
-            <ul>
+          <div class="busRouteTimeInfo-container d-flex p-1">
+            <ul class="busRouteInfo">
               <li
-                class="busInfo-li p-1"
+                class="busRouteInfo-li p-1"
                 v-for="(i, index) in itemDisplayData.go[0].Stops"
                 :key="index"
                 @click="sendStopPosition(i)"
               >
-                <p>[{{ i.StopSequence }}]{{ i.StopName.Zh_tw }}</p>
+                <p> {{ i.StopSequence }} {{ i.StopName.Zh_tw }} </p>
               </li>
             </ul>
-            <ul v-if="direction == 0 && busEstimatedTime.go">
+            <ul  class="busEstimatedTime" v-if="direction == 0 && busEstimatedTime.go">
               <li class="busEstimatedTime-li p-1" v-for="(i, index) in busEstimatedTime.go" :key="index">
                 <p class="nearTime" v-if="i.EstimateTime && i.EstimateTime > 180">
                   {{ parseInt(i.EstimateTime / 60) }}分後到站
@@ -236,18 +236,18 @@
           </div>
         </div>
         <div class="back" v-if="direction == 1 && itemDisplayData.back">
-          <div class="busInfo-container d-flex">
-            <ul>
+          <div class="busRouteTimeInfo-container d-flex p-1">
+            <ul class="busRouteInfo">
               <li
-                class="busInfo-li p-1"
+                class="busRouteInfo-li p-1"
                 v-for="(i, index) in itemDisplayData.back[0].Stops"
                 :key="index"
                 @click="sendStopPosition(i)"
               >
-                <p>[{{ i.StopSequence }}]{{ i.StopName.Zh_tw }}</p>
+                <p> {{ i.StopSequence }} {{ i.StopName.Zh_tw }} </p>
               </li>
             </ul>
-            <ul v-if="direction == 1 && busEstimatedTime.back">
+            <ul  class="busEstimatedTime" v-if="direction == 1 && busEstimatedTime.back">
               <li class="busEstimatedTime-li p-1" v-for="(i, index) in busEstimatedTime.back" :key="index">
                 <p class="nearTime" v-if="i.EstimateTime && i.EstimateTime > 180">
                   {{ parseInt(i.EstimateTime / 60) }}分後到站

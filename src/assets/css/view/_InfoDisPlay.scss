@@ -2,7 +2,7 @@
   flex-wrap: wrap;
   height: 55vh;
 }
-.busInfo {
+.busRouteTimeInfo-container {
   width: 100%;
   height: 380px;
   overflow: auto;
@@ -10,18 +10,16 @@
   box-shadow: $outShadow;
   border-radius: $borderRadius;
   font-weight: bolder;
+  justify-content: space-between;
+  ul {
+    padding-left: 0;
+  }
 }
 .busInfo-li:hover {
   cursor: pointer;
   background: linear-gradient(160deg, #50caff 0%, #0478ff 100%);
   box-shadow: $outShadow;
   border-radius: $borderRadius;
-}
-.busInfo-container {
-  justify-content: space-between;
-  ul {
-    padding-left: 0;
-  }
 }
 .busInfo-li {
   justify-content: space-between;

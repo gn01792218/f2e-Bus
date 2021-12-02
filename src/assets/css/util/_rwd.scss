@@ -1,6 +1,6 @@
 @media screen and (max-width: 1366px) {
   .home {
-    height: 80vh;
+    height: 76vh;
   }
   .infoDisplay-container {
     height: 55vh;
@@ -21,6 +21,10 @@
   .footer {
     position: fixed;
     bottom: 0;
+  }
+  .nav-link {
+    padding: 0;
+  }
 }
 @media screen and (max-width: 768px) {
   .footer {

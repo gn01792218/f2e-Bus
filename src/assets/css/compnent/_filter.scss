@@ -17,9 +17,9 @@
 .filterInput:focus {
   box-shadow: 0px 0px beige;
 }
-.dropdown-menu{
+.dropdown-menu {
   overflow: auto;
-  max-height:50vh;
+  max-height: 50vh;
 }
 .filter-dropdown {
   overflow-y: auto;
@@ -28,6 +28,10 @@
   box-shadow: $outShadow;
   border-radius: $borderRadius;
   border: none;
+}
+.dropdown-item {
+  flex-direction: row;
+  align-items: center;
 }
 .dropdown-item:hover {
   padding: 10px;
@@ -62,4 +66,7 @@
 .dropdown {
   border-radius: $borderRadius;
   box-shadow: $outShadow;
+}
+.routeNumber {
+  color: $decoration_color2;
 }

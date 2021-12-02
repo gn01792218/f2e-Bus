@@ -42,13 +42,14 @@
           <li v-for="(data, index) in filterData" :key="index">
             <!-- 查詢公車路線時，列出縣市所有路線 -->
             <a
-              class="dropdown-item"
+              class="dropdown-item d-flex"
               v-if="currentCategory == 'BusRoute'"
               @click="sendCityRouteData(data)"
-              >[{{ data.RouteName.Zh_tw }}]{{ data.DepartureStopNameZh }}-{{
-                data.DestinationStopNameZh
-              }}</a
-            >
+              >
+              <p class="routeNumber me-3">{{ data.RouteName.Zh_tw }}</p>
+              <p class="routeName">{{ data.DepartureStopNameZh }} - {{
+                data.DestinationStopNameZh}}</p>
+            </a>
             <!-- 站點查詢時，列出縣市所有公車站牌 -->
             <a
               class="dropdown-item"
@@ -58,13 +59,14 @@
             </a>
              <!-- 查詢車票時，先列出該縣市所有路線供搜尋 -->
             <a
-              class="dropdown-item"
+              class="dropdown-item d-flex"
               v-if="currentCategory == 'Ticket'"
               @click="sendCityRouteDataForFare(data)"
-              >[{{ data.RouteName.Zh_tw }}]{{ data.DepartureStopNameZh }}-{{
-                data.DestinationStopNameZh
-              }}</a
-            >
+              > 
+              <p class="routeNumber me-3">{{ data.RouteName.Zh_tw }}</p>
+              <p class="routeName">{{ data.DepartureStopNameZh }} - {{
+                data.DestinationStopNameZh}}</p>
+            </a>
           </li>
         </ul>
       </div>
