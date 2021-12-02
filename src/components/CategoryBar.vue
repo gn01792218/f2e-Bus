@@ -1,21 +1,21 @@
 <template>
   <div class="select col-12 col-md-8" v-if="currentCity">
     <div class="category-container row">
-      <button class="col-5 SquareBtn m-2" @click="setFilterCategory(0)">
+      <button class="col-5 SquareBtn m-2 m-xxl-3" @click="setFilterCategory(0)">
         <div class="bus1 m-3"></div>
-        <p class="text-danger">公車動態</p>
+        <p class="text-danger m-lg-3">公車動態</p>
       </button>
-      <button class="col-5 SquareBtn m-2" @click="setFilterCategory(1)">
+      <button class="col-5 SquareBtn m-2 m-xxl-3" @click="setFilterCategory(1)">
         <div class="busStop m-3"></div>
-        <p class="text-primary">站點查詢</p>
+        <p class="text-primary m-lg-3">站點查詢</p>
       </button>
-      <button class="col-5 SquareBtn m-2" @click="setFilterCategory(2)">
+      <button class="col-5 SquareBtn m-2 m-xxl-3" @click="setFilterCategory(2)">
         <div class="ticket m-3"></div>
-        <p class="text-warning">票價查詢</p>
+        <p class="text-warning m-lg-3">票價查詢</p>
       </button>
-      <button class="col-5 SquareBtn m-2" @click="setFilterCategory(3)">
+      <button class="col-5 SquareBtn m-2 m-xxl-3" @click="setFilterCategory(3)">
         <div class="roadPlan m-3"></div>
-        <p class="text-success">附近站牌</p>
+        <p class="text-success m-lg-3">附近站牌</p>
       </button>
     </div>
   </div>

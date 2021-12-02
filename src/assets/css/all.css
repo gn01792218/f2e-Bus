@@ -125,10 +125,10 @@ ul li {
 .backSpace {
   cursor: pointer;
   background-image: url("../images/icon.png");
-  width: 70px;
-  height: 70px;
-  background-position: -560px 0px;
-  background-size: 1050px auto;
+  width: 35px;
+  height: 35px;
+  background-position: -280px 0px;
+  background-size: 525px auto;
 }
 
 .enter {
@@ -136,7 +136,7 @@ ul li {
   background-image: url("../images/icon.png");
   width: 21px;
   height: 21px;
-  background-position: -189px 0px;
+  background-position: -189.3px 0px;
   background-size: 315px auto;
 }
 
@@ -237,7 +237,7 @@ ul li {
 }
 
 .home {
-  height: 74vh;
+  height: 75vh;
 }
 
 .header-bg {
@@ -253,10 +253,10 @@ ul li {
 .infoDisplay-container {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  height: 80vh;
+  height: 55vh;
 }
 
-.busInfo {
+.busRouteTimeInfo-container {
   width: 100%;
   height: 380px;
   overflow: auto;
@@ -266,6 +266,13 @@ ul li {
           box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
   border-radius: 7px;
   font-weight: bolder;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.busRouteTimeInfo-container ul {
+  padding-left: 0;
 }
 
 .busInfo-li:hover {
@@ -274,16 +281,6 @@ ul li {
   -webkit-box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
           box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
   border-radius: 7px;
-}
-
-.busInfo-container {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.busInfo-container ul {
-  padding-left: 0;
 }
 
 .busInfo-li {
@@ -354,6 +351,7 @@ ul li {
 }
 
 .footer {
+  position: fixed;
   z-index: 1;
   bottom: 0;
   text-align: center;
@@ -436,7 +434,8 @@ ul li {
 }
 
 .btnActive p {
-  color: black !important;
+  color: #d8e6f5 !important;
+  text-shadow: #000811;
 }
 
 .citybtnActive {
@@ -449,11 +448,15 @@ ul li {
 }
 
 .citybtnActive p {
-  color: black !important;
+  color: #d8e6f5 !important;
 }
 
 .activeRoute {
   background-color: #0478ff;
+}
+
+.activeRoute p {
+  color: #d8e6f5;
 }
 
 .miniSelectBtn {
@@ -477,6 +480,8 @@ ul li {
 
 .miniSelectBtn p {
   font-size: 1.3rem;
+  font-weight: 800;
+  color: #818488;
 }
 
 .miniSelectBtn:hover {
@@ -538,16 +543,20 @@ ul li {
   stroke: white;
   -webkit-transform: scale(1.5);
           transform: scale(1.5);
+  -webkit-filter: drop-shadow(3px 3px 3px rgba(111, 140, 176, 0.5)) drop-shadow(-2px -2px 2px white);
+          filter: drop-shadow(3px 3px 3px rgba(111, 140, 176, 0.5)) drop-shadow(-2px -2px 2px white);
 }
 
 .island {
   top: 5%;
   left: -40%;
   z-index: 1;
+  -webkit-filter: drop-shadow(3px 3px 3px rgba(111, 140, 176, 0.5)) drop-shadow(-2px -2px 2px white);
+          filter: drop-shadow(3px 3px 3px rgba(111, 140, 176, 0.5)) drop-shadow(-2px -2px 2px white);
 }
 
 .active {
-  fill: red;
+  fill: #0478ff;
 }
 
 .hover {
@@ -614,6 +623,16 @@ ul li {
   border: none;
 }
 
+.dropdown-item {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .dropdown-item:hover {
   padding: 10px;
   background: linear-gradient(160deg, #50caff 0%, #0478ff 100%);
@@ -657,9 +676,16 @@ ul li {
           box-shadow: 2px 2px 4px rgba(114, 142, 171, 0.1), -6px -6px 20px #ffffff, 4px 4px 20px rgba(111, 140, 176, 0.41);
 }
 
+.routeNumber {
+  color: #0C69C0;
+}
+
 @media screen and (max-width: 1366px) {
   .home {
-    height: 80vh;
+    height: 76vh;
+  }
+  .infoDisplay-container {
+    height: 55vh;
   }
 }
 
@@ -671,10 +697,14 @@ ul li {
     font-size: 1.6rem;
   }
   .infoDisplay-container {
-    height: 78.5vh;
+    height: 62vh;
   }
-  .home {
-    height: 86vh;
+  .footer {
+    position: fixed;
+    bottom: 0;
+  }
+  .nav-link {
+    padding: 0;
   }
 }
 
