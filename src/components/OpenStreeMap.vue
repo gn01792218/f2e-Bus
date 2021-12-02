@@ -71,7 +71,7 @@
                 <ol-style-fill :color="fillColor"></ol-style-fill>
                 <ol-style-stroke :color="strokeColor" :width='strokeWidth'></ol-style-stroke>
                 <ol-style-text :text='i.PlateNumb' ></ol-style-text>
-                <ol-style-icon :src="busIcon" :scale="1"></ol-style-icon>
+                <ol-style-icon :src="busGoIcon" :scale="1"></ol-style-icon>
             </ol-style>
           </ol-feature>
         </ol-source-vector>
@@ -110,7 +110,9 @@
                 <ol-style-fill :color="fillColor"></ol-style-fill>
                 <ol-style-stroke :color="strokeColor" :width='strokeWidth'></ol-style-stroke>
                 <ol-style-text :text='i.PlateNumb' ></ol-style-text>
-                <ol-style-icon :src="busIcon" :scale="1"></ol-style-icon>
+                <ol-style-icon  :src="busIcon" :scale="1"></ol-style-icon>
+                <!-- <ol-style-icon v-if="direction==0" :src="busGoIcon" :scale="1"></ol-style-icon>
+                <ol-style-icon v-if="direction==1" :src="busIcon" :scale="1"></ol-style-icon> -->
             </ol-style>
           </ol-feature>
         </ol-source-vector>
@@ -139,6 +141,7 @@ export default defineComponent({
         const strokeColor = ref('red')
         const fillColor = ref('white')
         const fullscreencontrol= ref(true)
+        const busGoIcon = require('../assets/images/bus0.png')
         const busIcon = require('../assets/images/bus.png')
         //vuex
         const store = useStore()
@@ -205,6 +208,7 @@ export default defineComponent({
           fullscreencontrol,
           busReallTime,
           busIcon,
+          busGoIcon,
           userPosition,
           nearStop,
         }
