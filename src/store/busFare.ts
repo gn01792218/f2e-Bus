@@ -12,11 +12,10 @@ export const state = {
     getRouteFareBy(state:any,payLoad:any){  //取得縣市所有公車路線，(資料減肥:一開始只需要公車路線RouteName.ZH_tw就好了?!)
             console.log(`請求${payLoad.City}${payLoad.RouteName.Zh_tw}路線票價資料`)
             store.commit('setRequestLoading',true)
-            getRouteFareByCityAndRouteName(payLoad.City,payLoad.RouteName.Zh_tw)?.then(res=>{
-              let routeData = res.data.filter((i:any)=>{
+            getRouteFareByCityAndRouteName(payLoad.City,payLoad.RouteName.Zh_tw)?.then(async res=>{
+              let routeData =await res.data.filter((i:any)=>{
                 return i.RouteName == payLoad.RouteName.Zh_tw
               })
-              console.log(routeData)
                 state.routeFare.go = routeData[0].ODFares.filter((i:any)=>{
                   return i.Direction == 0
                 })

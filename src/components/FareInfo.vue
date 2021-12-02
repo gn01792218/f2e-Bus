@@ -34,8 +34,7 @@ export default defineComponent({
                 getFareInfo()
             }
         })
-        watch(routeFareData.value,()=>{
-            console.log(routeFareData.value)
+        watch(routeFareData,()=>{
             if(originStop.value && targetStop.value && routeFareData.value){
                 getFareInfo()
             }

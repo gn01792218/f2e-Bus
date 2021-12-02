@@ -105,7 +105,7 @@
           <span v-if="originStop!=''">{{ originStop }}</span>
           <span v-else>起點站</span>
         </button>
-        <ul
+        <ul v-if="itemDisplayData.go"
           class="dropdown-menu filter-dropdown"
           aria-labelledby="dropdownMenu2"
         >
@@ -132,7 +132,7 @@
           <span v-if="originStop!=''">{{ originStop }}</span>
           <span v-else>起點站</span>
         </button>
-         <ul
+         <ul v-if="itemDisplayData.back"
           class="dropdown-menu filter-dropdown"
           aria-labelledby="dropdownMenu2"
         >
@@ -159,7 +159,7 @@
           <span v-if="targetStop!=''">{{ targetStop }}</span>
           <span v-else>終點站</span>
         </button>
-        <ul
+        <ul v-if="itemDisplayData.go"
           class="dropdown-menu filter-dropdown"
           aria-labelledby="dropdownMenu2"
           
@@ -187,7 +187,7 @@
           <span v-if="targetStop!=''">{{ targetStop }}</span>
           <span v-else>終點站</span>
         </button>
-        <ul
+        <ul v-if="itemDisplayData.back"
           class="dropdown-menu filter-dropdown"
           aria-labelledby="dropdownMenu2"
         >
