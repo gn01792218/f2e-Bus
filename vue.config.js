@@ -1,6 +1,6 @@
-const { defineConfig } = require('@vue/cli-service')
-module.exports = defineConfig({
-  transpileDependencies: true,
+const webPack = require('webpack')
+module.exports = {
+  publicPath: process.env.VUE_APP_BASE_URL,
   devServer: {
     open: true,//啟動預設瀏覽器開啟
     host: "localhost",
@@ -18,4 +18,4 @@ module.exports = defineConfig({
     //     }
     // }
   },
-})
+}
